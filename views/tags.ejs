@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("parts/head", { title: 'Tags' }) %>
+    </head>
+    <style>
+
+
+        .btn{
+                    display: block;
+                    text-align: center;
+                    justify-content: center;
+                    margin-left: auto;
+                    margin-right: auto;
+                    background-color: #7289DA;
+                    border: solid 2px #f1f2f6;
+                    border-radius: 20px;
+                    height: 40px;
+                    width: 140px;
+                    color: white;
+                    text-decoration: none;
+                    box-shadow: 0px 0px 0px;
+                   
+                   
+                   
+                }
+        
+                .btn:hover{
+                    background-color: #7289DA;
+                    border: solid 1px #7289DA;
+                    transform: translateY(-2px);
+                    box-shadow: 0 5px 16px 0 rgba(0,0,0,0.2);
+                  
+                }
+        
+        
+        
+                .btn-explore{
+                    display: block;
+                    text-align: center;
+                    justify-content: center;
+                    margin-left: auto;
+                    margin-right: auto;
+                    background-color: white;
+                    border: solid 1px #b2bec3;
+                    border-radius: 9px;
+                    height: 70px;
+                    width: 300px;
+                    color: #2C2F33;
+                    text-decoration: none;
+                    box-shadow: 0px 0px 8px #636e72;
+                }
+                .btn-explore:hover{
+                    background-color: #7289DA;
+                    color: white;
+                    border: solid 1px #7289DA;
+                    box-shadow: 0px 0px 8px #bdc3c7;
+                }
+        
+                .barreplus{
+                    background-color: #7289DA;
+                }
+        
+                .blogsbl{
+                    background-color: white;
+                    height: 40px;
+                    width: 130px;
+                    border: solid 0px white;
+                    border-radius: 5px;
+                    display: inline-block;
+                    margin-left: 10px;
+                    margin-bottom: 0px;
+                    color:#7289DA;
+                    cursor: pointer;
+                    transform: translateY(-3px);
+                }
+                .blogsbl:focus{
+                    background-color: white;
+                }
+        
+                .blogsbl:hover{
+                    transform:translateY(-6px);
+                }
+        
+                @media only screen and (max-width: 600px) {
+               .barrerecherche {
+                text-align: center;
+               }
+              }
+        
+              
+        
+               @media only screen and (min-width: 720px) {
+               .barrerecherche {
+                margin-left: 100px;
+               }
+              }
+        
+              .tagsinfo{
+                margin-bottom:20px;margin-left: 5px;padding: 1px;display:inline-block;font-size: 13px;font-weight: 500;
+              }
+        
+
+        .tags{
+            background-color: #f1f2f6;border: solid 0px #f1f2f6;border-radius: 10px;min-height: 60px;max-height:800px;width: 100%;
+            padding: 0px 10%;
+        }
+
+        .tagslist{
+                margin-left: 5px;padding: 1px;display:inline-block;font-size: 13px;font-weight: 500;margin-top: 10px;margin-bottom: 10px;
+              }
+
+
+              .btn-plus{
+             background-color: #1d1f21;
+             display: block;
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 0;
+    border-radius: 9px;
+    height: 70px;
+    width: 300px;
+
+    text-decoration: none;
+    transition: .5s;
+         }    
+
+         .btn-plus:hover{
+             background-color: #7289DA;
+         }
+          
+
+         .btn-plus{
+             background-color: #1d1f21;
+             display: block;
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 0;
+    border-radius: 9px;
+    height: 70px;
+    width: 300px;
+
+    text-decoration: none;
+    transition: .5s;
+         }    
+
+         .btn-plus:hover{
+             background-color: #7289DA;
+         }
+
+         .botlist{
+             background-color: #373a3f;
+             border: 0px;
+             border-radius: 5px;
+             width: 90%;
+             height: max-content;
+             margin-left: auto;
+             margin-right: auto;
+             padding: 20px;
+             box-shadow: 0px 0px 10px rgb(29, 31, 34);
+         }
+
+         @media screen and (min-width: 900px) {
+            .botlist{
+             background-color: #373a3f;
+             border: 0px;
+             border-radius: 5px;
+             width: 60%;
+             height: max-content;
+             margin-left: auto;
+             margin-right: auto;
+             padding: 20px;
+             box-shadow: 0px 0px 10px rgb(29, 31, 34);
+         }
+         }
+
+         
+
+        
+
+         .btnmenulist{
+             background-color: transparent;
+             color: white;
+             display: inline-block;
+             margin-left: 10px;
+             margin-right: 10px;
+             cursor: pointer;
+             width: 100px;
+             height: 40px;
+             padding: 10px;
+             border: 0px;
+             border-radius: 5px;
+             transition: 0.5s;
+         }
+
+         .btnmenulist:hover{
+             background-color:#47494b;
+         }
+
+         .btnmenulist-active{
+             color: white !important;
+             background-color: #7289DA !important;
+         }
+
+         .titlecardlist{
+             background-color: #535658;
+             border: 0px;
+             border-radius: 20px;
+             width: max-content;
+             height: 40px;
+             padding: 10px;
+             padding-left: 15px;
+             padding-right: 15px;
+             color: white;
+             margin-left: auto;
+             margin-right: auto;
+         }
+
+         .viewplus{
+             background-color: #7289DA;
+             border: 0px;
+             border-radius: 4px;
+             width: 110px;
+             height: 40px;
+             color: white;
+             text-align: center;
+             padding: 10px;
+           margin-left: auto;
+           margin-right: auto;
+             cursor: pointer;
+         }
+          
+          nav{
+              background-color: transparent !important;
+          }
+
+          .infosbltitle{
+              background-color: #535658;
+              width: max-content;
+              height: 35px;
+              border: 0px;
+              border-radius: 5px;
+              padding-left: 10px;
+              padding-right: 10px;
+              margin-left: auto;
+              margin-right: auto;
+              padding: 7px;
+              text-align: center;
+              color: white;
+              margin-top: 20px;
+          }
+
+          .botbtn{
+              background-color: #7289DA;
+              border: 0px;
+              border-radius: 5px;
+              width: max-content;
+              height: 15px;
+              padding: 3px;
+              padding-left: 10px;
+              padding-right: 10px;
+              color: white;
+              
+          }
+
+          input[type=text]{           
+    background-color: #1a1c1d !important;
+    border: solid 2px #1a1c1d !important;
+    color:rgb(233, 233, 233) !important;
+          }
+
+          ::placeholder{
+              color: rgb(238, 238, 238) !important;
+          }
+
+          .btnsupport{
+              background-color:#7289DA;
+              border: 0p;
+              border-radius: 5px;
+              width: max-content;
+              height: 40px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding: 10px;
+              text-align: center;
+              color: white;
+              margin-left: auto;
+              margin-right: auto;
+              margin-top: 20px;
+              cursor: pointer;
+          }
+
+          .taglist{
+              width: 60%;
+              margin-left: auto;
+              margin-right: auto;
+          }
+
+          .tagbot{
+              background-color: #535658;
+              border: 0px;
+              border-radius: 30px;
+              width: 120px;
+              height: 40px;
+              color: white;
+              margin-left: auto;
+              margin-right: auto;
+              cursor: pointer;
+              vertical-align: middle;
+              transition: 0.2s;
+              display: inline-block;
+              margin-left: 10px;
+              margin-right: 10px;
+              padding-top: 9px;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              text-align: center;
+          }
+
+          .tagbot:hover{
+              background-color: #7289DA;
+              transform:  scale(1.2);
+          }
+
+          .lbt{
+              background-color: transparent !important;
+          }
+        
+        
+hr {
+    background-color: #33343b;
+    height: 2px;
+    margin: 10px 0;
+    border: none;
+}
+
+body{
+    font-family: 'Quicksand', sans-serif;
+}
+
+.row .col {
+        text-align: center;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 0 .75rem;
+        min-height: 1px;
+        display: inline-table;
+        float: none;
+    }
+    
+    .card .card-content {
+        padding-top: 24px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 0 0 2px 2px;
+    }
+    
+    .container{
+        max-width: 3000px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .mo {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%; 
+      overflow: auto;
+    }
+    
+    .mc {
+      position: relative;
+      margin: auto;
+      padding: 0;
+      border: 1px solid;
+      width: 80%;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,2),0 6px 20px 0 rgba(0,0,0,2);
+      -webkit-animation-name: animatetop;
+      -webkit-animation-duration: 0.4s;
+      animation-name: animatetop;
+      animation-duration: 0.4s
+    }
+    
+    
+    @-webkit-keyframes animatetop {
+      from {top:-300px; opacity:0} 
+      to {top:0; opacity:1}
+    }
+    
+    @keyframes animatetop {
+      from {top:-300px; opacity:0}
+      to {top:0; opacity:1}
+    }
+    
+    .c {
+      color: white;
+      float: right;
+      font-size: 80px;
+      font-weight: bold;
+    }
+    
+    .c:hover,
+    .c:focus {
+      color: #7289DA;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .mh {
+      padding: 2px 16px;
+      background-color: #2C2F33;
+      color: white;
+    }
+    
+    #modal-body1 {padding: 16px;}
+    #modal-body2 {padding: 16px;}
+    #modal-body3 {padding: 16px;}
+    
+    .mod {
+      padding: 50px;
+      background-color: rgba(0,0,0,0.5);
+    }
+    
+    .mf {
+      padding: 2px 16px;
+      background-color: #2C2F33;
+      color: white;
+      padding: 2px 16px;
+    }
+    
+    
+    .btn-view{
+        background-color: #2C2F33;
+        border: solid 2px #2C2F33;
+        border-radius: 5px;
+        width: 95px;
+        color: white;
+        box-shadow: 0px 0px 0px;
+    }
+    
+    .btn-view:hover{
+        background-color: #7289DA;
+        color: white;
+        border: solid 2px #7289DA;
+    }
+    
+    .card{
+        box-shadow: 0px 0px 0px;
+    }
+    .hoverable{
+            box-shadow: 0px 0px 0px;
+        }
+    
+    
+        .hoverable:hover{
+            box-shadow: 0px 0px 0px;
+        }
+        
+
+    .cardbot{
+        background-color: transparent;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    .cardbot:hover{
+        background-color: rgb(42, 45, 49);
+        border: 0px;
+        border-radius: 6px;
+    }
+
+    .cardbotcert{
+        background-color:  rgb(29, 31, 34);
+        cursor: pointer;
+        border: 0px;
+        border-radius: 6px;
+        transition: 0.5s;
+       
+    }
+
+    .cardbot:hover .statusbot{
+        background-color: rgb(42, 45, 49);
+    }
+
+    .cardbotcert:hover{
+        background-color: rgb(42, 45, 49);
+    }
+
+    .cardbotcert:hover .statusbotcert{
+        background-color: rgb(42, 45, 49);
+    }
+
+
+    .votecard{
+        background-color: #47494b;
+        border: 0px;
+        border-radius: 5px;
+        width: max-content;
+        max-width: auto;
+        height: 25px;
+        padding: 1px;
+        padding-right: 10px;
+        padding-left: 10px;
+        text-align: center;
+        margin-left: 20px;
+        color: white;
+        vertical-align: middle;
+    }
+
+    .infocardbot{
+        width: max-content;
+        max-width: 85%;
+    }
+
+
+    @media screen and (max-width: 990px){
+      
+        .infocardbot{
+        width: 330px;
+    }
+    }
+
+
+    @media screen and (max-width: 560px){
+    
+        .infocardbot{
+        width: 270px;
+    }
+    }
+
+    .tagbtn{
+        background-color: #7289DA;
+        border: 0px;
+        border-radius: 30px;
+        width: max-content;
+        height: 25px;
+        padding: 2px;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: inline-block;
+        color: white;
+    }
+
+    .viewsbtn{
+        width: max-content;
+        height: 25px;
+        padding: 2px;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    .btnpremiumcard{
+        background-color: #9b59b6;
+        border: 0px;
+        border-radius: 30px;
+        width: max-content;
+        height: 25px;
+        padding: 2px;
+        margin-left: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: inline-block;
+        color: white;
+    }
+
+    .statusbot{
+        background-color: #373a3f;
+            width: 30px;
+            height: 30px;
+            border: solid 0px;
+            border-radius: 50%;
+            display: inline-block;
+            position: absolute;
+            margin-top: 50px;
+            margin-left: -25px;
+            padding: 5px 5.5px;
+            transition: 0.5s;
+    }
+  
+            .statusbotcert{
+                background-color: rgb(29, 31, 34);
+                    width: 30px;
+                    height: 30px;
+                    border: solid 0px;
+                    border-radius: 50%;
+                    display: inline-block;
+                    position: absolute;
+                    margin-top: 50px;
+                    margin-left: -25px;
+                    padding: 5px 5.5px;
+                    transition: 0.5s;
+            }
+        
+        .tagss{
+            border: 0px;
+            border-radius: 10px;
+            width: 53%;
+            height: 30%;
+            background-color: #2C2F33;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2%;
+            text-align: center;
+        }
+        </style>
+    <body>
+
+
+        <div class="header">
+            <%- include("parts/header") %>
+        </div>
+        
+        <div class="main">
+            <%- include("parts/headerpre2") %>
+    
+
+
+
+                <div style="margin-top: 20px;margin-bottom: 100px;">
+                <div class="tagss">
+                    <a class="tagbot" href="/tag/fun"><i style="color: #f1f2f6;margin-right: 5px;" class="fas fa-smile-beam"></i>Fun</a>
+                    <a class="tagbot" href="/tag/jeu" ><i style="color: #f1f2f6;margin-right: 5px;" class="fas fa-gamepad"></i>Jeu</a>
+                    <a class="tagbot" href="/tag/musique" ><i style="color: #f1f2f6;margin-right: 5px;" class="fas fa-music"></i>Musique</a>
+                    <a class="tagbot" href="/tag/roleplay" ><i style="color: #f1f2f6;margin-right: 5px;" class="fas fa-dice-two"></i>Rôleplay</a>
+                    <a class="tagbot" href="/tag/moderation"><i style="color: #f1f2f6;margin-right: 5px;" class="fas fa-wrench"></i>Modération</a>
+                    <a class="tagbot" href="/tag/economie" ><i style="color: #f1f2f6;margin-right: 5px;" class="fas fa-money-bill"></i>Economie</a>
+                    <a class="tagbot" href="/tag/utile" ><i style="color: #f1f2f6;margin-right: 5px;" class="fas fa-toolbox"></i>Utile</a>
+                </div>
+                </div>
+
+          
+            </div>
+        </div>
+    </body>
+    <footer>
+        <%- include("parts/footer") %>
+        <%- include("parts/scripts") %>
+    </footer>
+</html>

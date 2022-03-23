@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("parts/head", { title: 'Premium' }) %>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Ubuntu&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+      </head>
+   
+    <style>
+        .cardprice{
+            text-align: center;
+        }
+       
+        .cardprice:hover{
+          transform: translateY(-4px);
+        }
+
+      
+        .btn-acheter{
+            display: block;
+            text-align: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #43b581;
+            border: solid 2px #43b581;
+            border-radius: 5px;
+            height: 35px;
+            width: 130px;
+            color: white;
+            text-decoration: none;
+           
+           
+        }
+
+        .btn-acheter:hover{
+  
+            background-color:#3CA978;
+         
+            color:white;
+            border: solid 2px #3CA978;
+
+           
+           
+           
+        }
+
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.a-container {
+  width: 450px;
+  margin: 20px auto;
+}
+
+.a-container label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  color: white;
+  background-color: #2C2F33;
+  border-bottom: 1px solid #404449;
+
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -ms-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.a-container label:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 8px solid white;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 6px solid transparent;
+  position: absolute;
+  right: 10px;
+  top: 16px;
+
+}
+
+.a-container input:checked + label,
+.a-container label:hover {
+  background-color: #7289DA;
+  color: white;
+  border-bottom:solid 1px #7289DA;
+}
+
+.a-container input:checked + label:after {
+  border-top: 8px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid white;
+  border-left: 6px solid transparent;
+  top: 6px;
+}
+
+.a-content {
+  
+  display: none;
+
+  
+}
+
+.a-container input:checked ~ .a-content {
+  display: block;
+}
+
+.bandeau{
+  background-color: #7289DA;
+  height: 80px;
+  width: 100%;
+  border: solid 0px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+
+.ifo{
+  background-color: #45494D;
+  border: solid 0px;
+  border-radius: 9px;
+  height: 70px;
+  width: 100%;
+  color: white;
+  padding: 15px 15px;
+  cursor: pointer;
+  
+}
+
+.ifo:hover{
+  background-color:#2C2F33;
+
+}
+
+.ic{
+  background-color:#202125;
+  border: solid 0px;
+  border-radius: 10px;
+  height: 440px;
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  box-shadow: 0px 0px 16px #23272A;
+}
+
+
+.svganimvag{
+animation: waveDividerAnimation-2m2aau 10s linear infinite alternate ;
+-webkit-animation:waveDividerAnimation-2m2aau 10s linear infinite alternate;animation:waveDividerAnimation-2m2aau 20s linear infinite alternate;}.animationPaused-2hZ4IO{-webkit-animation-play-state:paused;animation-play-state:paused}@-webkit-keyframes waveDividerAnimation-2m2aau{0%{d:path("M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z")}50%{d:path("M655.558582,28.4898877 C500.191373,61.6062216 422.833785,83.5422763 266.940085,49.8995879 C112.480383,16.5663637 84.0992497,8.02840272 0,44.7243294 L0,150.727527 L1920,150.727527 L1920,49.8995879 C1580.91676,-34.8808285 1438.10804,73.6768193 1148.0266,38.0019829 C857.945166,2.32714659 810.925791,-4.62644617 655.558582,28.4898877 Z")}to{d:path("M842.322034,38.0019829 C686.954825,71.1183168 623.386282,53.08497 467.492582,19.4422816 C313.032879,-13.8909426 84.0992497,8.02840272 0,44.7243294 L0,150.727527 L1920,150.727527 L1920,76.8685643 C1512.23604,-35.3595639 1568.70222,67.4289432 1278.62078,31.7541069 C988.539347,-3.92072949 997.689243,4.88564905 842.322034,38.0019829 Z")}}@keyframes waveDividerAnimation-2m2aau{0%{d:path("M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z")}50%{d:path("M655.558582,28.4898877 C500.191373,61.6062216 422.833785,83.5422763 266.940085,49.8995879 C112.480383,16.5663637 84.0992497,8.02840272 0,44.7243294 L0,150.727527 L1920,150.727527 L1920,49.8995879 C1580.91676,-34.8808285 1438.10804,73.6768193 1148.0266,38.0019829 C857.945166,2.32714659 810.925791,-4.62644617 655.558582,28.4898877 Z")}to{d:path("M842.322034,38.0019829 C686.954825,71.1183168 623.386282,53.08497 467.492582,19.4422816 C313.032879,-13.8909426 84.0992497,8.02840272 0,44.7243294 L0,150.727527 L1920,150.727527 L1920,76.8685643 C1512.23604,-35.3595639 1568.70222,67.4289432 1278.62078,31.7541069 C988.539347,-3.92072949 997.689243,4.88564905 842.322034,38.0019829 Z")}
+}
+
+.svgii{
+  display: block;
+}
+
+.svgip{
+  color: #f6f6f6;
+}
+
+.grid2{
+  background-color: #f6f6f6;
+  height: auto;
+  margin: 0px;
+}
+
+.svgpos{
+  -webkit-transform: matrix(1,0,0,-1,0,0);
+    transform: matrix(1,0,0,-1,0,0);
+    min-height: 0px;
+    max-height: 70px;
+}
+
+
+.container {
+
+max-width: 5000px;
+}
+    </style>
+
+
+    <body>
+        <div class="header">
+            <%- include("parts/header") %>
+        </div>
+        <div style="background-color: #222428;" class="main">
+            <div class="container">
+                <div class="center-align">
+                    <div>
+                        <br>
+                        <br>
+                    
+                    <h3 style="font-family: 'Roboto', sans-serif;color: white;">PREMIUM</h3>
+                    <a href="/dashboard/premium/select/<%=user.id%>" class="btn-acheter" style="padding: 4px 8px;font-family: 'Roboto', sans-serif;">S'abonner</a>
+                    
+                   
+
+<div id="paypal-button-container"></div>
+
+<script>
+  paypal.Buttons({
+    createOrder: function (data, actions) {
+      return fetch('/premium/create-order', {
+        method: 'POST'
+      }).then(function(res) {
+        return res.json();
+      }).then(function(data) {
+        return data.id;
+      });
+    },
+    onApprove: function (data, actions) {
+      return fetch('/premium/capture-order/' + data.orderID, {
+        method: 'POST'
+      }).then(function(res) {
+        if (!res.ok) {
+          alert('Something went wrong');
+        }
+      });
+    }
+  }).render('#paypal-button-container');
+</script>
+
+                    <p style="font-family: 'Roboto', sans-serif;font-size: 25px;">Rejoins-nous dans l'autre monde pour partir à l'aventure</p>
+                    <p style="font-family: 'Roboto', sans-serif;font-size: 17px;color: #A5AAAF;">Découvre le monde cacher de SBL , dans l'autre monde <br> on trouve de fonctionnalités incroyable découvre les en descendant la page
+                    </div>
+                   
+
+              
+ 
+
+
+
+              <svg style="display: block;margin-top:50px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#f6f6f6" fill-opacity="1" d="M0,96L24,101.3C48,107,96,117,144,144C192,171,240,213,288,229.3C336,245,384,235,432,202.7C480,171,528,117,576,80C624,43,672,21,720,37.3C768,53,816,107,864,144C912,181,960,203,1008,181.3C1056,160,1104,96,1152,90.7C1200,85,1248,139,1296,149.3C1344,160,1392,128,1416,112L1440,96L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"></path>
+              </svg>
+
+               <div style="text-align: center;" class="grid2">
+
+
+                <div style="display: inline-block;font-family: 'Roboto', sans-serif;font-weight: 500;font-size: 20px;vertical-align: middle;text-align: center;">
+                  <h2 style="color: #23272A;font-weight: 600;">Badge premium</h2> 
+                  Obtenez ce magnifique badge qui sera afficher<br> aux yeux de tout les visiteurs de ce site 
+                 </div>
+              
+                 <div style="display: inline-block;padding: 25px;margin-left: 35px;margin-right: 90px;margin-top: 20px;">
+                  <img style="text-align: center;vertical-align: middle;" src="https://cdn.discordapp.com/attachments/708013329603624970/729452439690018978/SBL_1234__1_-removebg-preview.png" height="500px" width="500px">
+                 </div>
+
+
+
+               </div>
+
+
+               <svg style="display:block;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#f6f6f6" fill-opacity="1" d="M0,96L24,101.3C48,107,96,117,144,144C192,171,240,213,288,229.3C336,245,384,235,432,202.7C480,171,528,117,576,80C624,43,672,21,720,37.3C768,53,816,107,864,144C912,181,960,203,1008,181.3C1056,160,1104,96,1152,90.7C1200,85,1248,139,1296,149.3C1344,160,1392,128,1416,112L1440,96L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z"></path>
+              </svg>
+
+
+              <div style="text-align: center;">
+
+                <div style="display: inline-block;padding: 25px;margin-left: 35px;margin-right: 90px;margin-top: 20px;">
+                  <img style="text-align: center;vertical-align: middle;" src="https://cdn.discordapp.com/attachments/708013329603624970/729675551140347954/Support__14_-removebg-preview.png" height="500px" width="500px">
+                 </div>
+
+              <div style="display: inline-block;font-family: 'Roboto', sans-serif;font-weight: 500;font-size: 20px;vertical-align: middle;text-align: center;color: rgba(255,255,255,0.7);">
+                <h2 style="color: #7289DA;font-weight: 600;">Support prioritaire</h2> 
+                Le support sera prioritaire aux Premium <br> pour toute aide sur le site ou autre 
+               </div>
+            
+             
+              </div>
+
+
+              <svg style="display: block;margin-top:0px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#f6f6f6" fill-opacity="1" d="M0,96L24,101.3C48,107,96,117,144,144C192,171,240,213,288,229.3C336,245,384,235,432,202.7C480,171,528,117,576,80C624,43,672,21,720,37.3C768,53,816,107,864,144C912,181,960,203,1008,181.3C1056,160,1104,96,1152,90.7C1200,85,1248,139,1296,149.3C1344,160,1392,128,1416,112L1440,96L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"></path>
+              </svg>
+
+               <div style="text-align: center;" class="grid2">
+
+
+                <div style="display: inline-block;font-family: 'Roboto', sans-serif;font-weight: 500;font-size: 20px;vertical-align: middle;text-align: center;">
+                  <h2 style="color: #23272A;font-weight: 600;">Modification premium</h2> 
+                  Plus de possibilité pour modifier les options de son bot 
+                 </div>
+              
+                 <div style="display: inline-block;padding: 25px;margin-left: 35px;margin-right: 90px;margin-top: 20px;">
+                  <img style="text-align: center;vertical-align: middle;" src="https://cdn.discordapp.com/attachments/708013329603624970/729704835674406932/Modification-removebg-preview.png" height="500px" width="500px">
+                 </div>
+
+
+
+               </div>
+
+
+               <svg style="display:block;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#f6f6f6" fill-opacity="1" d="M0,96L24,101.3C48,107,96,117,144,144C192,171,240,213,288,229.3C336,245,384,235,432,202.7C480,171,528,117,576,80C624,43,672,21,720,37.3C768,53,816,107,864,144C912,181,960,203,1008,181.3C1056,160,1104,96,1152,90.7C1200,85,1248,139,1296,149.3C1344,160,1392,128,1416,112L1440,96L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z"></path>
+              </svg>
+
+              
+                 <div class="center-align">
+                    <h3 style="font-family: 'Nunito', sans-serif;color: #7289DA;">FAQ</h3>
+                    <p>Si cette FAQ ne vous a pas aider ,alors rejoignez notre serveur <a style="color: #7289DA;" href="https://discord.gg/bf4NEUd">Discord</a></p>
+                    <ul class="a-container">
+                        <li class="a-items" style="font-family: 'Nunito', sans-serif;">
+                          <input type="radio" name="ac" id="a1" />
+                          <label for="a1">C'est quoi "Modification Premium" ?</label>
+                          <div class="a-content">
+                            <p style="font-size: 30px;color: #7289DA;">Modification Premium</p>
+                            <p style="font-size: 17px;">Vous aurez plus de fonctionnalités au niveau de la modification de votre bot , par exemple une image en fond sur la carte du bot</p>
+                          </div>
+                        </li>
+                        
+                          <li class="a-items" style="font-family: 'Nunito', sans-serif;">
+                          <input type="radio" name="ac" id="a2" />
+                          <label for="a2">Support Prioritaire</label>
+                          <div class="a-content">
+                            <p style="font-size: 30px;color: #7289DA;">Support</p>
+                            <p style="font-size: 17px;">Le support prendra votre demande en prioriter sur notre Discord</p>
+                            
+                          </div>
+                        </li>
+                        
+                        
+                      </ul>
+               </div>
+
+               <svg style="display: block;margin-top:50px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#f6f6f6" fill-opacity="1" d="M0,96L24,101.3C48,107,96,117,144,144C192,171,240,213,288,229.3C336,245,384,235,432,202.7C480,171,528,117,576,80C624,43,672,21,720,37.3C768,53,816,107,864,144C912,181,960,203,1008,181.3C1056,160,1104,96,1152,90.7C1200,85,1248,139,1296,149.3C1344,160,1392,128,1416,112L1440,96L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"></path>
+              </svg>
+
+               <div style="text-align: center;" class="grid2">
+
+
+                <div style="display: inline-block;padding: 25px;margin-left: 35px;margin-right: 90px;margin-top: 20px;">
+                  <img style="text-align: center;vertical-align: middle;" src="https://cdn.discordapp.com/attachments/708013329603624970/729720258830532608/Bot__1_-removebg-preview.png" height="500px" width="500px">
+                 </div>
+
+
+                <div style="display: inline-block;font-family: 'Roboto', sans-serif;font-weight: 500;font-size: 20px;vertical-align: middle;text-align: center;">
+                  <h2 style="color: #23272A;font-weight: 600;">Mise en avant</h2> 
+                  Votre bot sera mis en avant devant tout les autres bots non premium
+                 </div>
+              
+               
+
+
+               </div>
+
+
+               <svg style="display:block;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#f6f6f6" fill-opacity="1" d="M0,96L24,101.3C48,107,96,117,144,144C192,171,240,213,288,229.3C336,245,384,235,432,202.7C480,171,528,117,576,80C624,43,672,21,720,37.3C768,53,816,107,864,144C912,181,960,203,1008,181.3C1056,160,1104,96,1152,90.7C1200,85,1248,139,1296,149.3C1344,160,1392,128,1416,112L1440,96L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z"></path>
+              </svg>
+
+
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer style="display: none;">
+        <%- include("parts/footer") %>
+        <%- include("parts/scripts") %>
+    </footer>
+</html>

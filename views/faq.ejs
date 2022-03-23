@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("parts/head", { title: 'Faq' }) %>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Ubuntu&display=swap" rel="stylesheet">
+    </head>
+   
+<style>
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.a-container {
+  width: 450px;
+  margin: 20px auto;
+}
+
+.a-container label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  color: white;
+  background-color: #2C2F33;
+  border-bottom: 1px solid #404449;
+
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -ms-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.a-container label:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 8px solid white;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 6px solid transparent;
+  position: absolute;
+  right: 10px;
+  top: 16px;
+
+}
+
+.a-container input:checked + label,
+.a-container label:hover {
+  background-color: #7289DA;
+  color: white;
+  border-bottom:solid 1px #7289DA;
+}
+
+.a-container input:checked + label:after {
+  border-top: 8px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid white;
+  border-left: 6px solid transparent;
+  top: 6px;
+}
+
+.a-content {
+  color: #747d8c;
+  display: none;
+
+  
+}
+
+.a-container input:checked ~ .a-content {
+  display: block;
+}
+
+</style>
+
+    <body>
+        <div class="header">
+            <%- include("parts/header") %>
+        </div>
+        <div class="main">
+            <div class="container">
+                <div class="center-align">
+                  <h4 style="font-family: 'Nunito', sans-serif;"><a style="color:#7289DA;" href="#faqancre">FAQ</a></h4>
+                  <p style="font-family: 'Nunito', sans-serif; font-size: 19px;">Nous avons répertorié les questions fréquentes qui nous sont posées</p>
+                       
+                  <h5 style="color:#7289DA;font-family: 'Nunito', sans-serif;">Vous avez des questions à nous posé ?</h5>
+                  <p style="font-family: 'Nunito', sans-serif;font-size: 19px;">Alors rejoignez notre serveur Discord</p>
+                  <iframe src="https://discord.com/widget?id=570900183546724363&theme=dark" width="300" height="400" allowtransparency="true" frameborder="0" ></iframe>
+
+
+                  <ul class="a-container">
+
+                    <li class="a-items" style="font-family: 'Nunito', sans-serif;">
+                      <input type="radio" name="ac" id="a1" />
+                      <label id="faqancre" for="a1">Où va l'argent de SBL ?</label>
+                      <div class="a-content">
+                        <h5>Réinvestisement</h5>
+                        <p style="font-size: 17px;">Nous réinvestissons dans nos machines pour permettre de garder le site en ligne 24/24H 7/7J</p>
+                      </div>
+                    </li>
+                    
+                     
+                      <li class="a-items" style="font-family: 'Nunito', sans-serif;">
+                      <input type="radio" name="ac" id="a2" />
+                      <label for="a2">Combien de bot puis-je ajouter ?</label>
+                      <div class="a-content">
+                        <h5>Limite de bot</h5>
+                        <p style="font-size: 17px;">Nous avons limité le nombre de bot maximum par utilisateur à 2 bots maximum , mais avec notre offre <a href="/premium"><strong>Premium</strong></a> vous pouvez avoir jusqu'à 4 bots maximum</p>
+                        
+                      </div>
+                    </li>
+
+                    <li class="a-items" style="font-family: 'Nunito', sans-serif;">
+                        <input type="radio" name="ac" id="a3" />
+                        <label for="a3">Puis-je avoir un remboursement pour l'offre Premium</label>
+                        <div class="a-content">
+                          <h5>Remboursement</h5>
+                          <p style="font-size: 17px;">Si le Premium ne vous plait pas, alors vous avez 14 jours pour demander un remboursement via notre <a href="https://discord.gg/bf4NEUd">Discord</a> . Passez ce délai, vous ne pourrez plus être remboursé</p>
+                          
+                        </div>
+                      </li>
+
+                      <li class="a-items" style="font-family: 'Nunito', sans-serif;">
+                        <input type="radio" name="ac" id="a4" />
+                        <label for="a4">Comment marche l'API de SBL ?</label>
+                        <div class="a-content">
+                          <h5>Notre API</h5>
+                          <p style="font-size: 17px;">Nous avons mis en place un <a href="/404">Guide</a> , pour vous accompagnez dans l'installation de notre API , mais vous pouvez aussi nous demander de l'aide sur notre <a href="https://discord.gg/bf4NEUd">Support</a></p>
+                          
+                        </div>
+                      </li>
+
+                      <li class="a-items" style="font-family: 'Nunito', sans-serif;">
+                        <input type="radio" name="ac" id="a5" />
+                        <label for="a5">Vous disposez d'une aide aux développeurs ?</label>
+                        <div class="a-content">
+                          <h5>Aide aux développeurs</h5>
+                          <p style="font-size: 17px;">Nous pouvons vous accompagnez dans le développement de votre bot , vous pourrez aussi recevoir de l'aide de nos membres , l'entraide entre développeur c'est la meilleur expérience , car on peut apprendre des choses et faire apprendre aux autres</p>
+                          
+                        </div>
+                      </li>
+
+                      <li class="a-items" style="font-family: 'Nunito', sans-serif;">
+                        <input type="radio" name="ac" id="a6" />
+                        <label for="a6">A quoi sert le Premium ?</label>
+                        <div class="a-content">
+                          <h5>L'utilité du Premium</h5>
+                          <p style="font-size: 17px;">Le Premium est un abonnement disponible pour supporter le développement du site. Il n'est pas nécessaire pour utiliser le site mais permet de débloquer des fonctionnalités exclusives.</p>
+                          
+                        </div>
+                      </li>
+
+                      <li class="a-items" style="font-family: 'Nunito', sans-serif;">
+                        <input type="radio" name="ac" id="a7" />
+                        <label for="a7">Puis-je arrêté mon abonnement n'importe quand ?</label>
+                        <div class="a-content">
+                          <h5>Se désabonner</h5>
+                          <p style="font-size: 17px;">Oui. Vous pouvez arrêter votre abonnement à n'importe quel moment. Votre abonnement restera valide jusqu'à la fin de la période pour laquelle vous avez payé, mais vous ne serez plus facturé.</p>
+                          
+                        </div>
+                      </li>
+                    
+                    
+                  </ul>
+
+
+                </div>
+              
+            </div>
+        </div>
+    </body>
+    <footer>
+        <%- include("parts/footer") %>
+        <%- include("parts/scripts") %>
+    </footer>
+</html>

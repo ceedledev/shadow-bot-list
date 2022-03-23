@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include("parts/head", { title: profile.username }) %>
+		<meta property="og:title" content="<%= profile.username %>" />
+		<meta property="og:description" content="Profile de <%= profile.username %>">
+		<meta property="og:image" content="<%= profile._discordAvatarURL %>" />
+		<link href="//cdn.jsdelivr.net/gh/zkreations/tooltips@3/tooltips.min.css" rel="stylesheet">
+	</head>
+
+<style>
+	.bp-heading {
+    display: block; 
+	width: 650px;
+	height: 160px;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+.bgcustom {
+
+	
+	
+	background: url('https://discord.com/assets/3e0acf6d69894a5d20deb7c513cd1412.svg') no-repeat;
+background-size: cover;
+     border: solid 0px;
+	 border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	 margin-left: auto;
+	 margin-right: auto;
+	 height: 164px;
+
+  
+}
+
+.opi{
+	opacity: 0.4;
+	cursor: pointer;
+}
+
+.opi:hover{
+	opacity: 0.9;
+}
+
+
+.oe{
+
+	
+	background-color: rgba(35, 39, 42, 0.35);
+	border: solid 0px;
+	 border-radius: 10px;
+	 padding: 85px;
+	 height: 100px;
+}
+
+.cardp{
+	background-color: #171A1C;
+	width: 650px;
+	height: 620px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+}
+
+
+.pinfo{
+	padding: 25px 10px;
+	width: 100%;
+
+}
+
+.subinfo{
+	color: #99AAB5;
+}
+
+.pbtn{
+	background-color: #7289DA;
+	border: solid 0px;
+	border-radius: 5px;
+	height: 35px;
+	width: 110px;
+	color: white;
+	font-size:medium;
+	margin-right: 15px;
+	cursor: pointer;
+
+}
+
+.pbtn:hover{
+	background-color: #687FD1;
+	
+}
+
+.plike{
+
+	font-size:medium;
+}
+
+.fa-heart{
+	color: #bdc3c7;
+	cursor: pointer;
+}
+
+.fa-heart:hover{
+	color: #e74c3c;
+}
+
+.fa-robot{
+	color: #bdc3c7;
+	cursor: pointer;
+}
+
+.fa-robot:hover{
+	color: #7289DA;
+}
+
+
+@media only screen and (max-width: 690px){
+
+.oe{
+width: 550px;
+height: 100px;
+}
+
+.cardp{
+
+width: 550px;
+height: 620px;
+
+}
+
+.bp-heading {
+
+width: 550px;
+height: 160px;
+}
+
+
+.bgcustom {
+height: 164px;
+}
+
+
+}
+
+
+@media only screen and (max-width: 580px){
+
+.oe{
+width: 500px;
+height: 100px;
+}
+
+.cardp{
+
+width: 500px;
+height: 620px;
+
+}
+
+.bp-heading {
+
+width: 500px;
+height: 160px;
+}
+
+
+.bgcustom {
+height: 164px;
+}
+
+
+}
+
+@media only screen and (max-width: 520px){
+
+.oe{
+width: 450px;
+height: 100px;
+}
+
+.cardp{
+
+width: 450px;
+height: 620px;
+
+}
+
+.bp-heading {
+
+width: 450px;
+height: 160px;
+}
+
+
+.bgcustom {
+height: 164px;
+}
+
+
+}
+
+.tooltip{
+	
+	border-bottom: 0px;
+	display: block;
+	text-align: unset;
+}
+
+.tooltip .top {
+    min-width:200px;
+    max-width:400px;
+    top:-10px;
+    height:40px;
+    transform:translate(-40%,-100%);
+    padding:10px 20px;
+	color:#A5AAAF;
+	font-weight: 600;
+    background-color:#000000;
+    font-weight:normal;
+    font-size:14px;
+    border-radius:8px;
+    position:absolute;
+    z-index:99999999;
+    box-sizing:border-box;
+    box-shadow:0 1px 8px rgba(0,0,0,0.5);
+    display:none;
+    text-align: center;
+}
+
+</style>
+
+
+	<body>
+
+		<div class="header">
+			<%- include("parts/header") %>
+		</div>
+		
+		<div class="main">
+			<div class="container">
+
+
+				<div style="background:url('https://discord.com/assets/3e0acf6d69894a5d20deb7c513cd1412.svg') no-repeat;border: solid 0px;border-radius: 10px;width: 480px;height: 485px;margin-top: 30px;box-shadow: 0px 0px 14px #171A1C;margin-left: auto; margin-right: auto; background-size: cover;">
+
+
+
+				
+
+				<div style="background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));border: solid 0px;border-radius: 10px;width: 480px;height: 485px;">
+
+					<div style="padding: 15px;padding-top:22px;padding-bottom: 22px;">
+
+					<div style="background-color: #2C2F33;border: solid 0px;border-radius: 5px;min-width: 55px;max-width:80px;height: 30px;padding: 3px;box-shadow: 0px 0px 10px #2C2F33;">
+						
+						
+							<div style="color: white;" class="plike center-align" >
+								<div class="tooltip">
+
+								
+								<i style="margin-right: 5px;color: white;" class="fas fa-robot"></i>	<%= profile._verifiedBots.length %>
+							
+								<div class="top">
+									<a href="#bot"><span  style="color: #7289DA;"><%= profile.username %></span> possède <span style="color: #2ecc71;"><%= profile._verifiedBots.length %></span> bot
+								</a></div>
+								</div>
+							</div>
+
+						
+						
+						
+					</div>
+
+
+
+					
+					<div style="margin-left: auto;margin-right: auto;padding-top: 15px;" class="center-align">
+						<img class="responsive-img circle " alt="User Avatar" style=" margin-right: auto;margin-left: auto; width: 100px !important; height: 100px !important;box-shadow: 0px 0px 10px #2C2F33;"
+						src="<%=profile._discordAvatarURL%>">
+					</div>
+					
+					<div style="text-align: center;">
+                        <p style="font-size: 1.7em;line-height: 0px;margin-block-end: 1px;margin-block-start: 15px;padding-bottom: 10px;">
+							<%= profile.username %><span style="font-size: 0.7em;color: #7f8c8d;">#<%= profile.discriminator %>  </span></p> 
+					
+
+							<div style="">
+							<% if(profile.act == 'offline') { %>
+							
+							<span style="color: grey;font-size: 11px;vertical-align: middle;"><i class="fas fa-circle" style="vertical-align:middle;color:grey; height: 10px;font-size: 11px;margin-right: 8px;"></i> HORS LIGNE</span>	
+							<%} else { %> 
+
+							<% if(profile.act == 'dnd') { %>
+							
+								<span style="color: #ff4757;font-size: 11px;vertical-align: middle;"><i class="fas fa-circle" style="vertical-align:middle;color:#ff4757; height: 10px;font-size: 11px;margin-right: 8px;"></i>NE PAS DERANGER</span>
+								
+							<%} else { %>
+
+							<% if(profile.act == 'idle') { %>
+								<span style="color: #ffa502;font-size: 11px;vertical-align: middle;"><i class="fas fa-circle" style="vertical-align:middle;color:#ffa502; height: 10px;font-size: 11px;margin-right: 8px;"></i>INACTIF</span>
+								
+							<%} else { %>
+
+							<% if(profile.act == 'online') { %>
+								<span style="color: #2ed573;font-size: 11px;vertical-align: middle;"><i class="fas fa-circle" style="vertical-align:middle;color:#2ed573; height: 10px;font-size: 11px;margin-right: 8px;"></i>EN LIGNE</span>
+							
+							<%} %>
+
+							<%} %>
+							<%} %>
+							<%} %>
+							</div>
+
+
+
+
+							
+							
+
+
+
+							
+
+					<br/>
+					
+							
+							<% if (profile._verifiedBots.length) { %>
+								<div class="tooltip" style="display: inline-block;border: solid 0px">
+
+									<img style="vertical-align: middle;" src="https://cdn.discordapp.com/attachments/708013329603624970/764473981125394452/D_V-removebg-preview.png" width="35px" height="35px">
+									
+									
+									
+									<div class="top">
+									Développeur De Bot
+									</div>
+									</div>	&nbsp;
+						
+							<% } %>
+						<% profile.badges.forEach(b => { %>
+
+							
+
+								
+
+						   <% if(b == "Développeur Certifié"){ %>
+
+							<div class="tooltip" style="display: inline-block;border:solid 0px">
+
+								<img class="opi" style="vertical-align: middle;margin-left: 5px;" src="https://media.discordapp.net/attachments/708013329603624970/723520811444731935/Sans_titre_-_2020-06-13T135510-removebg-preview.png?width=523&height=475" height="35px" width="40px">
+								
+							
+								<div class="top">
+									Premium
+								</div>
+							</div>	&nbsp;
+								   
+						   <% } %>
+						
+							
+						   <% if(b == "Staff"){ %>
+
+							<div class="tooltip" style="display: inline-block;border:solid 0px">
+								<img style="vertical-align: middle;" src="https://cdn.discordapp.com/attachments/708013329603624970/764478785206616064/Sans_titre_-_2020-10-10T152610.866-removebg-preview.png" width="35px" height="35px">
+								
+								<div class="top">
+									Membre Du Staff
+								</div>
+							</div>	&nbsp;
+								   
+						   <% } %>
+						
+						   <% if(b == "Fondateur"){ %>
+							<div class="tooltip" style="display: inline-block;border: solid 0px">
+								<img style="vertical-align: middle;" src="https://cdn.discordapp.com/attachments/708013329603624970/764481368410423296/Sans_titre_-_2020-10-10T153628.073-removebg-preview.png" width="35px" height="35px">
+							
+							<div class="top">
+							Fondateur SBL
+							</div>
+							</div>	&nbsp;
+							<% } %>
+						   
+
+
+						<% }) %>
+					
+						
+						
+					</div>
+
+						
+						<br/>
+
+						
+						<div style="background-color: #23272A;border: solid 0px;border-radius: 8px;width: 300px;height: 100px;box-shadow: 0px 0px 14px #171A1C;margin-left: auto;margin-right: auto;">
+							<div class="tooltip" style="border:solid 0px;">
+
+							<% if(!profile.game) { %>
+
+
+								<div style="color: #e74c3c;padding: 40px;text-align: center;font-weight: 600;">
+									Pas de jeu détecté
+								  </div>
+
+
+						
+
+								<% } else { %>
+
+
+									<% if(profile.appcustom) { %>
+
+
+									
+		
+									  <div style="color: #2ecc71;padding: 40px;text-align: center;font-weight: 600;">
+										Custom status
+									  </div>
+
+							
+		
+										<% } else { %>
+											
+										
+		
+											<div style="color: #7289DA;padding: 10px;text-align: left;font-weight: 600;">
+												EN TRAIN DE JOUER
+											  </div>
+				  
+										  <div style="color: #A5AAAF;text-align: center;padding: 0px;">
+											<div style="display: inline-block;">
+											<svg xmlns="http://www.w3.org/2000/svg" style="margin-right:40px" id="Layer_1" viewBox="0 0 245 240" height="30px"  width="30px"><style>.st0{fill:#7289DA;}</style><path class="st0" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zM140.9 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z"/><path class="st0" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.5 19V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/></svg>
+											</div >
+											<div style="display: inline-block;margin-right: 30px;">
+											  <span style="color: white;"><%= profile.appimg %></span>
+				  
+											  <br>
+											  depuis <%= profile.apptime %>
+											</div>
+										  </div>		
+									
+			
+								<%} %>
+								
+								<%} %>
+
+								<div class="top">
+									Discord Rich Presence
+									</div>
+
+						</div>
+						</div>
+						</div>
+
+						<% if(profile.devbot || profile.discordpartner || profile.earlysupporter || profile.bravery || profile.brilliance || profile.ballance || profile.events) { %>
+
+						<div style="background-color: #23272A;border: solid 0px;border-radius: 8px;min-width: 50px;max-width:fit-content;height: 50px;box-shadow: 0px 0px 14px #171A1C;margin-left: auto;margin-right: auto;padding: 11px;">
+
+
+							<div class="center-align" style="margin-left: auto;margin-right: auto;margin-top: auto;margin-bottom: auto;">
+							<% if(profile.devbot) { %>
+							
+                              
+								   <img style="vertical-align: middle;margin-left: 5px;margin-right: 5px;" src="https://cdn.discordapp.com/attachments/708013329603624970/764532198548045854/728938487461707776.png" width="30px" height="30px">
+							 
+
+							<%} %>
+
+							<% if(profile.events) { %>
+							
+                              
+								<img style="vertical-align: middle;margin-left: 5px;margin-right: 5px;" src="https://cdn.discordapp.com/attachments/764565406194073600/764567026072944670/594538339588243472.png" width="30px" height="30px">
+						  
+
+						 <%} %>
+
+							<% if(profile.bravery) { %>
+							
+                              
+								<img style="vertical-align: middle;margin-left: 5px;margin-right: 5px;" src="https://cdn.discordapp.com/attachments/708013329603624970/764536735568101389/594538338158116884.png" width="30px" height="30px">
+						  
+
+						 <%} %>
+
+						 <% if(profile.brilliance) { %>
+							
+                              
+							<img style="vertical-align: middle;margin-left: 5px;margin-right: 5px;" src="https://cdn.discordapp.com/attachments/764565406194073600/764567024856072242/594538338996846603.png" width="30px" height="30px">
+					  
+
+					 <%} %>
+
+					 
+					 <% if(profile.ballance) { %>
+							
+                              
+						<img style="vertical-align: middle;margin-left: 5px;margin-right: 5px;" src="https://cdn.discordapp.com/attachments/764565406194073600/764567023476539453/594538338438873127.png" width="30px" height="30px">
+				  
+
+				 <%} %>
+							</div>
+
+
+						</div>
+
+						<%} else {%>
+
+							<div style="background-color: #23272A;border: solid 0px;border-radius: 8px;min-width: 50px;max-width:fit-content;height: 50px;box-shadow: 0px 0px 14px #171A1C;margin-left: auto;margin-right: auto;padding: 13px;">
+
+							<span style="color: #7289DA;text-align: center;">Aucun Badge</span>
+							</div>
+							<%}%>
+						
+						
+						
+						
+						</div>
+
+				</div>
+
+
+			
+					<br>
+					<br>
+
+						
+
+						<p style="font-size: 30px;">
+							Liste de bot
+						</p>
+					
+
+						<% if (!profile._verifiedBots.length) { %>
+						
+						<subtiltle style="color: #A5AAAF;">
+							Cet uttilisateur n'a pas de bot
+						</subtiltle>
+						<% } else { %>
+						<% profile._chunked.forEach(c => { %>
+						<div class="row bot-card" id="bot">
+							<% c.forEach(b => { %>
+							<%- include("parts/dashboardcardstaff", { bot: b }) %>
+							<% }) %>
+						</div>
+						<% }) %>
+						<% } %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</body>
+	<footer style="padding-top: 20px;" >
+		<%- include("parts/footer") %>
+		<%- include("parts/scripts") %>
+	</footer>
+</html>

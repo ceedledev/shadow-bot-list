@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+ 
+        <%- include("parts/head", {title: 'Login'}) %>
+     
+     
+     
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+      
+    </head>
+
+<style>
+
+body{
+    background-color: #222428;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.main{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-containt{
+    margin-top: 60px;
+}
+
+.containt-btn{
+    background-color: #1a1c1d;
+    width: 400px;
+    height: max-content;
+    padding: 15px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.containt-btn-sub{
+    background-color: #2C2F33;
+    width: 400px;
+    height: max-content;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color:rgb(192, 192, 192);
+    line-height:28px;
+    border-left: solid 2px #1a1c1d;
+    border-right: solid 2px #1a1c1d;
+    border-bottom: solid 2px #1a1c1d;
+
+}
+
+.cancel-btn{
+    background-color: #535658;
+    vertical-align: middle;
+}
+
+.btn-containt-btn{
+    width: max-content;
+    height: max-content;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.inline-block{
+    display: inline-block;
+}
+
+.login-btn{
+    background-color:  #43b581;
+    vertical-align: middle;
+}
+
+.img-server{
+    background-color: #2C2F33;
+    width: max-content;
+    height: max-content;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.login-btn-green{
+    background-color:#2C2F33;
+    border-radius: 3px !important;
+    font-size: 13px;
+    vertical-align: middle;
+
+}
+
+.card-server{
+    background-color: #1a1c1d;
+    border-radius: 5px;
+    width: 400px;
+    height: max-content;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.usercount{
+    background-color: #43b581;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.botcount{
+    background-color: #7289DA;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.count{
+    margin-left: 5px;
+    display: inline-block;
+    color: rgb(192, 192, 192);
+    vertical-align: middle;
+    font-size: 15px;
+}
+
+.btn-join{
+    background-color: #43b581;
+    width: 100%;
+    height: max-content;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.exemple{
+    background-color:#43b581;
+    width: max-content;
+    height: max-content;
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 3px;
+
+    margin-left: 5px;
+    margin-right: 5px;
+    color: white;
+}
+
+.boost-server{
+    background-color:#f982ff;
+    width: max-content;
+    height: max-content;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: auto;
+    font-size: 14px;
+    border-radius: 3px;
+    vertical-align: super;
+    margin-left: 5px;
+}
+</style>
+
+<body>
+
+    <div class="main">
+
+        <div class="login-containt">
+
+            <div class="containt-btn">
+                <div>
+                  <div class="login-btn-green btn-containt-btn inline-block">
+
+                    Discord Oauth2
+
+                  </div>
+
+                  <a href="/">
+                  <div class="btn-containt-btn cancel-btn inline-block">
+                    Cancel
+                    </div>
+                  </a>
+    
+                    <a href="/discord/login">
+                    <div class="btn-containt-btn login-btn inline-block">
+                    Login
+                    </div>
+                    </a>
+                </div>        
+            </div>
+            <div class="containt-btn-sub">
+                Press the button <span class="exemple">Login</span> to connect to the site with your account <span style="color: #7289DA;">Discord</span>
+            </div>
+
+            <div class="card-server">
+
+                <div style="color: rgb(211, 211, 211);font-size: 14px;text-transform: uppercase;">
+                    Join us 
+                </div>
+
+                <div style="margin-top: 15px;">
+                <div class="inline-block" style="vertical-align: middle;">
+                    <img style="vertical-align: middle;border-radius: 35%;" src="<%=server.iconURL()%>" width="55px" height="55px">
+                </div>
+
+                <div class="inline-block" style="margin-left: 10px;vertical-align: middle;">
+                    <div style="display: block;color: white;font-size: 17px;">
+                   <%=server.name%> <span class="boost-server"> <%=server._boost%> boost</span>
+                    </div>
+
+                    <div style="display: block;">
+
+                        <div class="inline-block">
+
+                            <div class="usercount" style="display: inline-block;"></div>
+                            <span class="count"><%=server._membercount%> members</span>
+
+                        </div>
+
+                        <div class="inline-block" style="margin-left: 10px;">
+
+                            <div class="botcount" style="display: inline-block;"></div>
+                            <span class="count"><%=server._botcount%> bots</span>
+                        </div>
+
+                    </div>
+                </div>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <a href="https://discord.gg/bf4NEUd">
+                 <div class="btn-join">
+                  Join
+                 </div>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

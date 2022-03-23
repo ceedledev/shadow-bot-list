@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <%- include("parts/head", { title: "Staff List" }) %>
+        <meta property="og:title" content="Staff - Shadow Bot List" />
+        <meta property="og:description" content="Le staff de sbl est présent" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://shadow-bot.com/staff" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/shadow-bot-club/website/old/static/logo.png" />
+        <meta property="og:site_name" content="shadow-bot.com">
+        <meta name="theme-color" content="#90CAF9">
+        <meta name="title" content="Home">
+        <meta name="description" content="Le staff de sbl est présent">
+        <meta name="keywords" content="Discord,Discord Bot,Discord Bots,shadow-bot,DBC,Discord Bot List,discord boats,boats,shadow-bot.com,dboats,dbots,dbot,bots,list,directory,bot list">
+
+    </head>
+
+    <body>
+
+<style>
+
+.item-dess{
+    margin-left: 5%;
+    border: #7289DA 0px;
+    border-radius: 20px;
+    background-color: #7289DA;
+    padding-left: 40%;
+    padding-right: 44%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+</style>
+        <div class="header">
+            <%- include("parts/header") %>
+        </div>
+         <div class="main">
+            <div class="container">
+ 
+					<div class="bot-cards">
+						<h3 style="color: #7289DA;font-family: 'Nunito', sans-serif;font-size: 38px;">Staff de SBL</h3>
+                        <hr>
+                        <div class="center-align" style="margin-left: auto;margin-right: auto;margin-top: 20px;margin-bottom: 20px;">
+                    
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+        style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-5953226090088561"
+        data-ad-slot="5404980163"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+                            </div>
+						<br>
+                        <span class="item-dess">Administration</span>
+						<%- StaffChunk.map(chunk => `<div class="row bot-card">${chunk.map(staff => include("parts/staffCard",{staff})).join("")}</div>`).join("") %>
+					</div>
+				
+            </div>
+        </div>
+    </body>
+    <footer>
+        <%- include("parts/footer") %>
+        <%- include("parts/scripts") %>
+    </footer>
+</html>
