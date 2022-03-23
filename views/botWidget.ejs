@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
+  
+        <link href="https://fonts.googleapis.com/css2?family=Francois+One&display=swap" rel="stylesheet">
+    </head>
+<style>
+
+.title-bar{
+    background-color: #7289DA;
+    height: 40px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    background: url('https://zupimages.net/up/20/22/b7nj.png') no-repeat ;
+    
+
+    
+  
+    
+    
+}
+
+
+.title-bar-footer{
+    background-color: #23272A;
+    height: 33px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin-bottom: -12vh;
+    
+    padding-top: 2px;
+    
+    
+   
+}
+
+.btnwidget{
+    background-color: #23272A;
+    height: 30px;
+    max-width: 280px;
+   
+   padding: 0px 15px;
+    
+    color: #f5f6fa;
+    border: solid 0px white;
+    border-radius: 15px;
+    
+}
+
+.btnpremium{
+    background-color: #7289DA;
+    height: 25px;
+    max-width: 280px;
+   
+   padding: 0px 15px;
+    
+    color: #f5f6fa;
+    border: solid 0px white;
+    border-radius: 15px;
+    
+    
+}
+
+</style>
+    <body>
+        <div class="card">
+            <div class="title-bar">
+                
+            <div class="card-content ">
+                <div>
+                <img src="<%= bot._discordAvatarURL %>" style="vertical-align: middle;" class="circle bot-image inline">
+               
+                <p style="text-align: center;margin-top: -15vh;font-size: 18px;"><b><%= bot.name %></b></p>
+            </div>
+                <span class="card-title inline ">
+                   
+                    
+                </span>
+               
+                <div style="margin-top: 43px;" class="center-align">
+                    
+                    <button class="btnwidget" style="display: inline-block;"><%= bot.ownerTag %> <p style="color:#7f8c8d;display:inline-block">créateur</p></button> 
+                       <% if (bot.servers) { %>
+                        <button class="btnwidget" style="display: inline-block;"><%= bot.servers %> <p style="color:#7f8c8d;display:inline-block">serveurs</p></button> 
+                            
+                        <% } else { %>
+                            <button class="btnwidget" style="display: inline-block;">0 <p style="color:#7f8c8d;display:inline-block">serveur</p></button> 
+
+                            <%} %>
+                            <button class="btnwidget" style="display: inline-block;margin-top: 8px"><%= bot.library %> <p style="color:#7f8c8d;display:inline-block">librairie</p></button> 
+                           
+                            <button class="btnwidget" style="display: inline-block;margin-top: 8px;"><%= bot.tags %> <p style="color:#7f8c8d;display:inline-block">tag</p></button> 
+                           
+                           
+                        </div>
+            </div>
+            <div style="margin-top: 30px;" class=" title-bar-footer">
+                <div style="padding-bottom: 10px;" class="center-align">
+            <p style="text-align: center;font-size: 15px;margin-top: 2vh;text-transform: uppercase;font-weight: bold;letter-spacing: 2px;">shadow-bot.com</p>
+           
+        </div>
+            </div>
+            </div>
+            
+        </div>
+    </body>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .card{
+            background-color: #292D30;
+           height: 220px;
+           border: solid 0px white;
+           border-radius: 11px;
+           
+        }
+
+        body {
+            background: none;
+           
+           
+            
+        }
+
+        .bot-image {
+            width: 12vh;
+            margin-left: -7vh;
+            margin-top: -13vh;
+            box-shadow: 0px 0px 4px #7f8c8d;
+        }
+
+        .inline {
+            display: inline-block;
+        }
+    </style>
+</html>

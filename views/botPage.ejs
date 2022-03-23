@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <%- include("parts/head", { title: bot.name }) %>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <script>window.IS_BOT_PAGE = true;</script>
+        <meta property="og:site_name" content="Shadow Bot List">
+        <meta property="og:title" content="<%= bot.name %>" />
+        <meta property="og:description" content="<%= bot.shortDescription %>">
+        <meta property="og:image" content="<%= bot._discordAvatarURL %>" />
+        <meta name="theme-color" content="#90CAF9">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+        <link href="//cdn.jsdelivr.net/gh/zkreations/tooltips@3/tooltips.min.css" rel="stylesheet">
+    </head>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<style>
+    @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+
+    h1{
+        font-size: 29px !important;
+    }
+    h2{
+        font-size: 27px !important;
+    }
+    h3{
+        font-size: 25px !important;
+    }
+    h4{
+        font-size: 23px !important;
+    }
+    h5{
+        font-size: 21px !important;
+    }
+    .footer{
+        margin-bottom: 0px !important;
+        padding-bottom: 5px;
+    }
+    p{
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    html{
+        font-family: 'Quicksand', sans-serif;
+    }
+
+
+body{
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+
+p {
+    color:#23272A;
+}
+
+h4{
+    margin: 0.2rem 0 .0rem 0;
+}
+
+hr{
+    background-color:#33343b;
+    height: 2px;
+    margin: 10px 0;
+    border: none;
+}
+.center-all{
+    margin-left: auto;
+    margin-right: auto;
+}
+.bot-containt{
+    width: 80%;
+    margin-top: 50px;
+}
+
+.bot-box{
+    width: 330px;
+    height: max-content;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.bot-info{
+    width: 330px;
+    height: max-content;
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: top;
+}
+
+.bot-background{
+    width: 330px;
+    height: 100px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.box-containt{
+    background-color: #1c1f20;
+    width: 330px;
+    height: max-content;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 15px;
+    padding-top: 30px;
+    font-size: 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    
+}
+
+.bot-image{
+    background-color: #1c1f20;
+    width: max-content;
+    height: max-content;
+    padding: 7px;
+    border-radius: 20%;
+    position: absolute;
+    top: 60px;
+    left: 25px;
+}
+
+.bot-description{
+    color: grey;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.bot-invite{
+    background-color: #43b581;
+    width: 100%;
+    height: max-content;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.label-bot{
+    width: max-content;
+    height: max-content;
+}
+
+
+.case{
+    background-color: #151718;
+    width: max-content;
+    height: max-content;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: rgb(151, 151, 151);
+    text-align: left;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    display: inline-block;
+    }
+.label-case-btn{
+    background-color:#353c3d;
+    width: max-content;
+    height: max-content;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    text-align: left;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    display: inline-block;
+}
+
+.label-case-btn2{
+    background-color:#353c3d;
+    width: max-content;
+    height: max-content;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    text-align: left;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.prefix-containt{
+    background-color: #6a6b6b;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color:white;
+    border-radius: 3px;
+}
+
+.vote-btn{
+    background-color: #7289DA;
+    width: max-content;
+    height: max-content;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.vote-box{
+    background-color: #9cb1ff;
+    width: max-content;
+    height: max-content;
+    padding-top: 3.5px;
+    padding-bottom: 3.5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    vertical-align: middle;
+    margin-left: 5px;
+    border-radius: 4px;
+}
+
+.tag-containt{
+    background-color:#7289DA;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color:white;
+    border-radius: 3px;
+}
+
+.site-btn{
+    background-color: #3498db;
+    width: max-content;
+    height: max-content;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: white;
+    text-align: left;
+    border-radius: 4px;
+}
+
+.github-btn{
+    background-color: #9b59b6;
+    width: max-content;
+    height: max-content;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: white;
+    text-align: left;
+    border-radius: 4px;
+}
+
+.modif-bot{
+    background-color: #7289DA;
+    width: max-content;
+    height: max-content;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: white;
+    text-align: left;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.bot-longdescription{
+    background-color: #151718;
+    width: 90%;
+    height: max-content;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 40px;
+    border-radius: 5px;
+}
+
+.comments{
+    margin-top: 35px;
+}
+
+.title-comments{
+    font-size: 22px;
+    color: white;
+}
+.sub-title-comments{
+    font-size: 15px;
+    color: grey;
+}
+.note{
+    font-size: 14px;
+    color: grey;
+}
+
+.indev {
+    font-size: 17px;
+    background-color: rgba(114, 137, 218, 0.1);
+    color: #7289DA;
+    width: max-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 30px;
+    margin-left: 5px;
+    font-size: 13px;
+    vertical-align: middle;
+    }
+
+    .botverif{
+        width: 100%;
+        height: max-content;
+        padding: 10px;
+        background-color: rgba(240, 71, 71, 0.2);
+        border: solid 1px #f04747;
+        border-radius: 4px;
+    }
+
+    .staff-panel{
+        background-color: #151718;
+        width: 100%;
+        height: max-content;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 5px;
+    }
+
+    .staff-panel-header{
+        font-size: 20px;
+        color: white;
+    }
+
+    .accept-btn{
+        background-color:#43b581;
+        width: max-content;
+        height: max-content;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: white;
+        text-align: center;
+        display: inline-block;
+        border-radius: 5px;
+        margin-top: 20px;
+        margin-right: 10px;
+    }
+
+    .refuse-btn{
+        background-color: #f04747;
+        width: max-content;
+        height: max-content;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: white;
+        text-align: center;
+        display: inline-block;
+        border-radius: 5px;
+        margin-top: 20px;
+        margin-right: 10px;
+    }
+
+    .verif-btn{
+        background-color:#7289DA;
+        width: max-content;
+        height: max-content;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: white;
+        text-align: center;
+        display: inline-block;
+        border-radius: 5px;
+        margin-top: 20px;
+        margin-right: 10px;
+    }
+
+    .bot-status{
+  text-transform: uppercase;
+  font-size: 13px;
+  text-align: left;
+}
+
+.bot-name{
+    color: white;
+    margin-left: 15px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.bot-offline{
+  color: grey;
+}
+.bot-dnd{
+  color: #ff4757;
+}
+.bot-idle{
+  color: #ffa502;
+}
+.bot-online{
+  color: #43b581;
+}
+</style>
+
+    <body id="<%= bot.id %>">
+        <div id="<%= bot.id %>" class="header">
+            <%- include("parts/header") %>
+        </div>
+        <div id="<%=bot.id%>" class="main">
+            <div id="<%=bot.id%>" class="container">
+
+
+                <div id="<%=bot.id%>" class="bot-containt center-all">
+
+
+              
+                    <%if(!bot.verified){%>
+                    <div style="margin-bottom: 15px;" class="botverif">
+                        Bot pending verification...
+                    </div>
+
+                    <% if (user.admin || user.staff || user.owner) { %>
+                        <div class="staff-panel">
+                            <div class="staff-panel-header">
+                                Staff Panel
+                            </div>
+                        <a class="accept-btn" href="https://discordapp.com/oauth2/authorize?client_id=<%= bot.id %>&scope=bot&guild_id=<%= config.ids.mainServer %>" target="_blank"><span style="vertical-align: middle;">Accepter</span></a>
+                        <a class="refuse-btn modal-trigger" data-target="deny-modal-<%= bot.id %>" href="#"><span style="vertical-align: middle;">Refuser</span></a>
+                        <div id="deny-modal-<%= bot.id %>" class="modal" data-bot-id="<%= bot.id %>">
+                            <div class="modal-content">
+                                <h5>Reject
+                                    <%= bot.name %>?</h5>
+                                <div class="input-field">
+                                    <input type="text" id="deny-reason-<%= bot.id %>" />
+                                    <label for="deny-reason-<%= bot.id %>">Reason</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a class="modal-action modal-close waves-effect waves-light btn-flat white-text">Cancel</a>
+                                <a class="deny-bot-action modal-action modal-close waves-effect waves-red btn-flat red-text">Reject</a>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% if (typeof api !== "undefined" || (typeof user !== 'undefined' && (user.staff || user.admin || user.owner))) { %>
+                        <a class="verif-btn" href="/invite_url/<%=bot.id%>"><span style="vertical-align: middle;">Check</span></a>
+                        <% } %>
+                        </div>
+                        <%}%>
+
+
+
+                    <div class="bot-box">
+                      <div class="bot-background" style="background: url('<%=bot.background%>');background-size: contain;background-position: center;">
+                      </div>
+                      <div class="bot-image">
+                         <img style="vertical-align: middle;border-radius: 20%;" src="<%=bot._discordAvatarURL%>" width="55px" height="55px">
+                      </div>
+                      <div class="box-containt">
+                        <%if(bot.partner){ %>
+                            <span style="margin-right: 5px;" class="tts" aria-label="SBL Partenaire">
+                                <img src="https://cdn.discordapp.com/emojis/790896581338595398.png?v=1" style="vertical-align: middle;" width="17px" height="17px">
+                            </span>
+                            <%}%>
+                            <%if(bot.verif){ %>
+                            <span style="margin-right: 5px;" class="tts" aria-label="Certifié">
+                             <img src="https://cdn.discordapp.com/emojis/790897362615795732.png?v=1" style="vertical-align: middle;" width="17px" height="17px">
+                            </span>
+                            <%}%>
+                       <%if(bot.certified){ %>     
+                    <span style="margin-right: 5px;" class="tts" aria-label="SBL Premium" >
+                       <img src="https://cdn.discordapp.com/emojis/762728270776369162.png?v=1" style="vertical-align: middle;" width="21px" height="21px">
+                    </span>
+                    <%}%>
+                    <span style="vertical-align: middle;margin-right: 3px;"><%=bot.name%></span><span style="color: grey;font-size: 16px;">#<%=bot.discriminator%></span>
+
+                    <div class="bot-status">
+                        <% if(bot.status == "offline" ) { %>
+                                            
+                            <span class="bot-offline">Offline</span>
+                            <%} else { %> 
+                    
+                            <% if(bot.status == 'dnd') { %>
+                                <span class="bot-dnd">Do Not Distrub</span>
+                            <%} else { %>
+                    
+                            <% if(bot.status == 'idle') { %>
+                                <span class="bot-idle">Not active</span>
+                            <%} else { %>
+                    
+                            <% if(bot.status == 'online') { %>
+                                <span class="bot-online">Online</span>
+                          
+                            <%} %>       
+                     <%} %>
+                     <%} %>
+                     <%} %>
+                        </div>
+                            <div class="bot-description">
+                            <%=bot.shortDescription%>
+                            </div>
+                            <a href="/invite_url/<%=bot.id%>">
+                            <div class="bot-invite">
+                                Invite
+                            </div>
+                            </a>
+                      </div>
+                    </div> 
+
+
+
+
+                    <div class="bot-info">
+
+                        <div style="margin-top: 10px; display: inline-block;" class="label-bot">
+                            <a id="vote-btn2" href="/bot/<%=bot.id%>" bot-id="<%=bot.id%>" data-bot-id="<%=bot.id%>" class="<%= typeof user == `object` ? `` : `modal-trigger` %>" data-target="auth-modal">
+                            <div class="vote-btn">
+                                <span style="vertical-align: middle;">Vote for bot</span> <span class="vote-box"><%=bot.vote%></span>
+                            </div>
+                            </a>
+                        </div>
+                        <%if(bot.certified){ %> 
+                        <div style="margin-top: 10px;display: inline-block; margin-left: 10px;" class="label-bot">
+                            <div class="label-case-btn2" style=" background-color: darkorange;">
+                                <a href="/premium"><i class="fa fa-star" aria-hidden="true" style="color: #fff;"></i><span  style="vertical-align: middle; margin-left: 5px;">Premium</span></a>
+                            </div>
+                        </div>
+                   <% }%>
+                        <div style="margin-top: 10px;" class="label-bot">
+                            <div class="case">
+                              <span style="vertical-align: middle;">Creator</span>
+                            </div>
+                            <a href="/profil/<%=bot.ownerID%>">
+                            <div class="label-case-btn">
+                                <img style="width: 15px;height: 15px;border-radius: 50%;vertical-align: middle;" src="<%= bot._ownerProfile %>" width="20px" height="20px">  <span style="vertical-align: middle;"><%=bot._ownerTag%></span>
+                            </div>
+                            </a>
+                        </div>
+
+                        <div style="margin-top: 10px;display: inline-block;" class="label-bot">
+                            <div class="case">
+                                <span style="vertical-align: middle;">Prefix</span>
+                            </div>
+
+                            <div class="label-case-btn">
+                                <span class="tag-containt" style="vertical-align: middle;"><%=bot.prefix%></span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 10px;display: inline-block;margin-left: 10px;" class="label-bot">
+                            <div class="case">
+                                <span style="vertical-align: middle;">Tag</span>
+                            </div>
+
+                            <div class="label-case-btn">
+                                <span class="tag-containt" style="vertical-align: middle;"><%=bot.tags%></span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 10px;" class="label-bot">
+                            <div class="case">
+                                <span style="vertical-align: middle;">Library</span>
+                            </div>
+
+                            <div class="label-case-btn">
+                                <span style="vertical-align: middle;"><%=bot.library%></span>
+                            </div>
+                        </div>
+
+
+                        <%if(bot.website){%>
+                            <div style="margin-top: 15px;display: inline-block;margin-right: 10px;" class="label-bot">
+                                <a href="<%=bot.website%>">
+                                <div class="site-btn">
+                                 Website
+                                </div>
+                                </a>
+                            </div>
+                        <%}%>
+
+                        <%if(bot.github){%>
+                            <div style="margin-top: 15px;display: inline-block;" class="label-bot">
+                                <a href="<%=bot.github%>">
+                                <div class="github-btn">
+                                 Github
+                                </div>
+                                </a>
+                            </div>
+                        <%}%>
+                        <%if(user){%>
+                        <% if (bot.ownerID === user.id || user.admin || user.owner) { %>
+                            <div style="margin-top: 15px;display: inline-block;" class="label-bot">
+                                <a href="/bot/dashboard/<%=bot.id%>/general">
+                                <div class="modif-bot" style="display: inline-block;">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.8199 22H10.1799C9.71003 22 9.30347 21.673 9.20292 21.214L8.79592 19.33C8.25297 19.0921 7.73814 18.7946 7.26092 18.443L5.42392 19.028C4.97592 19.1709 4.48891 18.9823 4.25392 18.575L2.42992 15.424C2.19751 15.0165 2.27758 14.5025 2.62292 14.185L4.04792 12.885C3.98312 12.2961 3.98312 11.7019 4.04792 11.113L2.62292 9.816C2.27707 9.49837 2.19697 8.98372 2.42992 8.576L4.24992 5.423C4.48491 5.0157 4.97192 4.82714 5.41992 4.97L7.25692 5.555C7.50098 5.37416 7.75505 5.20722 8.01792 5.055C8.27026 4.91269 8.52995 4.78385 8.79592 4.669L9.20392 2.787C9.30399 2.32797 9.71011 2.00049 10.1799 2H13.8199C14.2897 2.00049 14.6958 2.32797 14.7959 2.787L15.2079 4.67C15.4887 4.79352 15.7622 4.93308 16.0269 5.088C16.2742 5.23078 16.5132 5.38736 16.7429 5.557L18.5809 4.972C19.0286 4.82967 19.515 5.01816 19.7499 5.425L21.5699 8.578C21.8023 8.98548 21.7223 9.49951 21.3769 9.817L19.9519 11.117C20.0167 11.7059 20.0167 12.3001 19.9519 12.889L21.3769 14.189C21.7223 14.5065 21.8023 15.0205 21.5699 15.428L19.7499 18.581C19.515 18.9878 19.0286 19.1763 18.5809 19.034L16.7429 18.449C16.5103 18.6203 16.2687 18.7789 16.0189 18.924C15.7567 19.0759 15.4863 19.2131 15.2089 19.335L14.7959 21.214C14.6954 21.6726 14.2894 21.9996 13.8199 22ZM11.9959 8C9.78678 8 7.99592 9.79086 7.99592 12C7.99592 14.2091 9.78678 16 11.9959 16C14.2051 16 15.9959 14.2091 15.9959 12C15.9959 9.79086 14.2051 8 11.9959 8Z" fill="#fff"></path>
+                                        </svg>
+                                        Edit Bot
+                                </div>
+                                </a>
+                            </div>
+                            <%}%>
+                            <%}%>
+                    </div>
+
+                    <div class="bot-longdescription">
+                        <%- bot._markedDescription %>
+                    </div>
+
+                    <div class="comments">
+                    
+                        <div class="title-comments">
+                            Comments <span class="indev">In Development</span>
+                        </div>
+                        <div class="sub-title-comments">
+                            No comment
+                        </div>
+                        <div class="note">
+                            <div style="display: inline-block;vertical-align: middle;">
+                                <span style="font-size: 18px;color: white;">0</span>/5
+                            </div>
+
+                            <div style="display: inline-block;vertical-align: middle;margin-left: 10px;">
+                                <svg style="width: 1.5em;height:1.5em;vertical-align:middle;color:grey;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                  </svg>
+
+                                  <svg style="width: 1.5em;height:1.5em;vertical-align:middle;color:grey;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                  </svg>
+
+                                  <svg style="width: 1.5em;height:1.5em;vertical-align:middle;color:grey;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                  </svg>
+
+                                  <svg style="width: 1.5em;height:1.5em;vertical-align:middle;color:grey;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                  </svg>
+
+                                  <svg style="width: 1.5em;height:1.5em;vertical-align:middle;color:grey;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                  </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="auth-modal" class="modal">
+                    <div style="background-color: #23272A;" class="modal-content">
+                        <h4 class="red-text">Error</h4>
+                        <p>You must be logged in</p>
+                    </div>
+                    <div style="background-color: #23272A;" class="modal-footer">
+                        <a style="color: white;" class="modal-action modal-close waves-effect waves-teal btn-flat" href="/discord/login">Login</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </body>
+    <footer class="footer">
+        <%- include("parts/footer") %>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mo-js/0.288.2/mo.min.js"></script>
+        <%- include("parts/scripts") %>
+    </footer>
+</html>

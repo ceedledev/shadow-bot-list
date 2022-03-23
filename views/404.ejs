@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("parts/head", { title: '404' }) %>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&amp;display=swap" rel="stylesheet">
+    </head>
+<style>
+.header-404{
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50vh; 
+  transform: translateY(-50%);
+  text-align: center;
+}   
+body{
+    font-family: 'Quicksand', sans-serif !important;
+}
+
+.home-btn{
+    background-color: #7289DA;
+    width: max-content;
+    height: max-content;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+    <body style="background-color: #23272A;position: relative;">
+        <div style="position: relative;width:100%;height:100%">
+        <div class="header-404">
+            <img src="https://cdn.discordapp.com/emojis/790893314408579072.png?v=1" width="128px" height="128px">
+            <div style="color: white;font-size: 28px;">
+                Error 404
+            </div>
+            <div style="color: grey;">
+                Looks like this page doesn't exist...
+            </div>
+            <div style="width: max-content;margin-left: auto;margin-right: auto;">
+            <a href="/">
+            <div class="home-btn">
+                Back to home page
+            </div>
+            </a>
+            </div>
+        </div>
+        </div>
+    </body>
+   
+</html>

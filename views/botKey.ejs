@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("parts/head", { title: 'API key' }) %>
+    </head>
+
+    <body>
+        <div class="header">
+            <%- include("parts/header") %>
+        </div>
+        <div class="main">
+            <div class="container">
+                <div class="center-align">
+                    <h2>API</h2>
+                    <p>
+                        Pour les bots de discorde utilisant le langage Node.js, nous avons un <a href="https://google.com">NPM
+                            module</a> pour faciliter votre expérience ! <br>
+                        Nous travaillons à la création de plus de modules pour plus de langues. N'hésitez pas à en créer un dans votre
+                        language &amp ; racontez-le nous dans notre Discordance ! <br>
+                        <br>
+                        Cependant, si vous préférez faire des demandes brutes, voici les points finaux : <br>
+                        Toutes les demandes doivent contenir un en-tête "Autorisation" avec votre clé API qui se trouve à l'adresse
+                        en bas de la page.<br>
+                        <br>
+                        <code class="red-text">GET /api/public/bot/:id</code> - obtenir des informations public sur le bot<br>
+                        <code class="red-text">GET /api/public/bot/me</code> - obtenir des informations privées sur les bot (doit être propriétaire du
+                        bot).<br>
+                        <code class="red-text">GET /api/public/bot/me/liked/:id</code> - obtenir si un utilisateur a aimé le
+                        bot (et quand) ou non<br>
+                        <code class="red-text">GET /api/public/user/:id</code> - obtenir des informations sur les utilisateurs publics.<br>
+                        <br>
+                        Le corps du POST pour le point final des statistiques devrait ressembler à ceci, en remplaçant 1337 par celui de votre robot
+                        le nombre de serveurs.
+                        <p class="left-align red-text">
+                            <code>
+                        {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;"server_count": 1337<br>
+                        }
+                    </p>
+                    </code>
+                        </p>
+                        <hr>
+                        <h4>Webhooks</h4>
+                        <p>Pour savoir quand un utilisateur aime ou n'aime pas votre bot, nous avons une fonction de webhook</p>.
+                        <p> Pour l'utiliser, vous créez un serveur web (le <a href="https://google.com">NPM
+                                module</a> supporte également) d'écouter sur un port et un chemin pour une requête POST. Lorsque
+                            vous
+                            reçoit la demande POST, elle aura un en-tête d'autorisation (réglé sur ce que vous lui donnez
+                            sur
+                            la page de création/modification du robot) et il peut être utilisé pour vérifier que le webhook provient de
+                            bot-list.fr. Une fois validé, vous pouvez voir l'organisme JSON dans la demande pour obtenir
+                            l'information.
+                            Le corps ressemblera à ceci:</p>
+                        <p class="left-align red-text">
+                            <code>
+                                    {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;"event": "like/unlike",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;"botId": "the id of the bot that got liked/unliked",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;"userId": "the id of the user that liked/unliked"<br>
+                                    }
+                                </code>
+                        </p>
+                        <hr>
+                        <p>Ne partagez pas votre clé API. Votre clé API est...</p>
+                        <code class="red-text"><%= bot.apiToken %></code>
+                        <br>
+                        <a class="waves-effect waves-light btn" href="/bot/<%= bot.id %>/reset">Réinitialiser votre clé API</a>
+                </div>
+            </div>
+    </body>
+    <footer>
+        <%- include("parts/footer") %>
+        <%- include("parts/scripts") %>
+    </footer>
+</html>
