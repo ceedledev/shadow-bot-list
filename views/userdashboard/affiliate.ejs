@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <%- include("../parts/head", { title: 'Dashboard' }) %>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+
+    <style>
+        body{
+            font-family: 'Quicksand', sans-serif;
+            background-color: transparent;
+        }
+
+
+        .main{
+            background-color: transparent;
+            flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+        }
+
+        .leftmenu{
+            background-color: #1d1f21;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            
+            overflow-x: hidden;
+            padding: 15px;
+            font-family: 'Quicksand', sans-serif; 
+
+            flex-direction: column;
+            min-height: 0;
+            width: 350px;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+ 
+    
+        }
+
+        .rightmenu{
+            background-color: #222428;
+            font-family: 'Quicksand', sans-serif;
+            width: 100%;
+            overflow-x: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            max-height: fit-content;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            padding: 15px;
+        } 
+
+        .dashboard{ 
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: stretch;
+            -ms-flex-align: stretch;
+            align-items: stretch;
+            -webkit-box-pack: start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            min-width: 0;
+            min-height: 0;
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            height: 100vh;
+        }
+
+        .menu-phone{
+            display: none;
+            cursor: pointer;
+            width: max-content;
+        }
+
+        @media (max-width:900px){
+            .leftmenu{
+                display: none;
+            }
+
+            .menu-phone{
+                display: block;
+            }
+        }
+
+
+        @media (min-width: 900px){
+            
+            .dashboard{ 
+                display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: stretch;
+            -ms-flex-align: stretch;
+            align-items: stretch;
+            -webkit-box-pack: start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            min-width: 0;
+            min-height: 0;
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            height: 100vh;
+            }
+        }
+
+        .btn-list{
+            width: 100%;
+            height: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .dashboard-header{
+            background:transparent;
+            width: max-content;
+            cursor: pointer;
+        }
+
+        .dashboard-header:hover{
+            opacity: .80;
+        }
+
+        .btn-dashboard{
+            background-color: transparent;
+            color: rgb(184, 184, 184);
+            width: 100%;
+            height: max-content;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            padding-left: 15px;
+            margin-bottom: 10px;
+        }
+        .btn-dashboard:hover{
+            color: white;
+        }
+
+        .btn-dashboard-active{
+            background-color: #7289DA;
+            color: white;
+        }
+        .title-btn-dashboard{
+            color: rgb(226, 226, 226);
+            font-size: 13px;
+            margin-left: 15px;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .new-card{
+            background-color: #43b581;
+            width: max-content;
+            height: max-content;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            padding-left: 5px;
+            padding-right: 5px;
+            border-radius: 3px;
+            font-size: 13px;
+            margin-left: 5px;
+            vertical-align: top;
+            color: white;
+        }
+
+        .new-card-active{
+            background-color: white;
+            color: #232926;
+            width: max-content;
+            height: max-content;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            padding-left: 5px;
+            padding-right: 5px;
+            border-radius: 3px;
+            font-size: 13px;
+            margin-left: 5px;
+            vertical-align: top;
+        }
+
+        .title-page{
+            color: white;
+            font-size: 22px;
+        }
+
+        .title-sub{
+            color: grey;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .user-card-profil{
+            background-color: #202325;
+            border:solid 1px #0f1011;
+            width: 350px;
+            height: max-content;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-top: 15px;
+            border-radius: 6px;
+            position: relative;
+            margin-top: 35px;
+        }
+
+        .btn-profil{
+            background-color: #7289DA;
+            width: max-content;
+            height: max-content;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            color: white;
+            text-align: center;
+            position: absolute;
+            border-radius: 4px;
+            top: 50%;
+            right: 10px;
+            transform: translate(-10%, -50%);
+            cursor: pointer;
+        }
+
+        .card-user-info{
+            background-color: #202325;
+            border:solid 1px #0f1011;
+            width: 200px;
+            height: max-content;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 15px;
+            padding-right: 15px;
+            display: inline-block;
+            margin-right: 20px;
+            border-radius: 4px;
+            margin-top: 25px;
+        }
+
+        .card-info-title{
+            color: white;
+            text-transform: uppercase;
+        }
+        .card-info-sub{
+            color: grey;
+        }
+        .btn-card-info{
+            background-color: #7289DA;
+            width: 100%;
+            height: max-content;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            padding-left: 10px;
+            padding-right: 10px;
+            text-align: center;
+            color: white;
+            text-transform: uppercase;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .premium-btn{
+            background-color: #43b581;
+        }
+
+        .off{
+            display: none !important;
+        }
+
+        .on{
+            display: block !important;
+        }
+
+        .pourcentall{
+            width: 100% !important;
+        }
+
+        .user-profil{
+            cursor: pointer;
+            background-color: transparent;
+            width: 100%;
+            position: relative;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        .angledown{
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(0%, -50%);
+        }
+
+        .userdrop{
+            background-color: #0f1011;
+            position: absolute;
+            top: 150%;
+            border-radius: 4px;
+            right: 15px;
+            left: 15px;
+            height: max-content;
+            box-shadow: 0px 0px 5px  #141414;
+        }
+
+        .btn-list{
+            position: relative;
+        }
+
+        .user-dropdown-item{
+            padding: 8px;
+            width: 100%;
+            height: max-content;
+        }
+
+        .user-dropdown-btn{
+            background-color: transparent;
+            width: 100%;
+            height: max-content;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 3px;
+            color: rgb(187, 187, 187);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .user-dropdown-btn:hover{
+            background-color:#141618;
+            color: white;
+        }
+
+        .logout{
+            color: #df4332 !important;
+        }
+
+        .logout:hover{
+            background-color: #df4332 !important;
+            color: white !important;
+        }
+
+        .icon-dropdown-item{
+            width: 1.2em;
+            height: 1.2em;
+            vertical-align: middle;
+            position: absolute;
+            top: 50%;
+            transform: translate(0%, -50%);
+            right: 10px;
+        }
+
+        .hrclass{
+            background-color: #2b2f31 !important;
+            height: 1px;
+            border: none;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .dropdown-user-i{
+            width: 100%;
+        }
+
+        .link-btn{
+            background-color: #7289DA;
+            color: white;
+            width: max-content;
+            height: max-content;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            border: none;
+        }
+
+        button{
+            font-family: 'Quicksand', sans-serif !important;
+        }
+
+        .link-btn:focus{
+            background-color: #7289DA;
+        }
+
+        .link-broken{
+            width: 7em;
+            height: 7em;
+            vertical-align: middle;
+            color: rgb(85, 85, 85);
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 40px;
+        }
+
+        .link-title{
+            color:  rgb(88, 88, 88);
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .invite-box{
+            background-color: #191b1d;
+            width: 300px;
+            height: max-content;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            
+        }
+
+        .invite-title{
+            color: white;
+            font-size: 20px;
+        }
+
+        .invite-code{
+            margin-top: 10px;
+            background-color: #2a2c31;
+            width: max-content;
+            height: max-content;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            padding-left: 7px;
+            padding-right: 7px;
+            color: white;
+            border-radius: 3px;
+        }
+
+        .achive-box{
+            background-color: #191b1d;
+            width: max-content;
+            height: max-content;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 4px;
+            margin-top: 30px;
+        }
+
+        .achive-icon{
+            display: inline-block;
+            vertical-align: middle;
+
+        }
+
+        .achive-info{
+            display: inline-block;
+            vertical-align: middle;
+            width: 300px;
+            margin-left: 15px;
+        }
+
+        .icon-achive{
+            width: 2em;
+            height: 2em;
+            vertical-align: middle;
+            color: white;
+        }
+
+        .achive-title{
+            color: white;
+            font-size: 20px;
+        }
+
+        .achive-sub-title{
+            color: grey;
+        }
+
+        .progress{
+            margin: 0px !important;
+            height: 25px !important;
+            background-color: #2a2c31 !important;
+        }
+
+        .determinate{
+            background-color: #7289DA !important;
+        }
+
+        .invite-count{
+            position: absolute;
+            right: 10px;
+            transform: translate(0%,10%);
+            color: white;
+            z-index: 1;
+        }
+
+        .object-title{
+            color: white;
+            font-size: 18px;
+        }
+        .object-sub-title{
+            color: grey;
+        }
+
+        .icon-valide{
+            width: 1.5em;
+            height: 1.5em;
+            color: #43b581;
+            vertical-align: middle;
+        }
+
+        .buy-premium{
+            background-color:#31343d;
+            width: 100%;
+            height: max-content;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            padding-left: 12px;
+            padding-right: 12px;
+            color: white;
+            border-radius: 4px;
+            margin-top: 10px;
+            cursor: pointer;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    </style>
+
+    <body style="background-color: #2C2F33;">
+    
+        <div class="main"> 
+            <div class="dashboard">
+                <span class="leftmenu">
+                    <div class="btn-list">
+
+                        <div id="phone-close" class="menu-phone">
+                            <svg style="width: 2em;height:2em;vertical-align:middle;color:white;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                              </svg>
+                        </div>
+
+                        <div class="dropdown-user-i" style="position: relative;">
+                        <a class="dropdown-trigger" data-target="user-dropdown" id="user-dropdown-trigger">
+                        <div class="user-profil" style="color: white;">           
+                            <img style="vertical-align: middle;border-radius: 50%;" src="<%=user._discordAvatarURL%>" width="40px" height="40px">
+                            <span style="vertical-align: middle;font-size: 16px;margin-left: 10px;"><%=user.username%></span>
+                            <svg style="width: 1.5em;height:1.5em;color:white;vertical-align:middle;" class="angledown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                        </div>
+                        </a>
+
+
+                        <div id="user-dropdown" class="off userdrop">
+                            <div class="user-dropdown-item">
+                                <a href="/profil/<%=user.id%>">
+                                <div class="user-dropdown-btn">
+                                    Profile
+
+                                    <svg class="icon-dropdown-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                </a>
+
+                                
+
+                                <hr class="hrclass">
+
+                                <a id="log-out-indd">
+                                <div  class="user-dropdown-btn logout">
+                                    Logout
+
+                                    <svg class="icon-dropdown-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                </a>
+
+                            </div>
+                        </div>
+                        </div>
+                        
+                        
+
+                        <script>
+                        $('#user-dropdown-trigger').on('click' ,function() {
+                          
+                            if($('#user-dropdown').hasClass('on')){
+                                    $('#user-dropdown').addClass('off')
+                                    $('#user-dropdown').removeClass('on')
+                                }else{
+                                    $('#user-dropdown').addClass('on')
+                                    $('#user-dropdown').removeClass('off')
+                                }
+                                
+                        })
+
+                            
+                        </script>
+
+                        <div style="margin-top: 10px;">
+                            <a href="/">
+                                <div class="btn-dashboard">
+                                      <svg style="width: 1.3em;height:1.3em;vertical-align:middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                                      </svg>
+                                    <span style="vertical-align: middle;margin-left: 10px;">Back to the website</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div style="margin-top: 30px;">
+                            <div class="title-btn-dashboard">
+                                General
+                            </div>
+                            <a href="/user/dashboard">
+                            <div class="btn-dashboard">
+                                <svg style="width: 1.3em;height:1.3em;vertical-align:middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                                  </svg>
+                                <span style="vertical-align: middle;margin-left: 10px;">Home</span>
+                            </div>
+                            </a>
+
+                            <a href="/user/dashboard/job">
+                            <div class="btn-dashboard">
+                                <svg style="width: 1.3em;height:1.3em;vertical-align:middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
+                                    <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                                  </svg>
+                                <span style="vertical-align: middle;margin-left: 10px;">Job </span>
+                            </div>
+                            </a>
+
+                            <a href="/user/dashboard/rules">
+                            <div class="btn-dashboard">
+                                <svg style="width: 1.3em;height:1.3em;vertical-align:middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                  </svg>
+                                <span style="vertical-align: middle;margin-left: 10px;">Rules <span class="new-card">New</span></span>
+                            </div>
+                            </a>
+
+                            <a href="/user/dashboard/premium">
+                            <div class="btn-dashboard">
+                                <svg style="width: 1.3em;height:1.3em;vertical-align:middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                  </svg>
+                                <span style="vertical-align: middle;margin-left: 10px;">Premium <span class="new-card">New</span></span>
+                            </div>
+                            </a>
+
+
+                            <%if(user.staff){%>
+                                <a href="/user/dashboard/staff">
+                                    <div class="btn-dashboard">
+                                        <svg style="width: 1.3em;height:1.3em;vertical-align:middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                          </svg>
+                                        <span style="vertical-align: middle;margin-left: 10px;">Staff Panel </span>
+                                    </div>
+                                </a>
+                            <%}%>
+
+                        
+                                <a href="/user/dashboard/affiliate">
+                                    <div class="btn-dashboard btn-dashboard-active">
+                                        <svg style="width: 1.3em;height:1.3em;vertical-align:middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
+                                          </svg>
+                                        <span style="vertical-align: middle;margin-left: 10px;">Affiliation <span class="new-card-active">New</span></span>
+                                    </div>
+                                </a>
+                        
+                        </div>
+
+
+                        <div style="margin-top: 30px;">
+                            <div class="title-btn-dashboard">
+                                List
+                            </div>
+
+                            <a href="/bot/dashboard">
+                            <div class="btn-dashboard">
+                                <svg style="width: 1.3em;height:1.3em;vertical-align:middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clip-rule="evenodd" />
+                                  </svg>
+                                <span style="vertical-align: middle;margin-left: 10px;">Bot</span>
+                            </div>
+                            </a>
+                        </div>
+
+                        <div style="margin-top: 30px;">
+                            <a target="_blank" href="https://docs.shadow-bot.com">
+                            <div class="btn-dashboard">
+                                <svg style="width: 1.3em;height:1.3em;vertical-align:middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd" />
+                                  </svg>
+                                <span style="vertical-align: middle;margin-left: 10px;">API Documentation</span>
+                            </div>
+                            </a>
+
+                            <a target="_blank" href="https://discord.gg/bf4NEUd">
+                                <div class="btn-dashboard">
+                                    <svg style="width: 1.3em;height:1.3em;vertical-align:middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z" clip-rule="evenodd" />
+                                      </svg>
+                                    <span style="vertical-align: middle;margin-left: 10px;">Support Discord</span>
+                                </div>
+                            </a>
+                        </div>
+                        
+                    </div>
+                </span>
+
+                <span class="rightmenu">
+
+                    <div id="phone-btn" class="menu-phone">
+                        <svg style="width: 2em;height:2em;vertical-align:middle;color:white;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                          </svg>
+                    </div>
+
+                    <div style="padding: 30px;">
+                    <div class="title-page">
+                        Affiliation
+                    </div>
+
+                    <div class="title-sub">
+                        Invite as many people as possible to get the premium free of charge
+                    </div>
+
+                    <%if(!user.invitecode){%>
+
+                        <div>
+                            <div style="margin-left: auto;margin-right: auto;text-align: center">
+                            <svg class="link-broken" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                            </svg>
+                            </div>
+                            <div class="link-title">
+                                You have not created an affiliate link
+                            </div>
+                        </div>
+                        <form style="text-align: center;"  name="link-create" id="link-create">
+                            <button type="submit" class="link-btn">
+                                Create a link
+                            </button>
+                        </form>
+                    <%}%>
+
+                    <%if(user.invitecode){%>
+                        <div class="invite-box">
+                            <div class="invite-title">
+                                Invitation Code
+                            </div>
+
+                            <div id="<%=user.invitecount%>" class="invite-code">
+                                discord.gg/<%=user.invitecode%>
+                            </div>
+                        </div>
+
+                        <div class="achive-box">
+                            <div class="achive-icon">
+                                <svg class="icon-achive" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+
+                            <div class="achive-info">
+                                <div class="achive-title">
+                                    Invitation link 
+                                </div>
+                                <div class="achive-sub-title">
+                                    Invite 50 people on our discord stand to get the premium offer
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 10px;">
+                                <div class="progress">
+                                    <div class="invite-count">
+                                        <%=user.invitecount%> / 50
+                                    </div>
+                                    <div id="prog" class="determinate" style="width: 70%"></div>
+                                </div>
+                            </div>
+
+                            <%if(user.invitecount > 99){%>
+                                <div style="margin-top: 25px;">
+                                    <div class="object-title">
+                                        <svg class="icon-valide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                        </svg>
+
+                                        <span style="vertical-align: middle;margin-left: 0px;">Objective Completed</span>
+                                    </div>
+                                    <a href="/bot/dashboard/premium">
+                                    <div class="buy-premium">
+                                        Buy Premium
+                                    </div>
+                                    </a>
+                                </div>
+                            <%}%>
+                        </div>
+
+                        
+
+                        <script>
+                           var invitecode = $('.invite-code').attr('id') * 2
+                           $('.determinate').css('width', invitecode + '%')
+                        </script>
+                              
+                    <%}%>
+                    </div>
+                </span>
+            </div> 
+        </div>
+
+
+        <script>
+            $('#phone-btn').on('click', function() {
+                $('.rightmenu').addClass('off')
+                $('.leftmenu').addClass('on')
+                $('.leftmenu').addClass('pourcentall')
+                $('#banner-sbl').addClass('off')
+            })
+
+            $('#phone-close').on('click', function() {
+                $('.rightmenu').removeClass('off')
+                $('.leftmenu').removeClass('on')
+                $('.leftmenu').removeClass('pourcentall')
+                $('#banner-sbl').removeClass('off')
+            })
+        </script>
+
+    </body>
+    <footer>
+   
+        <%- include("../parts/scripts") %>
+    </footer>
+</html>
