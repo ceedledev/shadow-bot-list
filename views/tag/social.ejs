@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <%- include("../parts/head", { title: 'Tag - Social' }) %>
+    </head>
+    <style>
+
+
+        
+        </style>
+    <body>
+        <div class="header">
+            <div class="barreplus">
+                <%- include("../parts/header") %>
+                <div class="barrerecherche" style="margin-top: 5px;display: inline-block;"> 
+                    
+                    <p style="line-height: 17px;font-size: 36px;color: white;font-weight: bold;display: inline-block;">Shadow Bot List</p>  
+                    <p style="line-height: 17px;font-size: 19px;color: white;">Partez à l'aventure en découvrant des bots inédits pour vos serveurs Discord</p>
+               
+                <%- include("../parts/searchBar") %>
+                
+                
+                <a class="btn" href="/list/premium" style="font-size:13px;margin-bottom:20px;padding: 1px;display: inline-block;"><i style="color: #f1f2f6;margin-right: 5px;" class="fas fa-gem"></i>Premium</a>
+                <a class="btn tagsinfo" href="/list/top" ><i style="color: #f1f2f6;margin-right: 5px;" class="fas fa-fire"></i>Populaire</a>
+                <a class="btn tagsinfo" href="/list/nouveau" ><i style="color: #f1f2f6;margin-right: 5px;" class="fas fa-plus-circle"></i>Nouveau</a>
+                <a class="btn tagsinfo" href="/tags" ><i style="color: #f1f2f6;margin-right: 5px;" class="fas fa-tags"></i>Tags</a>
+            </div>    
+        </div>
+        <div class="main">
+            <div class="container">
+             
+                <h4 style="color: white;font-family: 'Roboto', sans-serif;font-size: 38px;margin-top: 25px;">
+                    <a  style="color: #f1f2f6;" href="/tag/social" ><i style="color: #43b581;margin-right: 20px;" class="fas fa-user-friends"></i>Social</a> 
+            </h4>
+                
+
+                <% if (rawBots.length == 0) { %>
+                    <p style="color: #bdc3c7;margin-top: 25px;text-align: center;font-size: 29px;">Aucun bot :( </p>
+                <% } else { %>
+                <div class="bot-cards">
+                    <%- botChunks.map(chunk => `<div class="row bot-card">${chunk.map(bot => include("../parts/botCard", {bot})).join("")}</div>`).join("") %>
+                </div>
+                <% } %>
+
+                <ul class="pagination center-align">
+                    <% if (page === 0) { %>
+                    <li class="disabled"><a><i class="material-icons grey-text text-darken-2">chevron_left</i></a></li>
+                    <% } else { %>
+                    <li class="waves-effect"><a href="?page=<%= page %>"><i
+                                class="material-icons grey-text text-lighten-1">chevron_left</i></a></li>
+                    <% } %>
+
+                    <% for (let p = 0; p < pages; p++) { %>
+                    <li class="<%= page === p ? 'active grey darken-1' : 'waves-effect' %>"><a <%- page===p ? '' :
+                            `href="?page=${p + 1}" class="grey-text text-lighten-1"
+                            ` %> >
+                            <%= p + 1 %></a></li>
+                    <% } %>
+
+                    <% if (page === pages - 1) { %>
+                    <li class="disabled"><a><i class="material-icons grey-text text-darken-2">chevron_right</i></a></li>
+                    <% } else { %>
+                    <li class="waves-effect"><a href="?page=<%= page + 2 %>"><i
+                                class="material-icons grey-text text-lighten-1">chevron_right</i></a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <%- include("../parts/footer") %>
+        <%- include("../parts/scripts") %>
+    </footer>
+</html>
