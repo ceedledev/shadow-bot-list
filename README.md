@@ -1,4 +1,4 @@
-<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="DiscBot" src="https://cdn.discordapp.com/attachments/7">  
+<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="DiscBot" src="https://media.discordapp.net/attachments/911635677198815312/956243025493913640/sblv2.png">  
 
 # DiscBot (Shadow-bot)
 
