@@ -10,7 +10,6 @@
 
 * Comment host la source du bot [Documentation](https://docs.discbot.xyz)
 
-* Date de création: Crée le 01 janvier 2022
 * Date de mise en ligne Github: Le 23 mars 2022
 
 DiscBot (Shadow-bot) codé en JavaScript avec [Discord.js v12](https://discord.js.org) par [Sky_#2022](https://github.com/skyledev).  
