@@ -1,0 +1,122 @@
+
+
+<style>
+    @media only screen and (min-width: 100px){
+.row .col.m3 {
+    width: 75%;
+    padding: 0px 10%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+    text-align: center;
+}}
+    @media only screen and (min-width: 601px){
+.row .col.m3 {
+    width: 50%;
+    padding: 0px 0px;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+    text-align: center;
+}}
+
+@media only screen and (min-width: 850px){
+.row .col.m3 {
+    width: 40%;
+    padding: 0px 0px;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}}
+
+
+@media only screen and (min-width: 1000px){
+.row .col.m3 {
+    width: 30%;
+    padding: 0px 0px;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}}
+
+@media only screen and (min-width: 1250px){
+.row .col.m3 {
+    width: 25%;
+    padding: 0px 0px;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}}
+</style>
+
+
+
+
+<div  class="col s12 m3 col-md-6 col-lg-4 align-center" id="<%= bot.id %>">
+    <div style="min-width: 19.5rem;max-width: 19.5rem;min-height: 33rem;max-height: 33rem ; max-length: 18rem; border-radius: 10px;background-color: #7289DA;"  class="card-color card hoverable blue-grey darken-1  col-lg-2 col-md-3 col-sm-4 col-6 " > 
+       
+        <div class="card-image bot-image-container">
+            <a href="/bot/<%= bot.vanityURL || bot.id %>"><img style="border-radius: 15px;" src="<%= bot._discordAvatarURL %> " class="bot-image" alt="Bot Profile Picture"></a>
+        </div>
+        <div class="card-content white-text">
+            <span  class="card-title">
+                <%= bot.name %> 
+                
+                    
+                
+                </span>
+            <p style="color: #E5E5E3;margin-bottom: 15px;margin-top: 15px;font-size: 14px;" class="bot-card-desc">
+                <%= bot.shortDescription %>
+            </p>
+            <p style="font-size: 10px; color: <%= bot.online ? '#26de81' : '#f55a4e' %> ;text-align: center;"><i class="fas fa-circle" style="color: <%= bot.online ? '#26de81' : '#f55a4e' %>; height: 10px;font-size: 10px;margin-right: 8px;"></i><%= bot.online ? 'EN LIGNE' : 'HORS LIGNE' %></p>
+            
+            <br>
+           <div class="center-align">
+            <% if (bot.servers) { %>
+                <button style="background-color: #7289DA;border-radius: 15px;border:solid 2px #7289DA;color: white;text-align:center;" type="button"><%= bot.servers %> Serveurs</button>
+                    
+                <% } %>
+                <% if (!bot.servers) { %>
+                    <button style="background-color: #7289DA;border-radius: 15px;border:solid 2px #7289DA;color: white;text-align:center;" type="button">0 Serveur</button>
+                        
+                    <% } %>
+            <% if (bot.certified) { %>
+                <button style="background-color: #7289DA;border-radius: 15px;border:solid 2px #7289DA;color: white;text-align:center;" type="button">Premium</button>
+              <% } %>
+            </div>
+
+            
+        </div>
+        
+       <div style="margin-top: 0px;margin-bottom: auto;" class="card-btn center-align" >
+        
+                <a href="/invite_url/<%=bot.id%>" <%- typeof queue !=='undefined' ? 'target="_blank"' : '' %>><button type="button" style="margin-right: 20px;" class="btn-invite">Inviter</button></a>
+          
+                <a href="/bot/<%= bot.vanityURL || bot.id %>"><button type="button" style="margin-left: 20px;" class="btn-view">Voir</button></a>
+          
+            
+            <% if (typeof queue !== "undefined") { %>
+            <a class="accept-button" href="https://discordapp.com/oauth2/authorize?client_id=<%= bot.id %>&scope=bot&guild_id=<%= config.ids.mainServer %>" target="_blank"><strong>Accept</strong></a>
+            <a class="deny-button modal-trigger" data-target="deny-modal-<%= bot.id %>" href="#"><strong>Deny</strong></a>
+            <div id="deny-modal-<%= bot.id %>" class="modal" data-bot-id="<%= bot.id %>">
+                <div class="modal-content">
+                    <h5>Deny
+                        <%= bot.name %>?</h5>
+                    <div class="input-field">
+                        <input type="text" id="deny-reason-<%= bot.id %>" />
+                        <label for="deny-reason-<%= bot.id %>">Reason</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="modal-action modal-close waves-effect waves-light btn-flat white-text">Cancel</a>
+                    <a class="deny-bot-action modal-action modal-close waves-effect waves-red btn-flat red-text">Deny</a>
+                </div>
+            </div>
+            <% } %>
+           
+            <% if (typeof api !== "undefined" || (typeof user !== 'undefined' && (user.mod || user.admin))) { %>
+                <a class="api-key-button" href="/dashboard/bot/<%= bot.id %>/manage"><p style="text-align: center;">Modifier</p></a>
+                <% } %>
+        </div>
+    </div>
+</div>

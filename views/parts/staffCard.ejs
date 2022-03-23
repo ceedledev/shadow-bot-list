@@ -1,0 +1,48 @@
+<style>
+.cardfff {
+  border: solid 0px;
+  border-radius: 20px;
+  background-color: #3b3b3b;
+  width: 30%;
+  padding: 1%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: 3%;
+  margin-top: 5%;
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.cardfff:hover{
+    box-shadow: 0 0 0 5px #7289DA;
+    transform: translateY(-10px);
+    transform: scale(1.05);
+}
+
+.cardfff-i {
+  border-radius: 100%;
+  float: left;
+  width: 90px;
+  margin-left: 10px;
+  transition: 0.2s;
+}
+
+.cardfff-i:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 0 2px #fff;
+}
+
+</style>
+
+<div class="cardfff">
+    <a href="/profil/<%= staff.vanityURL || staff.id %>"><img src="<%= staff._discordAvatarURL %>" class="cardfff-i" alt="Staff Profile Picture">
+    <span
+    style="font-family: film_noir, sans-serif;color: #8e9da4; line-height: 70px; font-size: 1.2em; margin-left: 30px;"
+    ><%= staff.username %><em style="color: #fff; font-size: 1em;">#<%= staff.discriminator %></em></span>
+    <i class="fas fa-circle" style="color: <%= staff.online ? '#2ed573' : 'grey' %>; height: 20px; margin-left: 5px;">
+              </i><br>
+    <span style="color: #7289DA; font-size: 0.9em; margin-left: 10%; line-height: 10px; text-decoration: double;"><em>
+        <%- staff.badges.join(" | ") %>
+</em>
+</span>
+</a></div>

@@ -1,0 +1,50 @@
+
+<style>
+
+input[type=text]:not(.browser-default):focus:not([readonly]){
+    --border-opacity: 1;
+    border-color: #16171b;
+    border-color: rgba(22,23,27,var(--border-opacity));
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(164,202,254,.45);
+    border-color: #a4cafe;
+}
+
+    .form-input{
+        -webkit-appearance: none;
+    }
+    .form-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(164,202,254,.45);
+    border-color: #a4cafe;
+}
+
+::placeholder{
+    color: #c2c2c2;
+    text-align: left;
+}
+</style>
+
+<form action="/search" method="get">
+  
+
+        <div style="">
+        <div style="display: inline-block;
+        /* left: 10px; */
+        /* top: 10px; */
+        position: absolute;
+        align-items: center;
+        margin-top: 15px;
+        margin-left: 15px;
+        color: #7289DA;">
+            <i style="" class="fas fa-search"></i>
+        </div>
+            <input  autocomplete="on" name="name" id="searchboxe" type='text' style="font-family: 'Quicksand', sans-serif; display:inline-block;background-color: #ffffff;width: 50%;border: solid 2px #ffffff;border-radius:30px; padding-left: 40px;color: #34495e;" placeholder='Search a bot' value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>">   
+        
+    </div>
+        
+        
+
+</form>
+
+

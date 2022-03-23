@@ -1,0 +1,113 @@
+
+    
+
+<div class="contain-box-bot">
+
+    <div class="box-bot">
+    <div class="background-bot" style="background: url('<%=bot.background%>');background-size: contain;background-position: center;">
+   
+    </div>
+    <div class="bot-image">
+        <img style="vertical-align: middle;border-radius: 25%;" src="<%=bot._discordAvatarURL%>" width="60px" height="60px">
+    </div>
+
+    <div class="bot-vote">
+        <svg xmlns="http://www.w3.org/2000/svg" style="width: 1.3em;height:1.3em;vertical-align:middle;" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg> <%=bot.vote%>
+    </div>
+ 
+    <div class="box-bot-info">
+
+  
+
+        <div style="margin-top: 25px;height: 170px;">
+        <div class="bot-name">
+            <%if(bot.partner){ %>
+            <span style="margin-right: 5px;" class="tts" aria-label="SBL Partenaire">
+                <img src="https://cdn.discordapp.com/emojis/790896581338595398.png?v=1" style="vertical-align: middle;" width="17px" height="17px">
+            </span>
+            <%}%>
+            <%if(bot.verif){ %>
+            <span style="margin-right: 5px;" class="tts" aria-label="Certifié">
+             <img src="https://cdn.discordapp.com/emojis/790897362615795732.png?v=1" style="vertical-align: middle;" width="17px" height="17px">
+            </span>
+            <%}%>
+       <%if(bot.certified){ %>     
+    <span style="margin-right: 5px;" class="tts" aria-label="SBL Premium" >
+       <img src="https://cdn.discordapp.com/emojis/762728270776369162.png?v=1" style="vertical-align: middle;" width="21px" height="21px">
+    </span>
+    <%}%>
+    
+    <span style="vertical-align: middle;"><%=bot.name%></span>
+        </div>
+
+        <div class="bot-status">
+            <% if(bot.status == "offline" ) { %>
+                                
+                <span class="bot-offline">Offline</span>
+                <%} else { %> 
+        
+                <% if(bot.status == 'dnd') { %>
+                    <span class="bot-dnd">Do Not Distrub</span>
+                <%} else { %>
+        
+                <% if(bot.status == 'idle') { %>
+                    <span class="bot-idle">Not active</span>
+                <%} else { %>
+        
+                <% if(bot.status == 'online') { %>
+                    <span class="bot-online">Online</span>
+              
+                <%} %>       
+         <%} %>
+         <%} %>
+         <%} %>
+            </div>
+
+        <div class="bot-shortdesc">
+         <%=bot.shortDescription%>
+        </div>
+
+        <div class="bot-tag">
+        <%=bot.tags%>
+        </div>
+
+        <div class="bot-servers">
+            <svg style="width: 1em;height:1em;vertical-align:middle;color:grey;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z" clip-rule="evenodd" />
+              </svg>
+
+              <span style="vertical-align: middle;">
+              <%if(bot.servers){ %>
+             <%=bot.servers%> servers
+            <%}%>
+              </span>
+
+            <span style="vertical-align: middle;">
+            <%if(!bot.servers){ %>
+                N/A server
+              <%}%>
+            </span>
+
+
+
+        </div>
+
+        </div>
+
+        <div style="width: 70%;margin-left: auto;margin-right: auto;">
+            <a href="/bot/<%=bot.id%>">
+            <div class="bot-view-btn">
+            View
+            </div>
+            </a>
+        </div>
+
+
+
+    </div>
+    </div>
+
+</div>
+    

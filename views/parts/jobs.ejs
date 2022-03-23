@@ -1,0 +1,30 @@
+
+
+<div class="job-card">
+    <div style="text-align: left;">
+        <img style="border-radius: 50%;vertical-align: middle;" src="<%=annonce._discordAvatarURL%>" width="30px" height="30px">
+        <span style="color: rgb(219, 219, 219);vertical-align: middle;margin-left: 5px;"><%=annonce.username%></span>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <div style="height: 150px;">
+        <div class="title-job">
+            <%=annonce.title%>
+        </div>
+
+        <div class="title-sub-job">
+            <%=annonce.shortDescription%>
+        </div>
+
+        <div class="budget-job">
+            <%=annonce.budget%>€ <span style="color: grey;margin-left: 5px;font-size: 13px;">budget</span>
+        </div>
+        </div>
+
+        <a href="/user/dashboard/job/<%=annonce.id%>">
+        <div class="job-btn">
+            View
+        </div>
+        </a>
+    </div>
+</div>

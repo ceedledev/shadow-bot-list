@@ -1,0 +1,21 @@
+<div class="column is-2">
+    <aside class="menu">
+        <p class="menu-label">Général</p>
+        <ul class="menu-list">
+            <li><a href="/staff" id="staffmenuoption">Statistiques</a></li>
+            <li><a href="/staff/queue" id="staffmenuoption">Bot en attente</a></li>
+        </ul>
+        <% if (user.admin || user.owner) { %>
+        <p class="menu-label">Administration</p>
+        <ul class="menu-list">
+            <li><a href="/staff/admin/users" id="staffmenuoption">Utilisateurs</a></li>
+            <li><a href="/staff/admin/verification" id="staffmenuoption">Verification</a></li>
+        </ul>
+        <p class="menu-label">Site Options</p>
+        <ul class="menu-list">
+            <li><a href="/staff/admin/restart" id="staffmenuoption">Restart</a></li>
+            <li><a href="/staff/admin/pull" id="staffmenuoption">Pull Repository</a></li>
+        </ul>
+        <% } %>
+    </aside>
+</div>

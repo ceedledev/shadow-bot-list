@@ -1,0 +1,900 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.rawgit.com/cowboy/jquery-throttle-debounce/master/jquery.ba-throttle-debounce.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+<style>
+   body{ 
+       background-color:#222428
+   } 
+
+
+   ::-webkit-scrollbar {
+    width: 10px !important;
+    transition: 0.5s;
+    background-color: #34363b;
+  }
+  ::-webkit-scrollbar-thumb {
+   
+    
+    
+    background-color:#0f1011 !important;
+    cursor: pointer;
+    border-radius: 0px !important;
+    
+
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    box-shadow: inset 0 0 18px 18px #0f1011 !important;
+    cursor: pointer;
+    border-radius: 0px !important;
+    background-image: none !important;
+  }
+</style>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167774016-1');
+</script>
+
+<script>
+    window.webkitMoveFrame = class  webkitMoveFrame{
+    static async logOut() {
+        await fetch('/api/logout', { credentials: 'same-origin', method: 'POST' });
+    }
+
+    
+  
+    static async createBot(bot) {
+        const test = "test"
+        const res = await fetch('/api/bot', {
+            method: 'POST',
+            body: JSON.stringify(bot),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'same-origin'
+        });
+        const data = await res.json();
+        if (data.error && !data.details) {
+            throw new Error(data.error);
+        } else if (data.error && data.details) {
+            throw new Error(`${data.error} ${data.details.join(', ')}`);
+        } else if (data.ok) {
+            return { ok: data.ok };
+        } else {
+            throw new Error('Bad response');
+        }
+    }
+
+
+    static async createLink() {
+        const res = await fetch('/api/bot/link', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'same-origin'
+        });
+        const data = await res.json();
+        if (data.error && !data.details) {
+            throw new Error(data.error);
+        } else if (data.error && data.details) {
+            throw new Error(`${data.error} ${data.details.join(', ')}`);
+        } else if (data.ok) {
+            return { ok: data.ok };
+        } else {
+            throw new Error('Bad response');
+        }
+    }
+  
+      
+
+     
+    static async deleteBot(id) {
+        const res = await fetch('/api/bot/' + encodeURI(id), { method: 'DELETE', credentials: 'same-origin' });
+        const data = await res.json();
+        if (data.error) {
+            throw new Error(data.error);
+        } else if (data.ok) {
+            return { ok: data.ok };
+        } else {
+            throw new Error('Bad response');
+        }
+    }
+
+
+    static async deleteannonce(id) {
+        const res = await fetch('/api/bot/annonce/' + encodeURI(id), { method: 'DELETE', credentials: 'same-origin' });
+        const data = await res.json();
+        if (data.error) {
+            throw new Error(data.error);
+        } else if (data.ok) {
+            return { ok: data.ok };
+        } else {
+            throw new Error('Bad response');
+        }
+    }
+
+    static async verifyBot(verified, reason, id) {
+        const res = await fetch('/api/bot/mod/verify', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ verified, reason, botID: id })
+        });
+        const data = await res.json();
+        if (data.error) {
+            throw new Error(data.error);
+        } else if (data.ok) {
+            return { ok: data.ok };
+        } else {
+            throw new Error('Bad response');
+        }
+    }
+
+
+    static async verifyannonce(verified, reason, id) {
+        const res = await fetch('/api/bot/verify/annonce', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ verified, reason, annonceID: id })
+        });
+        const data = await res.json();
+        if (data.error) {
+            throw new Error(data.error);
+        } else if (data.ok) {
+            return { ok: data.ok };
+        } else {
+            throw new Error('Bad response');
+        }
+    }
+
+    static async editBot(bot) {
+        let botNoId = Object.assign({}, bot);
+        delete botNoId.id;
+        const res = await fetch(`/api/bot/${bot.id}`, { method: 'PATCH', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(botNoId) });
+        const data = await res.json();
+        if (data.error) {
+            throw new Error(data.error);
+        } else if (data.ok) {
+            return { ok: data.ok };
+        } else {
+            throw new Error('Bad response');
+        }
+    }
+
+
+    
+    static async sblwebhook(bot) {
+        let botNoId = Object.assign({}, bot);
+        delete botNoId.id;
+        const res = await fetch(`/api/bot/${bot.id}/config`, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(botNoId) });
+        const data = await res.json();
+        if (data.error) {
+            throw new Error(data.error);
+        } else if (data.ok) {
+            return { ok: data.ok };
+        } else {
+            throw new Error('Bad response');
+        }
+    }
+
+
+
+    static async background(bot) {
+        let botNoId = Object.assign({}, bot);
+        delete botNoId.id;
+        const res = await fetch(`/api/bot/${bot.id}/background`, { method: 'PATCH', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(botNoId) });
+        const data = await res.json();
+        if (data.error) {
+            throw new Error(data.error);
+        } else if (data.ok) {
+            return { ok: data.ok };
+        } else {
+            throw new Error('Bad response');
+        }
+    }
+
+
+
+  
+
+    
+   
+
+
+    static async voted(botID) {
+        const res = await fetch(`/api/bot/${botID}/vote`, { method: 'POST', credentials: 'same-origin' });
+        const data = await res.json();
+        if (data.error) {
+            throw new Error(data.error);
+        } else if (data.ok) {
+            return { ok: data.ok };
+        } else {
+            throw new Error('Bad response');
+        }
+    }
+
+    static async testvoted(botID) {
+        const res = await fetch(`/api/bot/${botID}/votetest`, { method: 'POST', credentials: 'same-origin' });
+        const data = await res.json();
+        if (data.error) {
+            throw new Error(data.error);
+        } else if (data.ok) {
+            return { ok: data.ok };
+        } else {
+            throw new Error('Bad response');
+        }
+    }
+
+
+    static async certif(botID) {
+        const res = await fetch(`/api/bot/${botID}/certif`, { method: 'POST', credentials: 'same-origin' });
+        const data = await res.json();
+        if (data.error) {
+            throw new Error(data.error);
+        } else if (data.ok) {
+            return { ok: data.ok };
+        } else {
+            throw new Error('Bad response');
+        }
+    }
+
+
+
+
+
+    static async annonce(bot) {
+     
+     const res = await fetch('/api/bot/annonce', {
+         method: 'POST',
+         body: JSON.stringify(bot),
+         headers: {
+             'Content-Type': 'application/json'
+         },
+         credentials: 'same-origin'
+     });
+     const data = await res.json();
+     if (data.error && !data.details) {
+         throw new Error(data.error);
+     } else if (data.error && data.details) {
+         throw new Error(`${data.error} ${data.details.join(', ')}`);
+     } else if (data.ok) {
+         return { ok: data.ok };
+     } else {
+         throw new Error('Bad response');
+     }
+ }
+
+
+
+};
+
+</script>
+
+<script>
+
+
+
+
+
+const delay = ms => new Promise(res => setTimeout(res, ms));
+const api = webkitMoveFrame;
+
+function undefIfEmpty(str) {
+    return str.trim() === '' ? undefined : str;
+}
+
+
+
+
+
+
+$(document).ready(() => {
+    $('select').formSelect();
+
+    const sortSelect = $('#sortSelect');
+    const orderSelect = $('#orderSelect');
+
+    if (!sortSelect || !orderSelect) return;
+
+    const selects = [sortSelect, orderSelect];
+
+    selects.forEach(s => {
+        s.change(() => {
+            window.location = s.find('option:selected').val();
+        });
+    });
+});
+
+$(window).ready(async () => {
+    $('.accept-btn').click(e => {
+        let card = e.target.parentElement.parentElement.parentElement.parentElement;
+        let id = card.getAttribute('id');
+        api.verifyBot(true, undefined, id);
+        card.remove();
+    });
+    $('.deny-bot-action').click(async e => {
+        let modal = e.target.parentElement.parentElement;
+        let id = modal.getAttribute('data-bot-id');
+        let card = $(`#${id}`);
+
+        try {
+            await api.verifyBot(false, $(`#deny-reason-${id}`).val(), id);
+
+            card.remove();
+            document.location.replace('/');
+        } catch (e) {
+            M.toast({ html: e.message });
+        }
+
+
+
+    });
+
+
+    if (document.location.href.includes('/user/dashboard/job/') ) {
+    $('.accept-button-annonce').click(e => {
+        let card = e.target.parentElement.parentElement;
+        let id = card.getAttribute('data-annonce-id');
+        api.verifyannonce(true, undefined, id);
+        card.remove();
+        window.location.replace('/user/dashboard/job');
+    });
+    $('.deny-annonce-action').click(async e => {
+        let modal = e.target.parentElement.parentElement;
+        let id = modal.getAttribute('data-annonce-id');
+        let card = $(`#${id}`);
+
+        try {
+            await api.verifyannonce(false, $(`#deny-reason-${id}`).val(), id);
+
+            card.remove();
+            
+        window.location.replace('/user/dashboard/job');
+        } catch (e) {
+            M.toast({ html: e.message });
+        }
+
+
+
+    });
+}
+
+
+  
+
+
+    document.querySelectorAll('.modal').forEach(ele => M.Modal.init(ele));
+    M.Dropdown.init(document.querySelector('#profile-dropdown-trigger'), { ecoverTrigger: false });
+    
+
+    const logoutele = document.querySelector('#log-out-indd');
+    if (logoutele)
+        document.querySelector('#log-out-indd').addEventListener('click', async e => {
+            await api.logOut();   
+
+            if (window.location.pathname === '/') {
+                window.location.reload();
+            } else {
+                window.location.replace('/');
+            }
+        });
+
+
+
+
+    if (document.querySelector('#searchboxe')) {
+        const searchBoxM = M.Autocomplete.init(document.querySelector('#searchboxe'), {
+            data: {},
+            limit: 10,
+            onAutocomplete: () =>
+                $('#searchboxe')
+                    .parent()
+                    .parent()
+                    .submit()
+        });
+        document.querySelector('#searchboxe').addEventListener(
+            'input',
+            $.throttle(1000, async e => {
+                const res = await fetch('/api/search/autocomplete?q=' + encodeURI(e.target.value));
+                const body = await res.json();
+                if (!body.data) {
+                    M.toast('Could not get autocomplete data');
+                    return;
+                }
+                let newData = {};
+                body.data.forEach(bot => {
+                    newData[bot] = null;
+                });
+                searchBoxM.options.data = newData;
+            })
+        );
+    }
+
+  
+    if (window.localStorage.getItem('toastOnNext')) {
+        M.toast({ html: window.localStorage.toastOnNext });
+        window.localStorage.removeItem('toastOnNext');
+    }
+
+
+    if (document.location.href.includes('/user/dashboard/job/') && document.location.href.endsWith('/edit')) {
+        $('#delete-annonce-action').click(async e => {
+            await api.deleteannonce(document.querySelector('#delete-annonce-modal').getAttribute('data-annonce-id'));
+            Swal.fire({
+                      
+                      icon: 'success',
+                      title: "L'annonce a bien été supprimer",
+                      showConfirmButton: false,
+                      timer: 2500
+                    })
+                    await delay(2500);
+                    window.location.replace('/user/dashboard/job');
+                   
+        });
+
+    }
+
+
+
+
+
+    if (document.location.href.includes('/dashboard/job/new')) {
+      
+        $('form').submit(async e => {
+            e.preventDefault();
+
+
+     
+                   
+      
+            try {
+                await api.annonce({
+
+                   title: undefIfEmpty($('#annonce_title').val()),
+                   id: undefIfEmpty($('#annonce_id').val()),
+                   shortDescription: undefIfEmpty($('#annonce_minidesc').val()),
+                   longDescription: undefIfEmpty($('#annonce_longdesc').val()),
+                   budget: undefIfEmpty($('#annonce_budget').val()),
+                   email: undefIfEmpty($('#annonce_email').val())
+
+                 
+                });
+           
+
+
+               
+                Swal.fire({
+                      
+                      icon: 'success',
+                      title: 'Votre annonce a bien été ajouter',
+                      showConfirmButton: false,
+                      timer: 2500
+                    })
+
+                    await delay(2500)
+                document.location.replace('/user/dashboard/job');
+            } catch (error) {
+
+             
+                Swal.fire({
+                      
+                      icon: 'warning',
+                      title: error.message,
+                      showConfirmButton: false,
+                      timer: 2500
+                    })
+                
+                console.error(error);
+            }
+        });
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (document.location.href.includes('/bot/dashboard/new')) {
+        M.FormSelect.init($('select#newbot'), { classes: 'newbot-dd-wrap' });
+        $('form').submit(async e => {
+            e.preventDefault();
+
+            let lib = $('select').val();
+            if (lib === 'none') lib = undefined;
+
+            let tag = $('#tagsbot').val();
+            if (tag === 'none') tag = undefined;
+
+     
+                   
+      
+            try {
+                await api.createBot({
+                    id: undefIfEmpty($('#client_id').val()),
+                    library: lib,
+                    tags: tag,
+                    prefix: undefIfEmpty($('#bot_prefix').val()),
+                    website: undefIfEmpty($('#bot_website').val()),
+                    invite: undefIfEmpty($('#bot_invite').val()) || `https://discordapp.com/oauth2/authorize?client_id=${encodeURI(e.target[0].value)}&scope=bot&permissions=2146958847`,
+                    github: undefIfEmpty($('#bot_github').val()),
+                    shortDescription: undefIfEmpty($('#bot_description').val()),
+                    longDescription: undefIfEmpty($('#bot_description-full').val()),
+                    likeWebhook: undefIfEmpty($('#like_webhook').val()),
+                    webhookAuth: undefIfEmpty($('#webhook_auth').val())
+                });
+                document.location.replace('/bot/dashboard');
+                const notyf = new Notyf({
+  duration: 1000,
+  position: {
+    x: 'right',
+    y: 'top',
+  },
+  types: [
+    {
+      type: 'warning',
+      background: 'orange',
+      icon: {
+        className: 'material-icons',
+        tagName: 'i',
+        text: 'warning'
+      }
+    },
+    {
+      type: 'error',
+      background: 'indianred',
+      duration: 5000,
+      dismissible: true
+    },
+    {
+      type: 'succes',
+      background: '#43b581',
+      duration: 5000,
+      dismissible: true
+    }
+  ]
+});
+
+
+               
+                notyf.open({type : 'succes' , message : 'Votre bot a bien été ajouter'})
+                document.location.replace('/bot/' + e.target[0].value);
+            } catch (error) {
+
+             
+                notyf.open({type : 'error' , message : error.message})
+                
+                console.error(error);
+            }
+        });
+
+
+        
+    }
+
+    if (document.location.href.includes('/user/dashboard/affiliate')) {
+      
+        $('form').submit(async e => {
+            e.preventDefault();
+            try {
+               const link = await api.createLink();
+                
+                const notyf = new Notyf({
+  duration: 1000,
+  position: {
+    x: 'right',
+    y: 'top',
+  },
+  types: [
+    {
+      type: 'warning',
+      background: 'orange',
+      icon: {
+        className: 'material-icons',
+        tagName: 'i',
+        text: 'warning'
+      }
+    },
+    {
+      type: 'error',
+      background: 'indianred',
+      duration: 5000,
+      dismissible: true
+    },
+    {
+      type: 'succes',
+      background: '#43b581',
+      duration: 5000,
+      dismissible: true
+    }
+  ]
+});      if(link.ok === "Ok"){
+                notyf.open({type : 'succes' , message : 'Ton lien a bien été créer'})
+}
+
+               
+                
+            } catch (error) {          
+                notyf.open({type : 'error' , message : error.message})
+                console.error(error);
+            }
+
+            setTimeout(function () { 
+                    document.location.replace('/user/dashboard/affiliate');
+                }, 2500)
+        });
+    }
+    
+    
+    
+    else if (document.location.href.includes('/bot/dashboard')) {
+        $('#delete-bot-action').click(async e => {
+            await api.deleteBot(document.querySelector('#delete-bot-modal').getAttribute('data-bot-id'));
+            Swal.fire({
+                      
+                      icon: 'success',
+                      title: 'Le bot a bien été supprimer',
+                      showConfirmButton: false,
+                      timer: 2500
+                    })
+                    await delay(2500);
+            
+                    document.location.replace('/');
+        });
+    
+    }if (document.location.href.includes('/dashboard/bot/') ) {
+        $('#delete-bot-action').click(async e => {
+            await api.deleteBot(document.querySelector('#delete-bot-modal').getAttribute('data-bot-id'));
+            document.location.replace('/dashboard');
+        })
+    }
+     if (document.location.href.includes('/bot/dashboard') && document.location.href.endsWith('/general')) {
+        M.FormSelect.init($('select#newbot'), { classes: 'newbot-dd-wrap' });
+        $('form').submit(async e => {
+            e.preventDefault();
+            let lib = $('select').val();
+            if (lib === 'none') lib = undefined;
+            
+            let tag = $('#tagsbot').val();
+            if (tag === 'none') tag = undefined;
+
+            try {
+                await api.editBot({
+                    id: e.target.getAttribute('data-bot-id'),
+                    library: lib,
+                    tags: tag,
+                    prefix: undefIfEmpty($('#bot_prefix').val()),
+                    website: undefIfEmpty($('#bot_website').val()),
+                    invite: undefIfEmpty($('#bot_invite').val()) || `https://discordapp.com/oauth2/authorize?client_id=${encodeURI(e.target[0].value)}&scope=bot&permissions=2146958847`,
+                    github: undefIfEmpty($('#bot_github').val()),
+                    shortDescription: undefIfEmpty($('#bot_description').val()),
+                    longDescription: undefIfEmpty($('#bot_description-full').val()),
+                    vanityURL: undefIfEmpty($('#vanity_url').val()),
+                    likeWebhook: undefIfEmpty($('#like_webhook').val()),
+                    webhookAuth: undefIfEmpty($('#webhook_auth').val())
+                });
+                localStorage.setItem('toastOnNext', 'Modification effectuée');
+                document.location.replace(`/bot/${e.target.getAttribute('data-bot-id')}`);
+            } catch (error) {
+                M.toast({ html: "Erreur de validation , veuillez bien relire en entier le formulaire" });
+                console.error(error);
+            }
+        });
+    } 
+
+    if (document.location.href.includes('/dashboard/bot') && document.location.href.endsWith('/general')) {
+        M.FormSelect.init($('select#newbot'), { classes: 'newbot-dd-wrap' });
+      
+        $('form').submit(async e => {
+            e.preventDefault();
+            let lib = $('select').val();
+            if (lib === 'none') lib = undefined;
+            
+            let tag = $('#tagsbot').val();
+            if (tag === 'none') tag = undefined;
+
+            try {
+                await api.editBot({
+                    id: e.target.getAttribute('data-bot-id'),
+                    library: lib,
+                    tags: tag,
+                    prefix: undefIfEmpty($('#bot_prefix').val()),
+                    website: undefIfEmpty($('#bot_website').val()),
+                    invite: undefIfEmpty($('#bot_invite').val()) || `https://discordapp.com/oauth2/authorize?client_id=${encodeURI(e.target[0].value)}&scope=bot&permissions=2146958847`,
+                    github: undefIfEmpty($('#bot_github').val()),
+                    shortDescription: undefIfEmpty($('#bot_description').val()),
+                    longDescription: undefIfEmpty($('#bot_description-full').val()),
+                    vanityURL: undefIfEmpty($('#vanity_url').val()),
+                    likeWebhook: undefIfEmpty($('#like_webhook').val()),
+                    webhookAuth: undefIfEmpty($('#webhook_auth').val())
+                });
+                localStorage.setItem('toastOnNext', 'Modification effectuée');
+                document.location.replace(`/bot/${e.target.getAttribute('data-bot-id')}`);
+            } catch (error) {
+                M.toast({ html: "Erreur de validation , veuillez bien relire en entier le formulaire" });
+                console.error(error);
+            }
+        });
+    } 
+
+
+    
+    if (document.location.href.includes('/bot/dashboard') && document.location.href.endsWith('/webhook')) {   
+        $("#new-bot-form").submit(async e => {
+            e.preventDefault();
+            try {
+                await api.sblwebhook({
+                    id: e.target.getAttribute('data-bot-id'),
+                    likeWebhook: undefIfEmpty($('#like_webhook').val()),
+                    webhookAuth: undefIfEmpty($('#webhook_auth').val())
+                });
+                document.location.replace(`/bot/dashboard/${e.target.getAttribute('data-bot-id')}/webhook`);
+
+                Swal.fire({
+                      icon: 'success',
+                      title: 'Webhook sauvegardé !',
+                      showConfirmButton: false,
+                      timer: 2500
+                    })
+              
+                localStorage.setItem('toastOnNext', 'Webhook sauvegardé');
+                document.location.replace(`/bot/dashboard/${e.target.getAttribute('data-bot-id')}/webhook`);
+            } catch (error) {
+                M.toast({ html: error });
+                console.error(error);
+            }
+        });
+
+        $("#bot-webhook-test").submit(async e => {
+            e.preventDefault();
+            try{
+                await api.testvoted(e.target.getAttribute('data-bot-id'))
+                document.location.replace(`/bot/dashboard/${e.target.getAttribute('data-bot-id')}/webhook`);
+                Swal.fire({
+                      icon: 'success',
+                      title: 'Test effectué',
+                      showConfirmButton: false,
+                      timer: 2500
+                    })
+            }catch (error) {
+                M.toast({ html: error });
+                console.error(error);
+            }
+        })
+    } 
+
+    if (document.location.href.includes('/bot/dashboard') && document.location.href.endsWith('/background')) {
+     
+        $('form').submit(async e => {
+            e.preventDefault();
+            
+
+            try {
+                await api.background({
+                    id: e.target.getAttribute('data-bot-id'),
+                    bg: undefIfEmpty($('#imagePreview').attr('src'))
+                });
+                localStorage.setItem('toastOnNext', 'Background modifié');
+                document.location.replace(`/bot/dashboard/${e.target.getAttribute('data-bot-id')}/background`);
+            } catch (error) {
+                M.toast({ html: error });
+                console.error(error);
+            }
+        });
+    } 
+
+    
+    if (document.location.href.includes('/bot/dashboard') && document.location.href.endsWith('/certification')) {
+     
+     $('form').submit(async e => {
+         e.preventDefault();
+         
+
+         try {
+             await api.certif(
+                e.target.getAttribute('data-bot-id')
+             );
+             Swal.fire({
+                      icon: 'success',
+                      title: 'Bravo ton bot est certifié !',
+                      showConfirmButton: false,
+                      timer: 2500
+                    })
+                    setTimeout(function () { 
+                        window.location.reload();
+
+                      }, 2500)
+         } catch (error) {
+             M.toast({ html: error });
+             console.error(error);
+         }
+     });
+ } 
+    else if (window.IS_BOT_PAGE && window.mojs) {
+        let vote = $('#vote-btn');
+        let votebtn = $('#vote-btn2');
+ 
+       
+
+        votebtn.click(async e => {
+            e.preventDefault();
+            try {
+                if (votebtn.hasClass('modal-trigger')) return;
+                const voteRes = await api.voted(votebtn.data('bot-id'));
+                const voteText = $('#vote-btn2 p');
+       
+           
+                const svg = $('#vote-btn2 svg');
+
+
+                if (voteRes.ok === 'Vote') {
+                    svg.removeClass('grey-text');
+                    svg.addClass('red-text');
+                  
+                    voteText.html("Vous venez de voter , revenez plus tard");
+                    Swal.fire({
+                      
+                        icon: 'success',
+                        title: 'Vous venez de voter , revenez plus tard',
+                        showConfirmButton: false,
+                        timer: 2500
+                      })
+                       
+                      setTimeout(function () { 
+                        window.location.reload();
+
+                      }, 2500)
+                     
+               
+                } 
+
+                if(voteRes.ok === "Cooldown"){
+                  
+                    voteText.html("Vous devez attendre 12h entre chaque vote");
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'warning',
+                        title: 'Vous devez attendre 12h entre chaque vote',
+                        showConfirmButton: false,
+                        timer: 2500
+                      })
+
+                      setTimeout(function () { 
+                        window.location.reload();
+
+                      }, 2500)
+                }
+         
+               
+            } catch (error) {
+                M.toast({ html: error.message });
+                console.error(error);
+            }
+        });
+    }
+
+
+    
+});
+
+
+
+
+</script>

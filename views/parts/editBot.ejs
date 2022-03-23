@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../parts/head", { title: 'Modification' }) %>
+        
+    </head>
+
+    <style>
+  .dropdown-content li>span{
+    color: #2C2F33;
+}
+
+
+body.dark-theme input {
+    color:white;
+}
+
+.input-field{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    margin-top: 60px;
+}
+
+.tl{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn{
+    background-color: #2ecc71;
+    border: solid 0px;
+    border-radius: 5px;
+    
+}
+
+.btn:hover{
+    border: solid 0px;
+}
+
+.btab{
+    background-color: #7289DA;
+    color: white;
+    height: 40px;
+    width: 200px;
+    cursor: pointer;
+    border: solid 0px;
+    border-radius: 4px;
+    text-align: left;
+
+}
+
+
+.btabl{
+    color: #bdc3c7;
+    height: 40px;
+    width: 200px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.btabl:hover{
+      color: white;
+}
+
+
+.din{
+    display: inline-block;
+    
+}
+
+.dinflex{
+    display: inline-flex;
+    height: 300px;
+    
+}
+
+.btabmenu{
+    width: auto;
+}
+
+.tta{
+    text-align: left;
+}
+
+
+
+@media only screen and (max-width: 1006px){
+
+
+    .din{
+    display: block;
+    
+}
+
+.dinflex{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+}
+
+.btab{
+    display: inline-block;
+    margin-right: 5px;
+   
+}
+
+.btabl{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.btabmenu{
+    margin-left: auto;
+    margin-right: auto;
+}
+.tta{
+    text-align: center;
+}
+
+}
+
+
+
+.select-wrapper input.select-dropdown{
+    background-color: #ecf0f1;
+    border: solid 0px;
+    border-radius: 5px;
+    border-bottom: solid 0px;
+    color: #2C2F33;
+}
+
+input[type=text]:not(.browser-default){
+    background-color: #ecf0f1;
+    border: solid 0px;
+    border-radius: 5px;
+    color: #2C2F33;
+    padding-left: 10px;
+}
+
+input[type=url]:not(.browser-default){
+    background-color: #ecf0f1;
+    border: solid 0px;
+    border-radius: 5px;
+    color: #2C2F33;
+    padding-left: 10px;
+}
+
+input[type=url]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid #7289DA;
+    -webkit-box-shadow: 0 1px 0 0 #7289DA;
+    box-shadow: 0 1px 0 0 #7289DA;
+}
+textarea.materialize-textarea{
+    background-color: #23272A;
+    border: solid 0px;
+    border-radius: 6px;
+    min-height: 250px;
+    max-height: 1000px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    overflow: auto;
+    
+
+}
+input[type=text]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid #7289DA;
+    -webkit-box-shadow: 0 1px 0 0 #7289DA;
+    box-shadow: 0 1px 0 0 #7289DA;
+}
+
+.hiddendiv{
+    position:relative;
+    width: 10px;
+    display: none;
+}
+
+    </style>
+    <body style="background-color: #2C2F33;">
+        <div class="header">
+            <%- include("../parts/header") %>
+        </div>
+        <div class="main">
+
+            <div style="display: block;">
+
+                <div class="dinflex" style="width: auto;margin-top: 30px;margin-bottom: 50px;">
+                   <div style="padding: 35px;">
+                <p class="center-align" style="font-size: 12px;color: white;">MODIFICATION</p>
+
+                <div class="center-align" >
+                   <div style="padding: 10px;" class="btab tta">
+                    <i style="margin-right: 10px;" class="fas fa-home"></i> Général
+                   </div>
+
+                   <a href="/dashboard/bot/<%= bot.id %>/webhook">
+                   <div style="padding: 10px;margin-top: 15px;" class="btabl tta">
+                    <i style="margin-right: 10px;" class="fas fa-cogs"></i> Webhook
+                   </div>
+                   </a>
+
+                   <a href="/dashboard/bot/<%= bot.id %>/widget">
+                   <div style="padding: 10px;margin-top: 15px;" class="btabl tta">
+                    <i style="margin-right: 10px;" class="fas fa-image"></i> Widget
+                   </div> 
+                   </a>
+
+
+                   <% if (bot.certified) { %>
+                   
+
+                    <div style="padding: 10px;margin-top: 15px;" class="btabl tta">
+                        <i style="margin-right: 10px;" class="fas fa-gem"></i> Premium
+                       </div>
+                 <%  }  %>
+
+
+                 
+
+                   <div>
+                       
+                   
+                <p class="center-align" style="font-size: 12px;color: white;">INFORMATIONS</p>
+
+           
+                   
+
+                    <div style="padding: 10px;margin-top: 15px;" class="btabl tta">
+                        <i style="margin-right: 10px;" class="fas fa-trophy"></i> Classement
+                       </div>
+              
+            
+
+      
+                    
+                   </div>
+                </div>
+
+                   </div>
+                 </div>
+
+
+                 
+
+
+            <div class="container center-align din" style="padding: 1px;width: 80%;margin-bottom: 60px;margin-top:30px;border-radius: 10px;">
+                <h4 style="color: #7289DA;font-family: 'Nunito', sans-serif;"><%= bot.name %></h4>  
+                    
+                <subtitle style="font-family: 'Nunito', sans-serif;">Modifiez les coordonnées et les informations de votre bot</subtitle>
+               
+           
+                <div class="row">
+                    <form class="col s12" id="new-bot-form" data-bot-id="<%= bot.id %>">
+                        <div class="row">
+                            <div class="input-field ">
+                                <select id="newbot">
+                                    <% if (bot.library) { %>
+                                    <option value="<%=bot.library%>">
+                                        <%=bot.library%>
+                                    </option>
+                                    <%- libs.filter(lib => lib !== bot.library).map(lib => `<option value="${lib}">${lib}</option>`) %>
+                                    <option value="none">Autres</option>
+                                    <% } else { %>
+                                    <option value="none">Autres</option>
+                                    <%- libs.filter(lib => lib !== bot.library).map(lib => `<option value="${lib}">${lib}</option>`) %>
+                                    <% } %>
+                                </select>
+                                <label>Library</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="input-field ">
+                                <select id="tagsbot" id="newbot">
+                                    <% if (bot.tags) { %>
+                                    <option value="<%=bot.tags%>">
+                                        <%=bot.tags%>
+                                    </option>
+                                    <%- tage.filter(tag => tag !== bot.tags).map(tag => `<option value="${tag}">${tag}</option>`) %>
+                                  
+                                    <% } else { %>
+                                    
+                                    <%- tage.filter(tag => tag !== bot.tags).map(tag => `<option value="${tag}">${tag}</option>`) %>
+                                    <% } %>
+                                </select>
+                                <label>Tags</label>
+                            </div>
+                        </div>
+
+                     
+
+                        <div class="row">
+                            <div class="input-field ">
+                                <input  id="bot_prefix" type="text" maxlength="25" class="validate" value="<%=bot.prefix%>">
+                                <label for="bot_prefix">Prefix</label>
+                            </div>
+                            <div class="input-field ">
+                                <input  id="bot_website" type="url" class="validate" value="<%=bot.website%>">
+                                <label for="bot_website">Site Web (facultatif)</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field ">
+                                <input maxlength="55"  id="bot_description" data-length="200" required minlength="40" type="text" class="validate" value="<%=bot.shortDescription%>">
+                                <label for="bot_description">Petite Description</label>
+                            </div>
+                            <p class="tl" >Les utilisateurs qui naviguent dans la liste verront votre description courte avant votre description complète
+                                , donc assurez-vous d'inclure des informations sur les raisons pour lesquelles ils doivent cliquer sur votre bot.</p>
+                        </div>
+                        <div class="row">
+                            <div class="input-field ">
+                                <textarea style="color: white;" maxlength="1200" required minlength="100"  id="bot_description-full" class="materialize-textarea"><%=bot.longDescription%></textarea>
+                                <label for="bot_description-full">Description Complète</label>
+                            </div>
+                            <p class="tl"><a style="color: #7289DA;" href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> est soutenu dans
+                                la description complète.
+                                <%= bot.certified && 'Vous pouvez également utiliser du HTML (y compris la balise de style), car votre bot est premium' %>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="input-field">
+                                <input  id="bot_invite" type="url" class="validate" value="<%=bot.invite%>">
+                                <label for="bot_invite">Custom Invite URL (facultatif</label>
+                            </div>
+                            <p class="tl" >Les URL d'invitation personnalisées peuvent être utiles si votre bot est un bot de modération ou un bot
+                                qui a besoin d'autorisations supplémentaires</p>
+                        </div>
+                        <div class="row">
+                            <div class="input-field ">
+                                <input  id="bot_github" type="url" class="validate" minlength="19" value="<%= bot.github %>">
+                                <label for="bot_github">GitHub URL (facultatif)</label>
+                            </div>
+                         
+                        </div>
+                    
+                        <div class="row" style="display: <%= bot.certified ? 'block' : 'none' %>">
+                            <div class="input-field">
+                                <input  id="vanity_url" type="text" class="validate" minlength="4" maxlength="12" value="<%= bot.vanityURL %>">
+                                <label for="vanity_url">URL Personnalisé (facultatif)</label>
+                            </div>
+                            <p class="tl" style="color: white;">Vous pouvez éventuellement ajouter une URL personnalisé pour la page de votre bot, de sorte que votre bot puisse être consulté à partir de <code>shadow-bot.com/bot/[lenomdetonbot]</code>, ainsi que <code>shadow-bot.com/bot/[id]</code></p>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input  id="like_webhook" type="url" class="validate" value="<%= bot.likeWebhook %>">
+                                <label for="like_webhook">Webhook (facultatif)</label>
+                            </div>
+                            <p class="col s6" style="color: #2C2F33;">Si vous avez besoin de savoir quand un utilisateur aime votre bot, vous pouvez configurer un webhook
+                                et l'adresse de ce serveur est ici pour qu'il puisse être notifié. Voir l'API
+                                Documentation pour plus de détails</p>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input  id="webhook_auth" type="text" class="validate" value="<%= bot.webhookAuth %>">
+                                <label for="webhook_auth">Webhook Auth</label>
+                            </div>
+                            <p class="col s6" style="color: #2C2F33;">Mettez un mot de passe pour votre webhook</p>
+                        </div>
+                        <div class="row">
+                            <button class="square blue btn btn-orange btn-1x" type="submit" name="action" id="nb-submit">Envoyer
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <%- include("../parts/footer") %>
+        <%- include("../parts/scripts") %>
+    </footer>
+</html>

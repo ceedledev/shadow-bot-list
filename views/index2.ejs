@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+ 
+        <%- include("parts/head") %>
+     
+     
+
+
+        <meta name="theme-color" content="#7289DA">
+        <meta name="title" content="Shadow Bot List">
+        <meta name="description" content="Shadow Bot List - Découvrez de nouveaux bots">
+        <meta name="keywords" content="discord,shadow,Discord,Shadow,bot list,Bot list,Bot List,Bot,bot,shadow bot,Shadow bot,Shadow Bot,shadow Bot,BOT">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <meta property="og:title" content="Shadow Bot List">
+        <meta property="og:url" content="http://shadow-bot.com/">
+        <meta property="og:description" content="Partez à l'aventure en découvrant des bots inédits pour vos serveurs Discord">
+        <meta property="og:image" content="https://zupimages.net/up/20/26/yh2b.png">
+
+        <meta name="twitter:card" value="summary">
+        <meta name="twitter:title" content="Shadow Bot List">
+        <meta name="twitter:description" content="Partez à l'aventure en découvrant des bots inédits pour vos serveurs Discord">
+        <meta name="twitter:image" content="https://zupimages.net/up/20/26/yh2b.png">
+      
+      
+       
+     
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+      
+    </head>
+<style>
+
+    p{
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    html{
+        font-family: 'Quicksand', sans-serif;
+    }
+
+
+body{
+    font-family: 'Quicksand', sans-serif;
+}
+
+#discord{
+    transition: 0.5s;
+}
+
+#discord:hover{
+    transform: rotate(-360deg);
+}
+
+#but{
+  background: linear-gradient(to right, #424242 50%, #7289DA 50%);
+  background-position: right bottom;
+  background-size: 200% 100%;
+  transition: 0.5s;
+}
+
+.btn:hover, .btn-large:hover, .btn-small:hover {
+    background-color: #7289DA;
+}
+
+#but:hover{
+background-position: left bottom;
+}
+
+      .tagsinfo{
+        margin-bottom:20px;margin-left: 5px;padding: 1px;display:inline-block;font-size: 13px;font-weight: 500;
+      }
+
+      .tags{
+           border: solid 0px #f1f2f6;border-radius: 10px;min-height: 70px;max-height:350px;width: 70%;margin-left: auto;margin-right: auto;
+            padding: 0px 10%;margin-bottom: 25px;
+        }
+
+        .tagslist{
+                margin-left: 5px;padding: 1px;display:inline-block;font-size: 13px;font-weight: 500;margin-top: 10px;margin-bottom: 10px;
+              }
+      
+
+         .btn-plus{
+             background-color: #1d1f21;
+             display: block;
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 0;
+    border-radius: 9px;
+    height: 70px;
+    width: 300px;
+
+    text-decoration: none;
+    transition: .5s;
+         }    
+
+         .btn-plus:hover{
+             background-color: #7289DA;
+         }
+          
+
+</style>
+ 
+
+    <body >
+    
+        </div>
+        </div>
+       
+         <div class="main ">
+            <div class="header">
+                <%- include("parts/header") %>
+            </div>
+            <%- include("parts/headerpre2") %>
+
+             
+
+
+                <br>
+
+                <h4 style="color: #b6bef1;font-family: 'Quicksand', sans-serif;font-size: 38px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" fill="#b6bef1" width="50px" height="50px" viewBox="0 0 512 512"><path d="M269,335.61q-6.33.47-12.78.47c-5.23,0-10.4-.24-15.51-.69a176.11,176.11,0,0,1-127.67-72.94,4,4,0,0,0-6.77.35l-72,129.4c-2.74,5-3.17,11-.28,15.88A16.78,16.78,0,0,0,48.22,416h78a15.28,15.28,0,0,1,13.62,7.33L178.5,488a16.26,16.26,0,0,0,13.75,8h0c5.94-.33,12.09-4.19,14.56-9.6l66.11-145.15A4,4,0,0,0,269,335.61Z"/><path d="M477.64,391.88,406.11,262.71a4,4,0,0,0-6.74-.36,176.5,176.5,0,0,1-78.31,61.42,16.09,16.09,0,0,0-8.72,8.25l-36.86,81.1a7.92,7.92,0,0,0,0,6.6l30.27,66.59c2.45,5.41,8.59,9.36,14.52,9.69h0a16.3,16.3,0,0,0,13.7-8.12L372.5,423.3c2.89-4.85,8.13-7.33,13.78-7.3h78.77c6.67,0,11.72-3.48,14-10A16.92,16.92,0,0,0,477.64,391.88Z"/><ellipse cx="256.26" cy="160" rx="48.01" ry="48"/><path d="M256.26,16c-79.42,0-144,64.59-144,144s64.61,144,144,144,144-64.6,144-144S335.67,16,256.26,16Zm0,224a80,80,0,1,1,80-80A80.1,80.1,0,0,1,256.26,240Z"/></svg> Premium
+            </h4>
+
+      
+            <p style="font-size: 18px;color: #A5AAAF;">Les bots Premium sont regroupés ici</p>
+          
+            <% if (rawBotsPremium.length) { %>
+
+                <div class="bot-cards">
+                    <%- botChunkpremium.map(chunk => `<div class="row bot-card">${chunk.map(bot => include("parts/botCard", {bot})).join("")}</div>`).join("") %>
+                </div>
+
+
+              
+                <% } else { %>
+                    <div style="display: inline-block;">
+                        <div style="display: inline-block;margin-right: 12px;">
+                    <%- include("parts/botCardp") %>
+                        </div>
+                        <div style="display: inline-block;margin-left: 12px;margin-right: 12px;">
+                    <%- include("parts/botCardp") %>
+                        </div>
+                        <div style="display: inline-block;margin-left: 12px;margin-right: 12px;">
+                            <%- include("parts/botCardp") %>
+                                </div>
+                                <div style="display: inline-block;margin-left: 12px">
+                                    <%- include("parts/botCardp") %>
+                                        </div>
+                    </div>
+                <% } %>
+                
+                <a style="margin-bottom: 60px;padding: 21px;font-size: 19px;box-shadow: 0px 0px 0px" class="btn-plus" href="/list/premium">Voir Plus</a>
+
+                <br>
+
+
+ 
+
+                <h4 style="color: #b6bef1;font-size: 38px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" fill="#b6bef1" width="50px" height="50px" viewBox="0 0 512 512"><path d="M464,184H453.1a78.72,78.72,0,0,0-16-7.18C419.5,171,396.26,168,368,168s-51.5,3-69.06,8.82c-14.06,4.69-20.25,9.86-22.25,11.87h0a47.94,47.94,0,0,0-41.36,0h0c-2-2-8.19-7.18-22.25-11.87C195.5,171,172.26,168,144,168s-51.5,3-69.06,8.82a78.72,78.72,0,0,0-16,7.18H48a16,16,0,0,0,0,32h.17c1,45.46,6.44,72.78,18.11,92.23a66.78,66.78,0,0,0,31.92,28c12.23,5.24,27.22,7.79,45.8,7.79,24.15,0,58.48-3.71,77.72-35.77,9.68-16.14,15.09-37.69,17.21-70.52A16,16,0,0,0,240,232a16,16,0,0,1,32,0,16,16,0,0,0,1.07,5.71c2.12,32.83,7.53,54.38,17.21,70.52a66.78,66.78,0,0,0,31.92,28c12.23,5.24,27.22,7.79,45.8,7.79,24.15,0,58.48-3.71,77.72-35.77,11.67-19.45,17.13-46.77,18.11-92.23H464a16,16,0,0,0,0-32Z"/></svg> Bot Populaire
+            </h4>
+            <p style="font-size: 18px;color: #A5AAAF;">Ici il y a les bots avec le plus de vote du mois</p>
+
+
+                <% if (rawBots.length == 0) { %>
+                
+                <% } else { %>
+                <div class="bot-cards">
+                    <%- botChunk.map(chunk => `<div class="row bot-card">${chunk.map(bot => include("parts/botCard", {bot})).join("")}</div>`).join("") %>
+                </div>
+                <% } %>
+                <a style="margin-bottom: 60px;padding: 21px;font-size: 19px;box-shadow: 0px 0px 0px" class="btn-plus" href="/list/top">Voir Plus</a>
+                <br>
+        
+           
+
+
+               
+            
+
+                <h4 style="color: #b6bef1;font-size: 38px;margin-top: 15px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" fill="#b6bef1" width="50px" height="50px" viewBox="0 0 512 512"><circle cx="256" cy="256" r="48"/><path d="M475.93,303.91a67.49,67.49,0,0,0-44.34-115.53,5.2,5.2,0,0,1-4.58-3.21h0a5.21,5.21,0,0,1,1-5.51A67.83,67.83,0,0,0,378,66.33h-.25A67.13,67.13,0,0,0,332.35,84a5.21,5.21,0,0,1-5.52,1h0a5.23,5.23,0,0,1-3.22-4.58,67.68,67.68,0,0,0-135.23,0A5.2,5.2,0,0,1,185.17,85h0a5.21,5.21,0,0,1-5.52-1,67.11,67.11,0,0,0-45.44-17.69H134A67.91,67.91,0,0,0,84,179.65a5.21,5.21,0,0,1,1,5.51h0a5.2,5.2,0,0,1-4.58,3.21,67.71,67.71,0,0,0,0,135.23A5.23,5.23,0,0,1,85,326.83h0a5.22,5.22,0,0,1-1,5.52,67.54,67.54,0,0,0,50.08,113h.25A67.38,67.38,0,0,0,179.65,428a5.21,5.21,0,0,1,5.51-1h0a5.2,5.2,0,0,1,3.21,4.58,67.71,67.71,0,0,0,135.23,0,5.23,5.23,0,0,1,3.22-4.58h0a5.21,5.21,0,0,1,5.51,1,67.38,67.38,0,0,0,45.29,17.42h.25a67.48,67.48,0,0,0,50.08-113,5.22,5.22,0,0,1-1-5.52h0a5.23,5.23,0,0,1,4.58-3.22A67.31,67.31,0,0,0,475.93,303.91ZM256,336a80,80,0,1,1,80-80A80.09,80.09,0,0,1,256,336Z"/></svg> Nouveaux Bot
+            </h4>
+            
+
+      
+            <p style="font-size: 18px;color: #A5AAAF;">Les nouveaux bots se retrouvent ici</p>
+				
+                <div class="bot-cards">
+                   
+                    <%- botChunks2.map(chunk => `<div class="row bot-card">${chunk.map(bot => include("parts/botCard", {bot})).join("")}</div>`).join("") %>
+                    
+                </div>
+
+                
+
+           
+                    <br>
+                <a style="margin-bottom: 60px;padding: 21px;font-size: 19px;box-shadow: 0px 0px 0px" class="btn-plus" href="/list/nouveau">Voir Plus</a>
+                        
+         
+       
+        
+        </div>
+        </div>
+
+
+        
+    </body>
+    <footer>
+        <%- include("parts/footer") %>
+        <%- include("parts/scripts") %>
+    </footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167774016-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-167774016-1');
+</script>
+</html>

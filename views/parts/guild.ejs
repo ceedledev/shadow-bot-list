@@ -1,0 +1,26 @@
+
+
+
+<div class="guildcard">
+
+    <%if(!b.icon){ %>
+        <img style="width: 60px;height: 60px;" src="https://cdn.discordapp.com/attachments/761867740499148820/789787015003897876/telechargement_4.png">
+    <%}%>
+
+    <%if(b.icon){ %>
+    <img data='<%=server%>' style="width: 60px;height: 60px;" src="https://cdn.discordapp.com/icons/<%=b.id%>/<%=b.icon%>.png">
+    <%}%>
+
+    <%=b.id%>
+
+    <%if(server.serverID == b.id) { %>
+            ouiii
+        <%}%>
+
+        <%if(server.serverID !== b.id) { %>
+            non
+        <%}%>
+
+    
+
+</div>

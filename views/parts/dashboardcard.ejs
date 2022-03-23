@@ -1,0 +1,187 @@
+
+
+
+<style>
+    .infover{
+        background-color: #1d1f21;
+        border: solid 0px;
+        border-radius: 30px;
+        width: 70px;
+        height: 25px;
+        color: white;
+        padding: 1px;
+        margin-left: 10px;
+        margin-top: 7px;
+    }
+
+
+    
+.tooltip{
+	
+	border-bottom: 0px;
+	display: block;
+	text-align: unset;
+    position:inherit;
+}
+
+.tooltip .top {
+    min-width:150px;
+    max-width:400px;
+    top:-10px;
+    height:40px;
+    transform:translate(-40%,-100%);
+    padding:10px 20px;
+	color:#A5AAAF;
+	font-weight: 600;
+    background-color:#000000;
+    font-weight:normal;
+    font-size:14px;
+    border-radius:8px;
+    position:absolute;
+    z-index:99999999;
+    box-sizing:border-box;
+    box-shadow:0 1px 8px rgba(0,0,0,0.5);
+    display:none;
+    text-align: center;
+}
+
+
+
+
+
+
+</style>
+
+<a href="/dashboard/bot/<%=bot.id%>/edit">
+<div class="center-align" style="margin-left: 20px;margin-right: 20px;display: inline-block;margin-bottom: 25px;">
+    
+    <div>
+
+        <% if (bot.certified) { %>
+            <div class="tooltip"  style="position: absolute;display: inline-block;margin-left: 50px;margin-top: -10px;">
+    
+                <div class="circle" style="background-color: #222428;width: 50px; height: 50px;padding-top: 2px;padding-left: 2px;">
+                <svg xmlns='http://www.w3.org/2000/svg' height="3em" width="3em" style="" fill="#43b581" class='ionicon' viewBox='0 0 512 512'><path d='M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z'/></svg>
+                           </div>
+           
+                           <div class="top">
+                            Bot Certifier
+                            </div>
+                        </div>
+
+    
+        <%}%>
+      
+     
+
+        <div >
+    <img  height="160px" width="160px" style="border: solid 0px;border-radius: 10px;display: inline-block;" src=" <%= bot._discordAvatarURL %>">
+      
+ 
+    <% if(bot.status == "offline" ) { %>
+							
+    
+        <div class="tooltip" style="    background-color: #222428;
+        width: 30px;
+        height: 30px;
+        border: solid 0px;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        margin-top: 135px;
+        margin-left: -25px;
+        padding: 5px 5.5px;">
+            <div style="background-color: grey;    height: 20px;
+            width: 20px;
+            border-radius: 50%;">
+              
+            </div>
+            <div class="top">
+                Hors Ligne
+              </div>
+        </div>
+        <%} else { %> 
+
+        <% if(bot.status == 'dnd') { %>
+        
+           
+            <div class="tooltip" style="    background-color: #222428;
+            width: 30px;
+            height: 30px;
+            border: solid 0px;
+            border-radius: 50%;
+            display: inline-block;
+            position: absolute;
+            margin-top: 135px;
+            margin-left: -25px;
+            padding: 5px 5.5px;">
+                <div style="background-color: #ff4757;    height: 20px;
+                width: 20px;
+                border-radius: 50%;">
+                  
+                </div>
+
+                <div class="top">
+                    Ne Pas Déranger
+                  </div>
+            </div>
+        <%} else { %>
+
+        <% if(bot.status == 'idle') { %>
+          
+           
+            <div class="tooltip" style="    background-color: #222428;
+            width: 30px;
+            height: 30px;
+            border: solid 0px;
+            border-radius: 50%;
+            display: inline-block;
+            position: absolute;
+            margin-top: 135px;
+            margin-left: -25px;
+            padding: 5px 5.5px;">
+                <div style="background-color: #ffa502;    height: 20px;
+                width: 20px;
+                border-radius: 50%;">
+                  
+                </div>
+                <div class="top">
+                    Inactif
+                  </div>
+            </div>
+        <%} else { %>
+
+        <% if(bot.status == 'online') { %>
+     
+        <div class="tooltip" style="    background-color: #222428;
+        width: 30px;
+        height: 30px;
+        border: solid 0px;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        margin-top: 135px;
+        margin-left: -25px;
+        padding: 5px 5.5px;">
+            <div style="background-color: #43b581;    height: 20px;
+            width: 20px;
+            border-radius: 50%;">
+              
+            </div>
+
+            <div class="top">
+              En Ligne
+            </div>
+        </div>
+        <%} %>
+
+        
+							<%} %>
+							<%} %>
+							<%} %>
+
+    </div>
+
+
+    </div>
+</div></a>

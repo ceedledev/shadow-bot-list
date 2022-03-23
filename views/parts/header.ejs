@@ -1,0 +1,232 @@
+
+   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+   <link href="//cdn.jsdelivr.net/gh/zkreations/tooltips@3/tooltips.min.css" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-M4RD2M2');</script>
+<style>
+  .dropdown-content{
+    margin-top: 60px;
+    top: 0px;
+    min-width: 170px;
+  }
+
+  #profil-dropdown{
+    margin-top: 60px;
+    top: 0px;
+  }
+
+  .dropdown-content{
+    background-color: #1a1c1d ;
+  }
+
+  ul{
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+
+  nav li:hover{
+    background-color:  #23272a !important;
+  }
+
+  nav ul a:hover {
+    background-color: #23272a ;
+  }
+
+  .right{
+    float:none;
+  }
+
+  
+</style>
+
+
+<% if (typeof user == 'object') { %>
+<ul  id="profile-dropdown" class="dropdown-content"  style="top: 0px; border: solid 0px;border-radius: 9px;">
+    <li class="dropuser"><a style="font-size: 15px;color: grey;" class="center-align" href="/profil/<%=user.id%>"> 
+      <svg xmlns="http://www.w3.org/2000/svg" style="width: 1.3em;height:1.3em;vertical-align:middle;float:left" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+      </svg>
+      Profile</a></li>
+    <li class="dropuser"><a style="color: grey ;font-size: 15px;" class="center-align" href="/user/dashboard"> 
+      <svg xmlns="http://www.w3.org/2000/svg" style="width: 1.3em;height:1.3em;vertical-align:middle;float:left" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" />
+      </svg>
+      Dashboard</a></li>
+
+ <% if (user.staff || user.admin) { %>
+  <li class="dropuser"><a style="color: #7289DA;font-size: 15px;" class="center-align" href="/user/dashboard/staff"> 
+    <svg xmlns="http://www.w3.org/2000/svg" style="width: 1.3em;height:1.3em;vertical-align:middle;float:left" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+    </svg>
+    Staff Panel</a></li>  
+<% } %>
+
+
+    <li class="dropuser"><a style="color: #e74c3c;font-size: 15px;" class="center-align" id="log-out-indd">
+      <svg xmlns="http://www.w3.org/2000/svg" style="width: 1.3em;height:1.3em;vertical-align:middle;float:left" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+      </svg>
+      Logout</a></li>
+</ul>
+<% } %>
+
+
+
+
+<style>
+  nav{
+  
+    background-color: #1d1f21;
+    width: 100%;
+    height: 90px;
+    line-height: 40px;
+  
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    
+  }
+
+  .lfont{
+    font-size: 15px;
+    font-family: 'Quicksand', sans-serif;
+    
+  }
+
+  .lfont:hover{
+    color: #b6bef1;
+  }
+
+  .lfonpremium{
+    font-size: 15px;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .lfonpremium:hover{
+    color:#e67e22;
+  }
+
+  .tco{
+    background-color: #43b581;border: solid 0px;border-radius: 30px;margin-left: 10px;
+    height: 40px;width: 150px;text-align: center;font-size: 15px;
+  }
+  a{
+    border-bottom: none !important;
+  }
+
+  .tco:hover{
+    background-color: #3CA978;
+  }
+
+
+  .tcobot{
+    
+
+
+
+        width: max-content;
+        height: max-content;
+        color: white;
+        text-align: center;
+        padding-left: 16px;
+        padding-right: 16px;
+        border-radius: 5px;
+        background-color: #43b581;
+        margin-right: 15px;
+  }
+
+  .tcobot:hover{
+    background-color:#3CA978;
+  }
+
+  .img-logo{
+    background-color: #1a1c1d;
+    border-radius: 30%;
+  }
+
+</style>
+
+<nav style="font-family: 'Nunito', sans-serif;">
+    <div class="nav-wrapper" style="padding: 15px;">
+        
+      <a href="/" style="text-align: left;" class="brand-logo-sbl "><img class="img-logo" style="margin-left: 25px;position: absolute;left: 30px;"  src="https://cdn.discordapp.com/attachments/761867740499148820/809831215427223582/sblv2-removebg-preview.png" height="60px" width="60px"></a>
+      <% if (typeof user !== 'object') { %>
+ 
+        <div  style="display: inline-block;float: right;margin: 10px;">
+          <a class="lfont " style="height: 40px;width: 150px;border:solid 0px;border-radius: 30px;"  href="/discord/login">
+        <div class="tco" style="color: white;">
+         Se Connecter
+        </div>
+          </a>
+        </div>
+       
+      
+      <% } else { %>
+        <div  style="display: inline-block;float: right;margin: 10px;">
+          <div id="user-profile-navbar-item"><a href="#" class="dropdown-trigger" data-target="profile-dropdown" id="profile-dropdown-trigger"> <img class="responsive-img circle" alt="User Avatar" style=" vertical-align: middle; width: 38px !important; height: 38px !important;"src="<%=user._discordAvatarURL%>"></a></div>
+        </div>
+
+
+        <div  style="display: inline-block;float: right;margin: 10px;">
+          <a class="lfont " style="height: 40px;width: 150px;border:solid 0px;border-radius: 30px;"  href="/bot/dashboard/new">
+        <div class="tcobot" style="color: white;">
+          
+<svg xmlns='http://www.w3.org/2000/svg' width="1.5em" height="1.5em" fill="currentColor" style="vertical-align: middle;"  class='ionicon' viewBox='0 0 512 512'><path d='M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm80 224h-64v64a16 16 0 01-32 0v-64h-64a16 16 0 010-32h64v-64a16 16 0 0132 0v64h64a16 16 0 010 32z'/></svg> <span style="vertical-align: middle;">Add bot</span>
+        </div>
+          </a>
+        </div>
+
+
+          <% } %>
+        <ul id="nav-mobile" style="margin: 10px;float:left;padding-left: 100px;" class=" hide-on-med-and-down">
+          <li class="lbt"><a class="lfont" href="/">Home</a></li>            
+   
+      <li class="lbt"><a class="lfont" href="https://discord.gg/bf4NEUd">Support</a></li>
+
+      
+
+            <li class="lbt"><a class="lfonpremium" href="/user/dashboard/premium">Premium</a></li>
+            <li class="lbt"><a class="lfont" href="https://docs.shadow-bot.com">API Doc</a></li>
+        </ul>
+    </div>
+    <div class="nav-content hide-on-small-only">
+        <%- typeof childBefore === "string" ? childBefore : ""  %>
+       
+    </div>
+    
+</nav>
+
+
+
+<script>
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  
+    // Check if there are any navbar burgers
+    if ($navbarBurgers.length > 0) {
+  
+      // Add a click event on each of them
+      $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
+  
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+  
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+  
+        });
+      });
+    }
+  
+  });</script>
+<div id="snow"></div>

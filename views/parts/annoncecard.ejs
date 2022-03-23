@@ -1,0 +1,73 @@
+
+<style>
+    .cardannonce{
+        background-color: #1d1f21;
+        border: solid 0px;
+        border-radius: 5px;
+        width: 350px;
+        height: 230px;
+     
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+
+    .cardannonce:hover{
+       
+        transform: translateY(-5px);
+    }
+
+    .tooltip{
+	
+	border-bottom: 0px;
+	display: block;
+	text-align: unset;
+    position:inherit;
+}
+
+.tooltip .top {
+    min-width:150px;
+    max-width:400px;
+    top: 120px;
+    height: 40px;
+    transform: translate(-25%,-0%);
+    padding:10px 20px;
+	color:#A5AAAF;
+	font-weight: 600;
+    background-color:#000000;
+    font-weight:normal;
+    font-size:14px;
+    border-radius:8px;
+    position:absolute;
+    z-index:99999999;
+    box-sizing:border-box;
+    box-shadow:0 1px 8px rgba(0,0,0,0.5);
+    display:none;
+    text-align: center;
+}
+</style>
+
+<a href="/dashboard/job/<%=annonce.id%>">
+
+<div style="padding: 15px;"  class="cardannonce center-align">
+
+    <span style="color: #b6bef1;font-size: 17px;"><%=annonce.title%></span>
+
+    <div style="margin-top: 35px;height: 100px;">
+        <%=annonce.shortDescription%>
+    </div>
+
+    <div class="tooltip" style="background-color: #2C2F33;border: solid 0px;border-radius: 30px;width: 100px;height: 40px;padding: 10px;margin-left: auto;margin-right: auto;color: white;">
+    <%=annonce.budget%>€
+
+    <div class="top">
+    Budget
+    </div>
+    </div>
+
+</div></a>

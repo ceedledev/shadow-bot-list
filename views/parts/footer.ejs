@@ -1,0 +1,421 @@
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Ubuntu&display=swap" rel="stylesheet">
+
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700|Sansita+One);
+  
+  :root {
+    
+    --primary-color: #ecf0f1;
+     --secondary-color: #ecf0f1;
+     --font-color: #ecf0f1;
+     --bg-color: #222428;
+     --heading-color: #ecf0f1;
+     --footer-color: #1d1f21;
+     --navbar-color: #1d1f21;
+     --switchbg-color: #2C2F33;
+     --btn-color: #23272A;
+     --desc-color:#23272A;
+     --card-color: #23272A;
+
+     --logo-color: #333335;
+
+   
+ }
+ 
+ [data-theme="dark"] {
+   
+    --logo-color: #8c7ae6;
+
+     --primary-color: #2C2F33;
+     --secondary-color: #536390;
+     --font-color: #424242;
+     --bg-color: #F8F8F8;
+     --heading-color: #292922;
+     --footer-color: #7289DA;
+     --navbar-color: #7289DA;
+     --switchbg-color: #fff;
+     --btn-color: #fff;
+     --desc-color:#fff;
+     --card-color: #FEFDFD;
+    
+ }
+ 
+.lbt{
+  background-color: var(--footer-color);
+}
+
+
+
+
+
+.lbt:hover{
+  background-color: var(--logo-color);
+}
+ .card-color{
+  background-color: var(--card-color);
+ }
+
+.btn-explore{
+  background-color: var(--btn-color);
+  color: var(--primary-color)
+}
+ nav{
+   background-color: var(--navbar-color);
+ }
+ .barreplus{
+  background-color: var(--navbar-color);
+ }
+  
+  .list-bot{
+    text-align: center;
+  }
+
+  .tags{
+         background-color: transparent;
+  }
+
+ footer{
+  background-color: var(--footer-color);
+  
+ }
+
+ .mindesc {
+  
+  background-color: var(--desc-color);
+ 
+
+}
+
+ body {
+  
+   background-color: var(--bg-color);
+   color: var(--font-color);
+
+ }
+ 
+ h1 {
+     color: var(--heading-color);
+     
+ }
+ 
+ p {
+   font-size: 1.1rem;
+   line-height: 1.6rem;
+   color: var(--font-color);
+ }
+ 
+ a {
+   color: var(--primary-color);
+   text-decoration: none;
+   border-bottom: 3px solid transparent;
+ 
+   &:hover, &:focus {
+       border-bottom: 3px solid currentColor;
+   }
+ }
+ 
+ section {
+   max-width: 68%;
+   margin: 0 auto;
+ }
+ 
+ .post-meta {
+   font-size: 1rem;
+   font-style: italic;
+   display: block;
+   margin-bottom: 4vh;
+   color: var(--secondary-color);
+ }
+ 
+ nave {
+   display: flex;
+   justify-content: center;
+   padding: 20px 0;
+ }
+ 
+ .theme-switch-wrapper {
+   display: flex;
+   align-items: center;
+   
+   em {
+     margin-left: 10px;
+     font-size: 1rem;
+   }
+ }
+ .theme-switch {
+   display: inline-block;
+   height: 34px;
+   position: relative;
+   width: 60px;
+ }
+ 
+ .theme-switch input {
+   display:none;
+ }
+ 
+ .slider {
+   background-color: #66bb6a;
+   bottom: 0;
+   cursor: pointer;
+   left: 0;
+   position: absolute;
+   right: 0;
+   top: 0;
+   transition: .4s;
+   height: 34px;
+   width: 60px;
+ }
+ 
+ .slider:before {
+   background-color: #fff;
+   bottom: 4px;
+   content: "";
+   height: 26px;
+   left: 4px;
+   position: absolute;
+   transition: .4s;
+   width: 26px;
+ }
+ 
+ input:checked + .slider {
+   background-color:   #2C2F33;
+ }
+
+
+ 
+ input:checked + .slider:before {
+   transform: translateX(26px);
+ }
+ 
+ .slider.round {
+   border-radius: 34px;
+ }
+ 
+ .slider.round:before {
+   border-radius: 50%;
+ }
+
+
+.fsbl{
+  border: solid 0px;
+  display: inline-block;
+  border-radius: 50px;
+  width: 250px;
+  height: 50px;
+  color: white;
+  font-size: 19px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+  padding: 2px;
+  background: linear-gradient(to right, #7289DA 50%, #424242 50%);
+  background-position: right bottom;
+  background-size: 200% 100%;
+  transition: all 0.5s ease;
+}
+
+.fsbl:hover{
+  background-position: left bottom;
+}
+
+#sblimg{
+  transition: 0.5s;
+}
+
+#sblimg:hover{
+  transform: rotate(360deg);
+}
+
+
+.lbt{
+  background-color: transparent !important;
+}
+
+nav{
+  background-color: transparent !important;
+}
+
+.footer{
+  background-color: #151718 !important;
+  
+  position: relative;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-bottom: 30px;
+  
+  
+}
+footer{
+  margin-top: 80px;
+  background-color: #151718 !important;
+}
+
+
+.block-join{
+  background-color: #1c1f20;
+  width: max-content;
+  height: max-content;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: absolute;
+  top: -100px;
+  border-radius: 4px;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, 0%);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.block-join:hover{
+  transform: translate(-50%, -5%);
+}
+
+.projet-sbl{
+  display: inline-block;
+  vertical-align: top;
+}
+.link-util{
+  display: inline-block;
+  vertical-align: top;
+  
+  
+  margin-left: 100px;
+}
+
+
+.chartes{
+  display: inline-block;
+  vertical-align: top;
+  
+ margin-left: 100px;
+}
+
+.item-link{
+  color: rgb(206, 206, 206);
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.item-link:hover{
+  color: white;
+}
+
+.hrclass{
+  height: 1px;
+  color: grey;
+  background-color: rgb(71, 71, 71);
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+</style> 
+
+
+
+<div class="footer" style="color: #212121 !important;">            
+
+<a href="https://discord.gg/bf4NEUd">
+<div class="block-join">
+  <div style="display: inline-block;vertical-align: middle;">
+    
+    <svg style="width: 2.5em;height:2.5em;color:white;vertical-align:middle" xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 245 240"><style>.st0{fill:#7289DA;}</style><path class="st0" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zM140.9 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z"/><path class="st0" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.5 19V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/></svg>
+  </div>
+
+  <div style="display: inline-block;vertical-align: middle;margin-left: 10px;">
+    <div style="color: white;font-size: 18px;">
+      Join us
+    </div>
+    <div style="color: grey;">
+      Join us on our official support
+    </div>
+  </div>
+</div>
+</a>
+
+
+
+<div style="margin-top: 70px;">
+  <div class="projet-sbl">
+    <div style="color: white;font-size: 22px;">
+      Shadow Bot List
+    </div>
+    <div style="color: grey;width: 80%;">
+      An SEO site that is updated every week, original functionalities.
+    </div>
+  </div>
+
+  <div class="chartes">
+    <div style="color: white;font-size: 19px;">
+      Charters
+    </div>
+
+    <div style="margin-top: 10px;">
+      <div class="item-link">
+        <a href="/CGU">
+        CGU
+        </a>
+      </div>
+
+      <div class="item-link">
+        <a href="/CGV">
+        CGV
+        </a>
+      </div>
+
+      <div class="item-link">
+        <a href="/RGPD">
+        RGPD
+        </a>
+      </div>
+
+      <div class="item-link">
+        <a href="/mentions-legales">
+          Terms and conditions of use
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="link-util" >
+    <div style="color: white;font-size: 19px;">
+      Useful links
+    </div>
+
+    <div style="margin-top: 10px;">
+      <div class="item-link">
+        <a href="https://docs.shadow-bot.com/" target="blank">
+        API
+      </div>
+
+      <div class="item-link">
+        <a href="/premium">
+        Premium
+        </a>
+      </div>
+
+      <div class="item-link">
+        <a href="/user/dashboard">
+        Dashboard
+        </a>
+      </div>
+
+      <div class="item-link">
+        <a href="/staff">
+        Staff
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hrclass">
+  <div style="color: grey;">
+    © Shadow Bot List - 2021
+  </div>
+</div>
+
+</div>
