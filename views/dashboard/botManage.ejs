@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../parts/head") %>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Ubuntu&display=swap" rel="stylesheet">
+    </head>
+<style>
+
+.btn-acheter{
+            display: block;
+            text-align: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #7289DA;
+            border: solid 2px #7289DA;
+            border-radius: 8px;
+            height: 30px;
+            width: 100px;
+            color: white;
+            text-decoration: none;
+           
+           
+        }
+        .btn-acheter:hover{
+            
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-modifier{
+            display: block;
+            text-align: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #3498db;
+            border: solid 2px #3498db;
+            border-radius: 4px;
+            height: 40px;
+            width: 140px;
+            color: white;
+            text-decoration: none;
+           
+           
+        }
+        .btn-modifier:hover{
+            background-color: #2980b9;
+            border: solid 2px #2980b9;
+        }
+        .btn-supprimer{
+            display: block;
+            text-align: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #e74c3c;
+            border: solid 2px #e74c3c;
+            border-radius: 4px;
+            height: 40px;
+            width: 140px;
+            color: white;
+            text-decoration: none;
+           
+           
+        }
+        .btn-supprimer:hover{
+            background-color: #c0392b;
+            border: solid 2px #c0392b;
+        }
+        .anim{
+            align-items: center;
+        }
+        .anim:hover{
+            transform: translateY(-3px);
+        }
+        .btn-api{
+            display: block;
+            text-align: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #7289DA;
+            border: solid 2px #7289DA;
+            border-radius: 4px;
+            height: 30px;
+            width: 80px;
+            color: white;
+            text-decoration: none;
+           
+           
+        }
+        .btn-api:hover{
+            background-color: #8c7ae6;
+            border: solid 2px #8c7ae6;
+        }
+        .disabled{
+            background-color: #c8d6e5;
+            border: solid 2px #c8d6e5;
+            color: #2C2F33;
+        }
+        .disabled:hover{
+            background-color: #c8d6e5;
+            border: solid 2px #c8d6e5;
+        }
+
+</style>
+    <body>
+        <div class="header">
+            <%- include("../parts/header") %>
+        </div>
+        <div class="center-align" style="font-family: 'Nunito', sans-serif;">
+        <div class="main">
+            <div class="container" >
+                <h3 style="color: #7289DA;">Modification</h3>
+                <h5>Modifier votre bot simplement et rapidement</h5>
+                <div class="anim" style="margin-top: 30px;margin-left: auto;margin-right:auto;background-color: #2C2F33;border: solid 2px #2C2F33;border-radius: 8px;height: 340px;width: 310px;box-shadow: 0px 0px 10px #576574;">
+                    <a style="float: right;padding: 2px 8px;margin-top: 5px;margin-right: 5px;" class="btn-api <%= bot._ownerViewing ? `` : `disabled` %>" target="_blank" href="/bot/<%= bot.id %>/key"><i style="color:<%= bot._ownerViewing ? `white` : `#2C2F33` %> ;margin-right: 5px;" class="fas fa-code"></i>API</a>
+                   <br>
+                   <br>
+                   <br>
+                    <img width="128" height="128" src="<%=bot._discordAvatarURL%>"  class="circle">
+                <br>
+                <h4 style="color: white;" class="manage-bot-pfp"><%= bot.name %></h4><br>
+               
+                
+                <a style="margin-top:15px;margin-bottom: 5px;margin-right: 5px;padding: 7px 8px;display: inline-block;" class="btn-modifier" href="/dashboard/bot/<%= bot.id %>/edit"><i style="color: white;margin-right: 5px;" class="fas fa-wrench"></i>Modifier</a>
+                <a href="" style="margin-top: 15px;margin-bottom: 5px;padding: 6px 8px;display: inline-block;" class="btn-supprimer modal-trigger" data-target="delete-bot-modal"><i style="color: white;margin-right: 5px;" class="fas fa-trash-alt"></i>Supprimer</a>
+                </div>
+             
+
+                
+            </div>
+        </div>
+        <div id="delete-bot-modal" class="modal" data-bot-id="<%= bot.id %>">
+            <div class="modal-content">
+                <h4 class="red-text">Êtes-vous sûr de vouloir supprimer ce bot ?</h4>
+                <p class="red-text">Vous ne pouvez pas revenir sur cette action ! Faites attention.</p>
+            </div>
+            <div class="modal-footer">
+                <a id="delete-bot-action" class="modal-action modal-close waves-effect waves-red btn-flat red-text">Supprimer</a>
+            </div>
+        </div>
+        </div>
+    </body>
+    <footer>
+        <%- include("../parts/footer") %>
+        <%- include("../parts/scripts") %>
+    </footer>
+</html>

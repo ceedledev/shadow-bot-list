@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../parts/head", { title: 'Widget' }) %>
+    </head>
+
+    <style>
+  .dropdown-content li>span{
+    color: #2C2F33;
+}
+
+
+body.dark-theme input {
+    color:white;
+}
+
+.input-field{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    margin-top: 60px;
+}
+
+.tl{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn{
+    background-color: #2ecc71;
+    border: solid 0px;
+    border-radius: 5px;
+    
+}
+
+.btn:hover{
+    border: solid 0px;
+}
+
+.btab{
+    background-color: #7289DA;
+    color: white;
+    height: 40px;
+    width: 200px;
+    cursor: pointer;
+    border: solid 0px;
+    border-radius: 4px;
+    text-align: left;
+
+}
+
+
+.btabl{
+    color: #A5AAAF;
+    height: 40px;
+    width: 200px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.btablp{
+    color: #3498db;
+    height: 40px;
+    width: 200px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.btablp:hover{
+      color: #54a0ff;
+}
+
+.btabl:hover{
+      color: white;
+}
+
+
+.din{
+    display: inline-block;
+    
+}
+
+.dinflex{
+    display: inline-flex;
+    height: 300px;
+    
+}
+
+.btabmenu{
+    width: auto;
+}
+
+.tta{
+    text-align: left;
+}
+
+@media only screen and (max-width: 1006px){
+
+
+    .din{
+    display: block;
+    
+}
+
+.btablp{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.dinflex{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+}
+
+.btab{
+    display: inline-block;
+    margin-right: 5px;
+   
+}
+
+.btabl{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.btabmenu{
+    margin-left: auto;
+    margin-right: auto;
+}
+.tta{
+    text-align: center;
+}
+
+}
+
+
+
+    </style>
+    <body style="background-color: #2C2F33;">
+        <div class="header">
+            <%- include("../parts/header") %>
+        </div>
+        <div class="main">
+
+                <div class="dinflex" style="width: auto;margin-top: 30px;">
+                   <div style="padding: 35px;">
+                <p class="center-align" style="font-size: 12px;color: white;">MODIFICATION</p>
+
+                <div class="center-align" >
+
+                    <a href="/dashboard/bot/<%= bot.id %>/edit">
+                   <div style="padding: 10px;" class="btabl tta">
+                    <i style="margin-right: 10px;" class="fas fa-home"></i> Général
+                   </div>
+                    </a>
+                   
+                   <div style="padding: 10px;margin-top: 15px;" class="btab tta">
+                    <i style="margin-right: 10px;" class="fas fa-cogs"></i> Webhook
+                   </div>
+          
+
+                  <a href="/dashboard/bot/<%= bot.id %>/widget">
+                   <div style="padding: 10px;margin-top: 15px;" class="btabl tta">
+                    <i style="margin-right: 10px;" class="fas fa-image"></i> Widget
+                   </div> 
+                   </a>
+                  
+
+
+                   <% if (bot.certified) { %>
+                   
+
+                    <div style="padding: 10px;margin-top: 15px;" class="btablp tta">
+                        <i style="margin-right: 10px;" class="fas fa-gem"></i> Premium
+                       </div>
+                 <%  }  %>
+
+                   <div>
+
+
+                    <p class="center-align" style="font-size: 12px;color: white;margin-top: 60px;">INFORMATIONS</p>
+
+           
+                   
+
+                    <div style="padding: 10px;margin-top: 15px;cursor:not-allowed;" class="btabl tta">
+                        <i style="margin-right: 10px;" class="fas fa-trophy"></i> Classement
+                       </div>
+
+                   </div>
+                </div>
+
+                   </div>
+                 </div>
+
+
+            <div class="container center-align din" style="padding: 1px;width: 80%;margin-bottom: 60px;margin-top:150px;border-radius: 10px;">
+                <img style="border-radius: 22px;margin-top: 60px;border: solid 0px;" class="responsive-img circle" width="80" height="80" alt="Bot Avatar" src="<%= botimage._discordAvatarURL %>">
+                <h4 style="color: #7289DA;font-family: 'Nunito', sans-serif;">Webhook</h4>  
+                    
+                <subtitle style="font-family: 'Nunito', sans-serif;">Utiliser un webhook avec notre api</subtitle>
+               
+           
+                <div class="row">
+                    <form class="col s12" id="new-bot-form" data-bot-id="<%= bot.id %>">
+                        
+
+                        <div style="margin-top: 30px;" class="row">
+                          
+
+                       <p style="color: white;">En Développement , merci de votre compréhension</p>
+
+                         
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="padding-bottom: 200px;">
+
+        </div>
+    </body>
+    <footer>
+        <%- include("../parts/footer") %>
+        <%- include("../parts/scripts") %>
+    </footer>
+</html>

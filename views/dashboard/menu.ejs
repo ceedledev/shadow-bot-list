@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../parts/head", { title: 'Menu' }) %>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Ubuntu&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+    </head>
+<style>
+
+
+
+
+
+
+</style>
+    <body>
+        <div class="header">
+            <%- include("../parts/header2") %>
+        </div>
+       
+
+        <style>
+            .clo{
+                width: 250px;
+                margin-left: auto;
+                margin-right: auto;
+                height: auto;
+                display: inline-block;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+
+            .add-btn{
+                background-color: #313438;
+                border: 0px;
+                border-radius: 5px;
+                width: max-content;
+                padding-left: 5px;
+                padding-right: 5px;
+                height: 40px;
+                padding: 10px;
+                color: white;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .add-btn:hover{
+                background-color: #373a3f;
+            }
+
+            body{
+                font-family: 'Quicksand', sans-serif;
+            }
+
+            .subdiv{
+                background-color: #2C2F33;
+                border: 0px;
+                border-radius: 20px;
+                width: max-content;
+                height: 40px;
+                padding-left: 15px;
+                padding-right: 15px;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 10px;
+            }
+        </style>
+         
+
+        <div class="main">
+           
+            <div style="margin-bottom: 150px;" class="center-align">
+
+                <div>
+                    <h1 style="color: #b6bef1;font-size: 29px;">Menu</h1>
+                    <div class="subdiv">
+                        Sélectionne ce que tu veux ajouter sur le site 
+                    </div>
+                </div>
+
+
+
+                <div class="clo">
+                    <img style="height: 250px;width: 250px;" src="https://cdn.discordapp.com/attachments/708013329603624970/782677951874465832/SBL__6_-removebg-preview.png">
+                <div class="add-btn">
+                 Ajouter un bot
+                </div>
+                
+                </div>
+
+                
+                <div class="clo">
+                    <img style="height: 250px;width: 250px;" src="https://cdn.discordapp.com/attachments/708013329603624970/782677401774981140/SBL__5_-removebg-preview.png">
+                <div class="add-btn">
+                 Ajouter un serveur
+                </div>
+                
+                </div>
+
+                <div class="clo">
+                    <img style="height: 250px;width: 250px;" src="https://cdn.discordapp.com/attachments/708013329603624970/782676739998089276/SBL__4_-removebg-preview.png">
+                <div class="add-btn">
+                 Ajouter une template
+                </div>
+                
+                </div>
+
+
+            </div>
+
+            
+      
+       
+        </div>
+    </body>
+    <footer>
+      
+        <%- include("../parts/footer") %>
+        <%- include("../parts/scripts") %>
+    </footer>
+</html>
+
+

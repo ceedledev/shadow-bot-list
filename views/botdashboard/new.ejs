@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <%- include("../parts/head", { title: 'Dashboard' }) %>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    </head>
+
+    <style>
+            
+.dropdown-content li>span{
+    color: #2C2F33;
+}
+
+
+body.dark-theme input {
+    color: grey;
+}
+
+.input-field{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.tl{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn{
+    background-color: #2ecc71;
+    border: solid 0px;
+    border-radius: 5px;
+    
+}
+
+.btn:hover{
+    border: solid 0px;
+}
+
+
+.select-wrapper input.select-dropdown{
+    background-color: #2C2F33;
+    border: solid 0px;
+    border-radius: 5px;
+    border-bottom: solid 0px;
+    color: #dedede;
+}
+
+input[type=text]:not(.browser-default){
+    background-color: #2C2F33;
+    border: solid 0px;
+    border-radius: 5px;
+    color: #dedede;
+    padding-left: 10px;
+}
+
+input[type=url]:not(.browser-default){
+    background-color: #2C2F33;
+    border: solid 0px;
+    border-radius: 5px;
+    color: #dedede;
+    padding-left: 10px;
+}
+
+input[type=url]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid #7289DA;
+    -webkit-box-shadow: 0 1px 0 0 #7289DA;
+    box-shadow: 0 1px 0 0 #7289DA;
+}
+textarea.materialize-textarea{
+    background-color: #2C2F33;
+    border: solid 0px;
+    border-radius: 6px;
+    min-height: 250px;
+    max-height: 1000px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    overflow: auto;
+    
+
+}
+input[type=text]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid #7289DA;
+    -webkit-box-shadow: 0 1px 0 0 #7289DA;
+    box-shadow: 0 1px 0 0 #7289DA;
+}
+
+div.newbot-dd-wrap input.select-dropdown {
+    color:  #dedede;
+}
+
+input[type=text].invalid:not(.browser-default){
+    color:#dedede;
+}
+
+::placeholder{
+    color: #7C8083;
+}
+
+textarea.materialize-textarea:focus:not([readonly]) {
+
+    border-bottom: 1px solid #7289DA;
+    -webkit-box-shadow: 0 1px 0 0 #7289DA;
+    box-shadow: 0 1px 0 0 #7289DA;
+}
+
+.dropdown-content {
+    background-color: #fff;
+}
+
+.select-wrapper+label {
+
+top:-35px;
+}
+
+.toast-container {
+
+-webkit-box-shadow: 0 0 0px #999999; 
+box-shadow: 0 0 0px #999999; 
+color: #ffffff;
+opacity: 1;
+
+}
+
+
+.toast-warning{
+    background-color: #e67e22;
+}
+
+
+
+
+
+
+
+body{
+  padding: 0px;
+  margin: 0px;
+  left: 0;
+  right: 0;
+  top:0;
+  bottom:0;
+  
+}
+
+
+
+
+
+
+
+hr{
+    background-color:#33343b;
+    height: 2px;
+    margin: 10px 0;
+    border: none;
+}
+
+
+input:-internal-autofill-selected{
+    background:rgb(36 39 41) !important;
+    border: 1px solid rgb(26, 26, 26) !important;
+    transition: 0s !important;
+    appearance: none !important;
+    background-image: none !important;
+}
+
+input{
+   background-color:rgb(44 47 49) !important;
+    border: 1px solid rgb(27, 26, 26) !important;
+    transition: 0s !important;
+    border-radius: 4px !important;
+    font-family: 'Quicksand', sans-serif;
+}
+
+input.invalid:not(.browser-default){
+    border-bottom: 1px solid rgb(26, 26, 26) !important;
+    -webkit-box-shadow: 0 0px 0 0 !important;
+    box-shadow: 0 0px 0 0 !important;
+}
+
+input.valid:not(.browser-default){
+    border-bottom: 1px solid rgb(26, 26, 26) !important;
+    -webkit-box-shadow: 0 0px 0 0 !important;
+    box-shadow: 0 0px 0 0 !important;
+}
+
+input.valid{
+    background-color:rgb(44 47 49) !important;
+    border: 1px solid rgb(26, 26, 26) !important;
+}
+
+input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-color:rgb(44 47 49) !important;
+    background-image: none !important;
+    color: #dedede !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus{
+    background-color:rgb(44 47 49) !important;
+    border: 1px solid rgb(26, 26, 26) !important;
+    background:rgb(36 39 41) !important;
+    border: 1px solid rgb(26, 26, 26) !important;
+    transition: 0s !important;
+    appearance: none !important;
+    background-image: none !important;
+}
+
+input:-webkit-autofill {
+
+  background-color: rgb(36 39 41) !important;
+}
+
+input:not(.browser-default):focus:not([readonly]){
+    background-color:rgb(44 47 49) !important;
+    border: 1px solid rgb(26, 26, 26) !important;
+    box-shadow: 0px 0px 0px !important;
+}
+
+textarea:focus{
+    background-color:rgb(44 47 49) !important;
+    border: 1px solid rgb(26, 26, 26) !important;
+    box-shadow: 0px 0px 0px !important;
+}
+
+textarea{
+    background-color:rgb(44 47 49) !important;
+    border: 1px solid rgb(26, 26, 26) !important;
+    box-shadow: 0px 0px 0px !important;
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+.input-field{
+    min-height: auto;
+display: block;
+
+  grid-auto-flow: column;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+
+}
+
+@media (min-width: 900px){
+
+.input-field {
+    display: grid !important;
+    grid-auto-flow: column;
+    grid-template-columns: 300px auto;
+    grid-template-rows: auto;
+}
+
+
+}
+
+label{
+    font-size: 16px !important;
+    color: #fff !important;
+    text-transform: uppercase;
+}
+
+.input-field .dropdown-content{
+   background-color:rgb(59 63 66) !important;
+  
+   border-bottom-left-radius: 4px !important;
+   border-bottom-right-radius: 4px !important;
+   border-top-right-radius: 0px !important;
+   border-top-left-radius: 0px !important;
+  
+   border: 1px solid rgb(26, 26, 26) !important;
+   color: #dedede;
+   height: 200px;
+   transition: 0s !important;
+    transform: scaleX(1) scaleY(1) !important;
+    top: -15px !important;
+
+}
+
+.input-field .dropdown-content li>span{
+   color: #dedede !important;
+
+}
+
+
+.input-field .select-wrapper .caret{
+z-index: 1;
+    fill: white;
+    color: white;
+    margin-top: 12px;
+
+}
+
+option{
+    content: "test";
+}
+
+option:after {
+    content: " test";
+    height: 5px;
+    width: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+input.select-dropdown{
+    color: #dedede !important;
+    padding-left: 45px !important;
+    width: 150px !important;
+}
+
+.col .row{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.row{
+    margin-bottom: 0px !important;
+}
+
+.close-form{
+    color: #d8d8d8;
+    cursor: pointer;
+}
+
+.close-form:hover{
+    color: white;
+}
+
+.btn-markdown{
+    background-color: #7289DA;
+    width: max-content;
+    height: 35px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    color: white;
+    border-radius: 3px;
+    margin-left: 5px;
+}
+
+
+.message-console{
+    border-radius: 5px;
+    width: 100%;
+    height: max-content; 
+    text-align: left;
+    padding-top: 16px;
+    padding-left: 15px;
+    color: rgb(240, 240, 240);
+    padding-bottom: 16px;
+    padding-right: 15px;
+}
+
+.console-error{
+    background-color: rgba(240, 71, 71, 0.2);
+    border: solid 1px #f04747;
+}
+
+.console-warning{
+    background-color: rgba(250,166,26,0.3);
+    border: solid 1px #ff9f00;
+}
+
+.console-info{
+    background-color: rgba(114, 137, 218, 0.2);
+    border: solid 1px #7289DA;
+
+}
+    </style>
+
+    <%- include("./parts/style")%>
+
+
+    <body style="background-color: #2C2F33;">
+    
+        <div class="main"> 
+
+            <div class="dashboard">
+                <span class="listbot">
+                    <div class="bot-list">
+                        <div class="item-header">
+                            <a href="/bot/dashboard">
+                        <div class="header-home">
+                           
+                            <svg class="icon-home" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                            </svg>
+                        </div>
+                            </a>
+                        </div>
+
+                        <hr class="bot-hr">
+
+                        <% myBots.forEach(c => { %>
+                                 
+                            <% c.forEach(b => { %>
+                            <%- include("../parts/mybots", { bot: b }) %>
+                            <% }) %>
+                      
+                        <% }) %>
+
+                        <div class="item-add item-active">
+                            <div style="width: max-content;margin-left: auto;margin-right: auto;">
+                            <a href="/bot/dashboard/new">
+                            <div class="add-bot new-active">
+                                <svg class="icon-add" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                            </div>
+                            </a>
+                            </div>
+                            </div>
+
+
+                            <div class="item-leave">
+                                <div style="width: max-content;margin-left: auto;margin-right: auto;">
+                                <a href="/user/dashboard">
+                                <div class="leave-dashboard">
+                                    <svg class="icon-leave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                                      </svg>
+                                </div>
+                                </a>
+                            </div>
+                            </div>
+                    </div>
+                </span>
+
+                <span class="leftmenu">
+                    <div class="menu">
+                        <div class="menu-title">
+                            <div style="vertical-align: middle;display: inline-block;">
+                                New bot
+                            </div>
+
+                            <div id="menu-close" class="menu-close">
+                                <svg class="hamburger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                  </svg>
+                            </div>
+                        </div>
+
+                        <div class="menu-btn">
+
+                           
+                                <div class="btn-item btn-item-active">
+                                    <svg class="icon-menu-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                                      </svg>
+                                    <span class="item-span">General 
+                                        
+                                    </span>
+                                </div>
+                                <hr style="margin-top: 25px !important;margin-bottom: 5px !important;">
+                            <a target="_blank" href="https://en.wikipedia.org/wiki/Markdown">
+                            <div class="btn-item">
+                                <svg class="icon-menu-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clip-rule="evenodd" />
+                                  </svg>
+                                <span class="item-span">Markdown 
+                                    <span><svg class="link-out" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                                  </svg></span>
+                                </span>
+                            </div>
+                            </a>
+
+                            <a target="_blank" href="https://discord.gg/bf4NEUd">
+                            <div class="btn-item">
+                                <svg class="icon-menu-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z" clip-rule="evenodd" />
+                                  </svg>
+                                <span class="item-span">Support 
+                                    <span><svg class="link-out" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                                  </svg></span>
+                                </span>
+                            </div>
+                            </a>
+
+                        </div>
+                    </div>
+                </span>
+
+                <span class="rightmenu">
+                    <div class="tab-header">
+                        <div id="menu-phone" class="menu-phone">
+                            <svg class="hamburger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+
+                        <div class="page-name">
+                        <svg class="icon-tab" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                        </svg>
+                        <span class="item-span">General</span>
+                        </div>
+                    </div>
+
+                    <div class="page-content">
+                    <form class="col s12 center-align" id="new-bot-form">
+                        <div style="margin-left: auto;margin-right: auto;margin-top: 40px;margin-bottom: 60px;">
+                        <% if(!profile.discordonline) { %>
+                            <div class="message-console console-warning">
+                                You must join the official server of <a href="https://discord.gg/bf4NEUd"><span style="color: white;">Shadow Bot List</span></a> to add your discord bot.
+                               </div>                                           
+                        <%} %>
+                        <div class="message-console console-info">
+                            If you encounter problems with the form I invite you to join us on our official support to ask for help.
+                           </div>        
+                        </div>           
+                        <div class="row">
+                            <hr>
+                            <div class="input-field ">
+                              
+                                <div style="text-align: left;display: inline-block;">
+                                <div style="text-align: left;display: inline-block;margin-right: 10px;">
+                                  
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Bot ID</label>
+                                  
+                                </div>
+                               
+                                <div style="text-align: left;display: inline-block;position: relative;">
+                                <input style="padding-left: 40px;" autocomplete="off" required placeholder="579605220175118337" minlength="18"  id="client_id" type="text" size="18" class="validate">
+                                <svg style="position: absolute; width:1.5em;height:1.5em;margin-top:13px;margin-left:10px;color:#a9a9a9;left:0;bottom:18px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clip-rule="evenodd" />
+                                  </svg>    
+                            </div>
+                                </div>
+
+                                <div style="text-align: right;display: inline-block;">
+                                    <div style="text-align: left; display: inline-block;margin-right: 10px;">
+                                        <label style="margin-bottom: 5px;color: #b6bef1;">Prefix</label>
+                                    </div>
+
+                                    <div style="text-align: left;display: inline-block;position: relative;">
+                                    <input style="padding-left: 40px;width: 100px;" autocomplete="off" required minlength="1" placeholder="/" id="bot_prefix"  type="text" maxlength="25" class="validate">
+                                    <svg style="position: absolute; width:1.5em;height:1.5em;top:0;margin-top:13px;margin-left:10px;color:#a9a9a9;left:0;text-align:left;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                                      </svg> 
+                                </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <hr >
+                        <div class="row">
+                            <div class="input-field ">
+                                <div style="width: 100%;text-align: left;">
+                                <div style="text-align: left;display: inline-block;margin-right: 10px;">
+                                  
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Library</label>
+                                  
+                                </div>
+                                <div style="position: relative; display: inline-block;">
+                                <select style="width: 150px;" id="newbot" required>
+                                    <option disabled selected>Choose</option>
+                                    <% libs.map(lib => { %>
+                                        
+                                        <option value="<%= lib %>"><%= lib %></option>
+                                       
+                                       
+                                    <% }); %>
+                                </select>
+                                <svg style="position: absolute;width:1.5em;top:0;z-index:1;margin-top:13px;left:15px;color:#a9a9a9;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+                                  </svg>
+                                </div>
+                                </div>
+
+                                <div style="width: 100%;text-align: right;">
+                                    <div style="text-align: left;display: inline-block;margin-right: 10px;">
+                                      
+                                        <label style="margin-bottom: 5px;color: #b6bef1;">Tag</label>
+                                      
+                                    </div>
+                                    <div style="position: relative; display: inline-block;">
+                                    <select style="width: 150px;" id="tagsbot" required>
+                                        <option disabled selected>Choose</option>
+                                        <% tage.map(tag => { %>
+                                            
+                                            <option value="<%= tag %>"><%= tag %></option>
+                                           
+                                           
+                                        <% }); %>
+                                    </select>
+                                    <svg style="position: absolute;width:1.5em;height:1.5em;top:0;z-index:1;margin-top:13px;left:15px;color:#a9a9a9;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                                      </svg>
+                                    </div>
+                                    </div>
+
+                            </div>
+                        </div>
+
+                        <hr >
+
+                        <div class="row">
+                            <div style="display: block !important;" class="input-field ">
+                                <div style="width: 100%;text-align: left;">
+                                <div style="text-align: left;display: inline-block;margin-right: 10px;vertical-align: middle;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Website URL<span style="color:#7289DA;font-size: 17px;">*</span></label>
+                                     <div style="color: #a9a9a9;font-size: 14px;">
+                                        Add the official website of your bot 
+                                     </div>
+                                </div>
+
+                                <div style="display: inline-block;position: relative;width: 60%;">
+                                <input style="padding-left: 45px;width: 100%;" autocomplete="off" id="bot_website" placeholder="https://shadow-bot.com/"  type="url" class="validate">
+                               
+                                <svg style="position: absolute;width:1.5em;height:1.5em;top:0;z-index:1;margin-top:13px;left:15px;color:#a9a9a9;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
+                                  </svg>
+                                  
+                                  
+                            </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+   <hr >
+                        <div class="row">
+                            <div style="display: block;" class="input-field ">
+                                <div style="text-align: left;">
+
+                                <div style="text-align: left;display: inline-block;margin-right: 10px;vertical-align: middle;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Short Description</label>
+                                    <div style="color: #a9a9a9;font-size: 14px;width: 300px;">
+                                        The description is very important because it will be posted first on the site so choose your words carefully!
+                                    </div>
+                                    <div style="color:#7289DA;font-size: 14px;width: 300px;">
+                                        Min.50 characters / Max.90 characters
+                                    </div>
+                                </div>
+                                <div style="display: inline-block; width: 60%;">
+                                <input style="width: 100%;padding-right: 10px;" autocomplete="off" maxlength="90" placeholder="My bot is the best because ..." required minlength="50" id="bot_description"  size="5" data-length="200" type="text" class="validate">
+                                </div>
+
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <hr >
+                        <div class="row">
+                            <div style="display: block;"  class="input-field ">
+                                <div style="position: relative;">
+                                <div style="text-align: left;margin-bottom: 10px;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Full description <a href="https://en.wikipedia.org/wiki/Markdown"><span class="btn-markdown">Markdown</span></a></label>
+                                    <div style="color: #a9a9a9;font-size: 14px;width: 50%;margin-top: 5px;">
+                                        The long description is important to properly describe the features of your bot and the important information
+                                    </div>
+                                    <div style="color:#7289DA;font-size: 14px;width: 300px;">
+                                        Min.100 characters / Max.1200 characters
+                                    </div>
+                                </div>
+
+                               
+
+                                <div>
+                                <textarea autocomplete="off"  onkeyup="countChar(this)" maxlength="1200" style="color: #7C8083;background-color: #2C2F33;" placeholder="My bot is the best because it has this feature and this one..." required minlength="100" id="bot_description-full"  class="materialize-textarea"></textarea>
+                                <div style="text-align: right;position: absolute;right: 10px;bottom: 20px;color: white !important;">
+                                    <span id="charNum" style="margin-bottom: 10px;font-size: 12px;">0</span><span style="font-size: 12px;">/1200</span>
+
+                                </div>
+                            </div>
+                            
+                            </div>
+                            </div>
+
+                        </div>
+                        <hr >
+
+
+                        <div class="row">
+                            <div style="display: block;" class="input-field ">
+                                <div style="text-align: left;">
+                                <div style="text-align: left;margin-bottom: 10px;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Bot Invitation URL <span style="color:#7289DA;font-size: 17px;">*</span></label>
+                                    <div style="color: #a9a9a9;font-size: 14px;width: 50%;margin-top: 5px;">
+                                        A personalised invitation is useful if you have a bot that requires extra permission.
+                                    </div>
+                                </div>
+
+                                <div style="width: 60%;position: relative;">
+                                <input style="width: 100%;padding-left: 45px;padding-right: 10px;" autocomplete="off" id="bot_invite" placeholder="https://discord.com/oauth2/authorize?client_id=551870650101399562..."  type="url" class="validate">
+                                
+                             
+                                <svg style="position: absolute;width:1.5em;height:1.5em;top:0;z-index:1;margin-top:13px;left:15px;color:#a9a9a9;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
+                                  </svg>
+                                  
+                            </div>
+
+
+                            </div>
+                            </div>
+                       
+                        </div>
+
+                        <hr >
+
+                        <div class="row">
+                            <div style="display: block;" class="input-field">
+                                <div style="text-align: left;">
+                                <div style="text-align: left;margin-bottom: 10px;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">GitHub URL <span style="color:#7289DA;font-size: 17px;">*</span></label>
+                                    <div style="color: #a9a9a9;font-size: 14px;width: 50%;margin-top: 5px;">
+                                        Share your GitHub account, only if your projects are public
+                                     </div>
+                                </div>
+
+                                <div style="position: relative;width: 60%;">
+                                <input style="width: 100%;padding-left: 45px;padding-right: 10px;" autocomplete="off" id="bot_github" type="url" placeholder="https://github.com/"  class="validate" minlength="19">
+                                <svg style="position: absolute;width:1.5em;height:1.5em;top:0;z-index:1;margin-top:13px;left:15px;color:#a9a9a9;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
+                                  </svg>
+                            </div>
+
+                                </div>
+
+                            </div>
+                            
+                        </div>
+
+                    
+
+                        <div style="display: none;" class="row">
+                            <div class="input-field">
+                                <input id="like_webhook" type="url" placeholder="GitHub URL (facultatif)"  class="validate" minlength="19">
+                              
+                            </div>
+                            
+                        </div>
+
+                       
+
+                        <div style="display: none;" class="row">
+                            <div class="input-field">
+                                <input id="webhook_auth" type="url" placeholder="GitHub URL (facultatif)"  class="validate" minlength="19">
+                               
+                            </div>
+                            
+                        </div>
+
+                    
+                    
+                        
+                        <div class="row">
+
+                            <div style="margin-top: 10px;margin-bottom: 20px;text-align: left;">
+
+                                <span style="color:#7289DA;font-size: 17px;">*</span><span style="color: white;"> Optional</span>
+                            </div>
+
+                           
+                        
+                       
+
+                                <button style="background-color:#7289DA;font-family: 'Quicksand', sans-serif;" class="square  btn btn-orange btn-1x" type="submit" name="action" id="nb-submit">Send
+                                    <i class="material-icons right">send</i>
+                                </button>
+                       
+                        </div>
+                    </form>
+                    </div>
+
+                </span>
+            </div> 
+
+        </div>
+
+
+    </body>
+    <footer>
+   
+        <%- include("../parts/scripts") %>
+        <%- include("./parts/header") %>
+    </footer>
+</html>

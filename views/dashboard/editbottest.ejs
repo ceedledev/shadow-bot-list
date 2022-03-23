@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../parts/head", { title: 'Dashboard Bot' }) %>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+        
+    </head>
+
+    <style>
+  .dropdown-content li>span{
+    color: #2C2F33;
+}
+
+body{
+  padding: 0px;
+  margin: 0px;
+  left: 0;
+  right: 0;
+  top:0;
+  bottom:0;
+  font-family: 'Quicksand', sans-serif;
+}
+
+
+.entity-bot-info{
+    background-color: #373a3f;
+    border: 0px;
+    border-radius: 5px;
+    width: 400px;
+    height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    padding-top:15px;
+    padding-left: 10px;
+    position: relative;
+   
+}
+
+
+.vertical{
+    display: inline-block !important;
+}
+
+.align-vertical{
+    vertical-align: middle;
+}
+
+.angle{
+    position: absolute;
+    right: 15px;
+    top: 28px;
+}
+
+.delete-bot{
+    background-color:transparent;
+    border: 1px solid rgba(240,71,71,.7);
+    width: 100px;
+    height: 35px;
+    padding: 6px;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.delete-bot:hover{
+    border: solid 1px #f04747;
+}
+
+.card-options{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.card-options-sub{
+    background-color: #1f2325;
+    border-radius: 5px;
+    width: 350px;
+    height: max-content;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 20px;
+    transition: 0.2s;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #28292b;
+    display: inline-block;
+    text-align: left;
+}
+
+.card-options-sub:hover{
+    transform: translateY(-4px);
+    box-shadow: 0px 0px 8px #2d2f33;
+}
+
+.new-op{
+    background-color: #43b581;
+    width: max-content;
+    height: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: text-top;
+    border-radius: 2px;
+    margin-left: 5px;
+}
+
+.certif{
+  background: #24272b;
+
+  width: 60%;
+  height: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  border-radius: 6px;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: white;
+  
+}
+
+.certif-btn{
+  background-color:#7289DA;
+  width: max-content;
+  height: max-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+
+}
+
+.btn-list{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-wi{
+  width: max-content;
+  height: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.btn-css-btn{
+  background-color: #7289DA;
+  width: max-content;
+  height: max-content;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  color: white;
+  border-radius: 4px;
+}
+
+    </style>
+    <body style="background-color: #2C2F33;">
+       
+
+      
+        <div style="margin-bottom: 100px;" class="main">
+          <div style="width: 70%;margin-left: auto;margin-right: auto;">
+
+          <div style="width: max-content;">
+            <a href="/dashboard/">
+            <div class="close-form" style="margin-top:30px;text-align: left;">
+
+                  <svg style="width: 2em;height:2em;vertical-align:middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                  </svg>
+
+                  <span style="vertical-align: middle;">Revenir en arrière</span>
+            </div>
+            </a>
+            </div>
+        </div>
+    
+
+         <div class="entity-bot-info">
+
+             <div class="vertical align-vertical">
+            <img style="border-radius: 10px;border: solid 0px;vertical-align: middle;" class="responsive-img circle" width="60" height="60" alt="Bot Avatar" src="<%= botimage._discordAvatarURL %>">
+             </div>
+
+             <div class="vertical align-vertical">
+                <span style="color: white;margin-left: 10px;"><%= bot.name %></span>  
+             </div>
+
+             <div class="vertical align-vertical angle">
+               <div data-target="delete-bot-modal" class="delete-bot modal-trigger">
+                 Supprimer
+               </div>
+             </div>
+
+        </div>
+
+        <div class="btn-list">
+
+          <div class="btn-wi">
+            <a href="/dashboard/bot/<%=bot.id%>/token">
+            <div class="btn-css-btn">
+             API Token
+            </div>
+            </a>
+          </div>
+
+          <div class="btn-wi">
+            <a href="/bot/<%=bot.id%>">
+            <div class="btn-css-btn">
+             Voir le bot
+            </div>
+            </a>
+          </div>
+
+        </div>
+
+      <%if(!bot.verif){%>
+          <div style="color: rgb(163, 163, 163);" class="certif">
+          <span style="display: block;font-size: 28px;color: white;">Certification</span>
+        Tu peux désormais certifier ton bot pour débloquer d'autres fonctionnalités et un badge spécial, la certification se fait automatiquement quand tu auras envoyé la demande 
+      <a href="/dashboard/bot/<%=bot.id%>/certification">
+        <div class="certif-btn">
+        Commencer la certification
+        </div>
+      </a>
+      </div>
+        <%}%>
+      
+
+        <div class="card-options center-align">
+
+
+          <a href="/dashboard/bot/<%=bot.id%>/general">
+            <div class="card-options-sub">
+                <div style="display: inline-block;vertical-align: middle;">         
+                <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" width="55" height="55" viewBox="0 0 32 32"><path d="M16 0C7.164 0 0 7.164 0 16s7.164 16 16 16 16-7.164 16-16S24.836 0 16 0zm-2 14a2 2 0 0 1 4 0v10a2 2 0 0 1-4 0V14zm2-3.968a2 2 0 1 1 .001-4.001A2 2 0 0 1 16 10.032z" fill="#52cc99" class="color000 svgShape"></path></svg></g></svg>
+                </div>
+                <div style="display: inline-block;vertical-align: middle;margin-left: 15px;width: 250px;">
+                  <div style="color: white;font-size: 22px;">
+                    Général
+                  </div>
+                  <div style="color: #c3c3c3;">
+                      Les paramètres général de ton bot 
+                  </div>
+                </div>   
+            </div>
+          </a>
+
+          <a href="/dashboard/bot/<%=bot.id%>/webhook">
+            <div class="card-options-sub">
+                <div style="display: inline-block;vertical-align: middle;">         
+                
+         
+               
+                <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" width="55" height="55" viewBox="0 0 48 48" width="288" height="288"><path fill="#66ccff" d="M35 37c-2.203 0-4-1.797-4-4 0-2.203 1.797-4 4-4 2.203 0 4 1.797 4 4 0 2.203-1.797 4-4 4z" class="color37474F svgShape"></path><path fill="none" stroke="#66ccff" stroke-miterlimit="10" stroke-width="4" d="M25 15l6.133 11A7.935 7.935 0 0 1 35 25c4.41 0 8 3.59 8 8s-3.59 8-8 8a7.982 7.982 0 0 1-6.238-3" class="colorStroke37474F svgStroke"></path><path fill="none" stroke="#66ccff" stroke-miterlimit="10" stroke-width="4" d="M35 33H22c0 4.41-3.59 8-8 8s-8-3.59-8-8c0-3.719 2.555-6.855 6-7.746" class="colorStroke37474F svgStroke"></path><path fill="#25a7e0" d="M14 37c-2.203 0-4-1.797-4-4 0-2.203 1.797-4 4-4 2.203 0 4 1.797 4 4 0 2.203-1.797 4-4 4z" class="colorE91E63 svgShape"></path><path fill="#66ccff" d="M25 19c-2.203 0-4-1.797-4-4 0-2.203 1.797-4 4-4 2.203 0 4 1.797 4 4 0 2.203-1.797 4-4 4z" class="color37474F svgShape"></path><path fill="none" stroke="#25a7e0" stroke-miterlimit="10" stroke-width="4" d="M14 33l6.813-11.188A8.004 8.004 0 0 1 17 15c0-4.41 3.59-8 8-8s8 3.59 8 8c0 .7-.09 1.383-.262 2.031" class="colorStrokeE91E63 svgStroke"></path></svg></g></svg>
+                </div>
+                <div style="display: inline-block;vertical-align: middle;margin-left: 15px;width: 250px;">
+                  <div style="color: white;font-size: 22px;">
+                    Webhook
+                  </div>
+                  <div style="color: #c3c3c3;">
+                      Configure ton webhook pour plus de possibilité 
+                  </div>
+                </div>   
+            </div>
+          </a>
+
+
+
+            <a href="/dashboard/bot/<%=bot.id%>/widget">
+            <div class="card-options-sub">
+                <div style="display: inline-block;vertical-align: middle;">         
+                
+           
+                <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" width="55" height="55" viewBox="0 0 32 32"><path style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;shape-padding:0;isolation:auto;mix-blend-mode:normal" d="M5 6A1.0000999 1.0000999 0 0 0 4 7v8a1.0000999 1.0000999 0 0 0 1 1h8a1.0000999 1.0000999 0 0 0 1-1V7A1.0000999 1.0000999 0 0 0 13 6zM7 18a1.0001 1.0001 0 0 0-1 1v6a1.0001 1.0001 0 0 0 1 1h6a1.0001 1.0001 0 0 0 1-1v-6a1.0001 1.0001 0 0 0-1-1zm1 2h4v4H8zM17 18a1.0000999 1.0000999 0 0 0-1 1v8a1.0000999 1.0000999 0 0 0 1 1h8a1.0000999 1.0000999 0 0 0 1-1v-8a1.0000999 1.0000999 0 0 0-1-1zM17 4a1.0000999 1.0000999 0 0 0-1 1v10a1.0000999 1.0000999 0 0 0 1 1h10a1.0000999 1.0000999 0 0 0 1-1V5A1.0000999 1.0000999 0 0 0 27 4z" color="#000" font-family="sans-serif" font-weight="400" overflow="visible" fill="#9A5DFB" class="color000 svgShape"></path></svg></g></svg>
+                </div>
+                <div style="display: inline-block;vertical-align: middle;margin-left: 15px;width: 250px;">
+                  <div style="color: white;font-size: 22px;">
+                    Widget
+                  </div>
+                  <div style="color: #c3c3c3;">
+                      Intègre le widget de ton bot facilement 
+                  </div>
+                </div>   
+            </div>
+            </a>
+
+
+            
+            <div style="display: block;">
+
+
+              <a href="/dashboard/bot/<%=bot.id%>/background">
+            <div class="card-options-sub">
+                <div style="display: inline-block;vertical-align: middle;">                
+<svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" width="55" height="55" enable-background="new 0 0 24 24" viewBox="0 0 24 24" ><path fill="#b2b1ff" d="M19,2H5C3.34515,2.00483,2.00483,3.34515,2,5v8.86l3.88-3.88c1.18747-1.13,3.05253-1.13,4.24,0l2.87139,2.887	l0.88752-0.88751c1.17344-1.16662,3.06874-1.16662,4.24218,0L22,15.8584V5C21.99517,3.34515,20.65485,2.00483,19,2z" class="colorb2b1ff svgShape"></path><path fill="#6563ff" d="M10.12,9.98c-1.18747-1.13-3.05253-1.13-4.24,0L2,13.86V19c0.00484,1.65484,1.34516,2.99516,3,3h14
+	c0.81512-0.00034,1.59497-0.3325,2.16-0.92L10.12,9.98z" class="color6563ff svgShape"></path><path fill="#767fad" d="M22,15.8584l-3.87891-3.87891c-1.17345-1.1666-3.06873-1.1666-4.24218,0L12.99139,12.867l8.16425,8.20856
+	C21.69776,20.5208,22.00089,19.77567,22,19V15.8584z" class="colord8d8ff svgShape"></path></svg></g></svg>
+                </div>
+                <div style="display: inline-block;vertical-align: middle;margin-left: 15px;width: 250px;">
+                  <div style="color: white;font-size: 22px;">
+                    Background  <span class="new-op">Nouveau</span>
+                  </div>
+                  <div style="color: #c3c3c3;">
+                      Stylise ton bot avec une image en arrière plan
+                  </div>
+                </div>   
+            </div>
+              </a>
+
+            <a href="/dashboard/bot/<%=bot.id%>/credit">
+              <div class="card-options-sub">
+                  <div style="display: inline-block;vertical-align: middle;">         
+                  
+
+                    <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" width="55" height="55" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                    </svg>
+              
+                  </div>
+                  <div style="display: inline-block;vertical-align: middle;margin-left: 15px;width: 250px;">
+                    <div style="color: white;font-size: 22px;">
+                      Vote Crédit  <span class="new-op">Nouveau</span>
+                    </div>
+                    <div style="color: #c3c3c3;">
+                        Gagne de l'argent virtuel grâce aux votes
+                    </div>
+                  </div>   
+              </div>
+              </a>
+
+
+
+
+
+
+            <div style="font-size: 17px;">
+              Tu as besoin de testeurs talentueux et rapide pour ton bot alors rejoins ce serveur <a href="https://discord.gg/bf4NEUd"><span style="color: #7289DA;">Bug Center</span></a>
+            </div>
+
+            <div style="background-color: #222527;text-align: left;" id="delete-bot-modal" class="modal" data-bot-id="<%= bot.id %>">
+              <div style="background-color: #222527" class="modal-content">
+                  <h4 style="color: #eb4d4b;">Êtes-vous sûr de vouloir supprimer ce bot</h4>
+                  <p>Vous ne pouvez pas revenir sur cette action ! Faites attention.</p>
+              </div>
+              <div style="background-color: #222527;" class="modal-footer">
+                  <a id="delete-bot-action" class="modal-action modal-close waves-effect waves-red btn-flat red-text">Supprimer</a>
+              </div>
+          </div>
+          </div>
+
+        </div>
+          
+        
+        </div>
+
+
+
+    </body>
+    <footer>
+        <%- include("../parts/footer") %>
+        <%- include("../parts/scripts") %>
+    </footer>
+</html>

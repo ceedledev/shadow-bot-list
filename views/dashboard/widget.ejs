@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../parts/head", { title: 'Widget' }) %>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+    </head>
+
+    <style>
+  .dropdown-content li>span{
+    color: #2C2F33;
+}
+
+
+body.dark-theme input {
+    color:white;
+}
+
+.input-field{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    margin-top: 60px;
+}
+
+.tl{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.bgcode{
+    background-color: #2C2F33;
+    height: auto;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 0px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+
+.leftmenu{
+  background-color: #1d1f21;
+  width: 100%;
+  height: auto;
+  display:inline-block;
+  border-right: solid 2px #33343b;
+  border-top: solid 2px #33343b;
+  border-bottom: solid 2px #33343b;
+  padding: 15px;
+  font-family: 'Quicksand', sans-serif;
+  
+  
+}
+
+
+.rightmenu{
+  background-color: #222428;
+  font-family: 'Quicksand', sans-serif;
+  width: 100%;
+  height: auto;
+  display:inline-block;
+
+  padding: 15px;
+
+}
+
+body{
+  padding: 0px;
+  margin: 0px;
+  left: 0;
+  right: 0;
+  top:0;
+  bottom:0;
+  
+}
+
+
+.menuver{
+  width: 250px;
+  height: auto;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: 50px;
+
+}
+
+.btnmenuver{
+  background-color: #1d1f21;
+  border: solid 0px;
+  border-radius: 6px;
+  width: 250px;
+  height: 50px;
+  color: #A5AAAF;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  vertical-align:middle;
+  cursor:pointer
+ 
+ 
+}
+
+
+
+.btnmenuver:hover{
+  background-color: #2C2F33;
+}
+
+.btnmenuhovered{
+  background-color: #2C2F33;
+  border: solid 0px;
+  border-radius: 6px;
+  width: 250px;
+  height: 50px;
+  color: #A5AAAF;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  vertical-align:middle;
+  cursor:pointer
+}
+
+
+hr{
+    background-color:#33343b;
+    height: 2px;
+    margin: 10px 0;
+    border: none;
+}
+
+.bgcolor{
+
+  
+min-height: auto;
+display: block;
+
+  grid-auto-flow: column;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+ 
+
+}
+
+
+.imgbot{
+    margin-left: auto;margin-right: auto;width: 100%;text-align: center;
+}
+.ttalign{
+    display: block;
+}
+@media (min-width: 900px){
+
+.bgcolor {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 300px auto;
+    grid-template-rows: auto;
+}
+
+.imgbot{
+    margin-left: auto;margin-right: auto;width: 100%;text-align: left;
+}
+
+.ttalign{
+display: inline-block;
+margin-left: 15px;
+}
+
+}
+
+.code{
+    background-color: #2C2F33;
+}
+
+
+
+    </style>
+    <body style="background-color: #2C2F33;">
+        <div class="header">
+            <%- include("../parts/header") %>
+        </div>
+   
+
+
+            <div class="bgcolor">
+  
+                <span class="leftmenu">
+                
+                  
+                  <div style="margin-top: 30px;" class="imgbot" >
+                    <div style="vertical-align: middle;" class="ttalign">
+                    <img style="border-radius: 10px;border: solid 0px;" class="responsive-img circle" width="60" height="60" alt="Bot Avatar" src="<%= botimage._discordAvatarURL %>">
+                    </div>
+                   <div style="vertical-align: middle;" class="ttalign" >
+                    <span style="color: #7289DA;"><%= bot.name %></span>  
+                   
+                   </div>
+                  </div>
+
+                  <a href="" style="margin-top: 15px;margin-bottom: 5px;padding: 10px;background-color: #eb4d4b;border: solid 0px;border-radius: 5px;display: block;width: 150px;height:45px;margin-left: auto;margin-right: auto;text-align: center;" class="btn-supprimer modal-trigger" data-target="delete-bot-modal"><i style="color: white;margin-right: 5px;" class="fas fa-trash-alt"></i>Supprimer</a>
+
+                  <div class="menuver">
+                    <span style="color:#f5f6fa;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;font-size: 14px;">Modification</span>
+                   
+                   <a href="/dashboard/bot/<%= bot.id %>/edit">
+                    <div style="margin-top:10px;cursor: pointer;"  class="btnmenuver">
+                     <div style="padding:14px;">
+                       <i style="margin-right:5px;" class="fas fa-edit"></i> Général
+                      </div>
+                    </div>
+                   </a>
+                    
+                    <div style="margin-top:5px; cursor: not-allowed;"  class="btnmenuver">
+                     <div style="padding:14px;">
+                       <i style="margin-right:5px;" class="fas fa-cog"></i> Webhook
+                      </div>
+                    </div>
+
+                       
+                    <div style="margin-top:5px; cursor: pointer;"  class="btnmenuhovered">
+                        <div style="padding:14px;">
+                          <i style="margin-right:5px;" class="fas fa-image"></i> Widget
+                         </div>
+                       </div>
+                    
+                    <div style="margin-top:25px;">
+                     <span style="color:#f5f6fa;text-transform:uppercase;letter-spacing:1px;font-size: 14px;">Besoin d'aide ?</span>
+                    <a href="https://discord.gg/bf4NEUd">
+                      <div style="margin-top:15px;"  class="btnmenuver">
+                     <div style="padding:14px;">
+                       <i style="margin-right:5px;" class="fas fa-question-circle"></i> Support
+                      </div>
+                    </div>
+                    </a>
+                    </div>
+                    
+                    
+                  </div>
+                  
+                </span>
+                 
+
+
+                <span class="rightmenu">
+
+            <div class="container center-align din" style="padding: 1px;width: 80%;border-radius: 10px;">
+             
+           
+                <div class="row">
+                    <form class="col s12" id="new-bot-form" data-bot-id="<%= bot.id %>">
+                        <div style="margin-top: 60px;" class="row">
+                            <a href="https://shadow-bot.com/bot/<%= bot.id %>" >
+                                <img src="https://shadow-bot.com/dashboard/bot/<%= bot.id %>/widget/bot.png" alt="<%= bot.name %>" />
+                              </a>
+                        </div>
+
+                        <div style="margin-top: 30px;" class="row">
+                            <div style="padding-left: 20px;padding-right: 20px;" class="bgcode">
+
+                                <div style="text-align: left;padding: 0 3px;">
+                                    <p style="text-align: left;color: #dedede;font-size: 14px;padding: 0px;">
+                                    &lt;a href="https://shadow-bot.com/bot/<%= bot.id %>"&gt;<br>
+
+                                        &lt;img src="https://shadow-bot.com/bot/<%= bot.id %>/widget.jpeg" alt="<%= bot.name %>"/&gt;<br>
+                                    
+                                        &lt;/a&gt;
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        
+
+    
+    </body>
+    <footer>
+        <%- include("../parts/footer") %>
+        <%- include("../parts/scripts") %>
+    </footer>
+</html>

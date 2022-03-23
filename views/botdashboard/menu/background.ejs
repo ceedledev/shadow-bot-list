@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <%- include("../../parts/head", { title: 'Bot Background' }) %>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    </head>
+
+    <%- include("../parts/style")%>
+
+    <style>
+        .align-auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.background-actual{
+    width: 400px;
+    height: 160px;
+    background-color: #222428;
+    border-radius: 8px;
+    position: relative;
+}
+
+.info-bg{
+    background-color: #1f2325;
+    border-radius: 5px;
+    width: max-content;
+    height: max-content;
+    position: absolute;
+    padding:10px;
+    color: white;
+    right: 15px;
+    top:15px
+}
+
+#imageUpload{
+    display: none;
+}
+
+.label-id{
+    background-color: #222428;
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+
+.imgpreview{
+    background-color: transparent;
+    border:solid 1px #000000;
+    width: 400px;
+    height: 160px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.on{
+    display: block !important;
+}
+
+.off{
+    display: none !important;
+}
+
+.download-btn{
+    background-color: #7289DA;
+    width: max-content;
+    height: max-content;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+.btn-save{
+    background-color: #43b581;
+    width: max-content !important;
+    height: max-content !important;
+    padding: 10px !important;
+    color: white !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    display: block ;
+    text-transform: uppercase !important;
+    font-size: 16px !important;
+    margin-left: 10px;
+    border: 0px !important;
+    line-height: normal !important;
+    
+    font-family: 'Quicksand', sans-serif !important;
+    
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button:focus{
+    background-color: #43b581 !important;
+}
+
+.bot-img{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+    </style>
+
+    <body style="background-color: #2C2F33;">
+    
+        <div class="main"> 
+
+            <div class="dashboard">
+                <span class="listbot">
+                    <div class="bot-list">
+                        <div class="item-header">
+                            <a href="/bot/dashboard">
+                        <div class="header-home">
+                            <svg class="icon-home" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                            </svg>
+                        </div>
+                            </a>
+                        </div>
+                        <hr class="bot-hr">
+
+                        <% myBots.forEach(c => { %>
+                                 
+                            <% c.forEach(b => { %>
+                            <%- include("../../parts/mybots", { bot: b }) %>
+                            <% }) %>
+                      
+                        <% }) %>
+
+                        <div class="item-add">
+                        <div style="width: max-content;margin-left: auto;margin-right: auto;">
+                        <a href="/bot/dashboard/new">
+                        <div class="add-bot">
+                            <svg class="icon-add" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                        </div>
+                        </a>
+                        </div>
+                        </div>
+
+                        <div class="item-leave">
+                            <div style="width: max-content;margin-left: auto;margin-right: auto;">
+                            <a href="/user/dashboard">
+                            <div class="leave-dashboard">
+                                <svg class="icon-leave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                                  </svg>
+                            </div>
+                            </a>
+                        </div>
+                        </div>
+
+                    </div>
+                </span>
+
+                <span class="leftmenu">
+                    <div class="menu">
+                        <div class="menu-title">
+                            
+                            <div style="vertical-align: middle;display: inline-block;">
+                                <%=bot.name%>
+                            </div>
+
+                            <div data-target="delete-bot-modal" class="delete-bot modal-trigger">
+                                <svg class="hamburger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                  </svg>
+                            </div>
+
+                            <div id="menu-close" class="menu-close">
+                                <svg class="hamburger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                  </svg>
+                            </div>
+                        </div>
+                        <div class="menu-btn">
+                            <a href="/bot/dashboard/<%=bot.id%>/general">
+                            <div class="btn-item">
+                                <svg class="icon-menu-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                                </svg>
+                                <span class="item-span">General</span>
+                            </div>
+                            </a>
+
+                            <a href="/bot/dashboard/<%=bot.id%>/webhook">
+                            <div class="btn-item">
+                                <svg class="icon-menu-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clip-rule="evenodd" />
+                                  </svg>
+                                <span class="item-span">Webhook</span>
+                            </div>
+                            </a>
+
+                            <a href="/bot/dashboard/<%=bot.id%>/widget">
+                            <div class="btn-item">
+                                <svg class="icon-menu-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z" />
+                                  </svg>
+                                <span class="item-span">Widget</span>
+                            </div>
+                            </a>
+
+                            <a href="/bot/dashboard/<%=bot.id%>/background">
+                            <div class="btn-item btn-item-active">
+                                <svg class="icon-menu-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+                                  </svg>
+                                <span class="item-span">Background</span>
+                            </div>
+                            </a>
+
+                            <a href="/bot/dashboard/<%=bot.id%>/credit">
+                            <div class="btn-item">
+                                <svg class="icon-menu-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                                  </svg>
+                                <span class="item-span">Vote Credit</span>
+                            </div>
+                            </a>
+
+                            <a href="/bot/dashboard/<%=bot.id%>/token">
+                                <div class="btn-item ">
+                                    <svg class="icon-menu-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7 2a1 1 0 00-.707 1.707L7 4.414v3.758a1 1 0 01-.293.707l-4 4C.817 14.769 2.156 18 4.828 18h10.343c2.673 0 4.012-3.231 2.122-5.121l-4-4A1 1 0 0113 8.172V4.414l.707-.707A1 1 0 0013 2H7zm2 6.172V4h2v4.172a3 3 0 00.879 2.12l1.027 1.028a4 4 0 00-2.171.102l-.47.156a4 4 0 01-2.53 0l-.563-.187a1.993 1.993 0 00-.114-.035l1.063-1.063A3 3 0 009 8.172z" clip-rule="evenodd" />
+                                      </svg>
+                                    <span class="item-span">API Token</span>
+                                </div>
+                            </a>
+
+                            <a href="/bot/<%=bot.id%>/">
+                                <div class="btn-item">
+                            <svg class="icon-menu-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                              </svg>
+                              <span class="item-span">Bot Page</span>
+                              </div>
+                              </a>
+                        </div>
+                    </div>
+                </span>
+
+                <span class="rightmenu">
+                    
+                    <div class="tab-header">
+        
+                        <div id="menu-phone" class="menu-phone">
+                            <svg class="hamburger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+
+                        <div class="page-name">
+                            <svg class="icon-tab" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+                              </svg>
+                        <span class="item-span">Background</span>
+                        </div>
+                    </div>
+
+                    <div class="page-content">
+                        <div class="background-actual align-auto" style="position: relative;margin-top: 50px;">
+
+                            <div style="background: url(<%=bot.background%>) no-repeat;background-size: contain;background-position: center;opacity: .45;" class="background-actual align-auto">
+                        
+                            </div>
+        
+                            <div class="info-bg">
+                                Current background
+                                </div>
+        
+                                <div class="bot-img">
+                                    <img style="width: 50px;height: 50px;border-radius: 15px;box-shadow: 0px 0px 5px #1f2325;" src="<%=botimage._discordAvatarURL%>">
+                                </div>
+        
+                            </div>
+                        
+                            
+                                <div class="row" style="display: block;margin-top: 60px;">
+                                    <hr>
+                                    <div class="input-field">
+                                        <div class="labele" style="text-align: left;">
+                                            <label style="margin-bottom: 5px;color: #b6bef1;">Customised Background<span class="premiumlabel">Premium</span></label>
+                                       <div class="labelsub">
+                                        Make others jealous with a unique banner of your bot and become the work of art that everyone wants to see.
+                                       </div>
+                                       <div style="color: #7289DA;">
+                                        The minimum recommended size is 400 x 160
+                                       </div>
+                
+                                        </div>
+                                      
+                                        
+                                    </div>
+                                  
+                                </div>
+        
+                                <form action="/api/public/bot/<%=bot.id%>/background" method="PATCH" data-bot-id="<%=bot.id%>" id="form-image">
+                                
+                                    <div class="avatar-edit">
+                                     
+                                        <input style="<%= bot.certified ? '' : 'cursor: not-allowed;opacity:.40;' %>" <%= bot.certified ? '' : 'disabled' %> name="image" type='file' id="imageUpload" accept=".png,.jpeg" />
+                                        
+                                     
+                                    </div>
+                                    <div class="avatar-preview">
+                    
+                                        <div style="<%= bot.certified ? '' : 'cursor: not-allowed;opacity:.40;' %>"  class="imgpreview">
+                                            <img style="border-radius: 5px;width: 400px;height: 160px;;" class="profile-user-img img-responsive img-circle off" id="imagePreview" src="<%=bot.background%>" alt="User profile picture">
+                                        </div>
+        
+        
+                                      <label style="<%= bot.certified ? '' : 'display:none;' %>" for="imageUpload" class="download-btn">
+                                        Upload a picture
+                                      </label>
+        
+                                    
+                                      <button id="save" type="submit" class="btn-save off">
+                                        Save
+                                  </button>
+                                    
+                                    
+                                    </div>
+        
+        
+                               
+        
+        
+                                </form>
+                    </div>
+                </span>
+            </div> 
+
+        </div>
+
+        <div style="display: none;" class="active-bot-here" id="<%=bot.id%>">
+        </div>
+
+        <div style="background-color: #222527;text-align: left;" id="delete-bot-modal" class="modal" data-bot-id="<%= bot.id %>">
+            <div style="background-color: #222527" class="modal-content">
+                <h4 style="color: #eb4d4b;">Are you sure you want to remove this bot?</h4>
+                <p style="color: grey;">You won't be able to go back on this action</p>
+            </div>
+            <div style="background-color: #222527;" class="modal-footer">
+                <a id="delete-bot-action" class="modal-action modal-close waves-effect waves-red btn-flat red-text">Delete</a>
+            </div>
+        </div>
+        
+
+    </body>
+    <footer>
+        <%- include("../../parts/scripts") %>
+        <%- include("../parts/active-item") %>
+        <%- include("../parts/header") %>
+    </footer>
+</html>

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../parts/head", { title: 'List - Top' }) %>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+    </head>
+    <style>
+
+
+p{
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    html{
+        font-family: 'Quicksand', sans-serif;
+    }
+
+
+body{
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+#discord{
+    transition: 0.5s;
+}
+
+#discord:hover{
+    transform: rotate(360deg);
+}
+
+#but{
+  background: linear-gradient(to right, #424242 50%, #7289DA 50%);
+  background-position: right bottom;
+  background-size: 200% 100%;
+  transition: 0.5s;
+}
+
+#but:hover{
+background-position: left bottom;
+} 
+
+
+.btn-plus{
+             background-color: #1d1f21;
+             display: block;
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 0;
+    border-radius: 9px;
+    height: 70px;
+    width: 300px;
+
+    text-decoration: none;
+    transition: .5s;
+         }    
+
+         .btn-plus:hover{
+             background-color: #7289DA;
+         }
+
+         .botlist{
+             background-color: #373a3f;
+             border: 0px;
+             border-radius: 5px;
+             width: 90%;
+             height: max-content;
+             margin-left: auto;
+             margin-right: auto;
+             padding: 20px;
+             box-shadow: 0px 0px 10px rgb(29, 31, 34);
+         }
+
+         @media screen and (min-width: 900px) {
+            .botlist{
+             background-color: #373a3f;
+             border: 0px;
+             border-radius: 5px;
+             width: 60%;
+             height: max-content;
+             margin-left: auto;
+             margin-right: auto;
+             padding: 20px;
+             box-shadow: 0px 0px 10px rgb(29, 31, 34);
+         }
+         }
+
+         
+
+        
+
+         .btnmenulist{
+             background-color: transparent;
+             color: white;
+             display: inline-block;
+             margin-left: 10px;
+             margin-right: 10px;
+             cursor: pointer;
+             width: 100px;
+             height: 40px;
+             padding: 10px;
+             border: 0px;
+             border-radius: 5px;
+             transition: 0.5s;
+         }
+
+         .btnmenulist:hover{
+             background-color:#47494b;
+         }
+
+         .btnmenulist-active{
+             color: white !important;
+             background-color: #7289DA !important;
+         }
+
+         .titlecardlist{
+             background-color: #535658;
+             border: 0px;
+             border-radius: 20px;
+             width: max-content;
+             height: 40px;
+             padding: 10px;
+             padding-left: 15px;
+             padding-right: 15px;
+             color: white;
+             margin-left: auto;
+             margin-right: auto;
+         }
+
+         .viewplus{
+             background-color: #7289DA;
+             border: 0px;
+             border-radius: 4px;
+             width: 110px;
+             height: 40px;
+             color: white;
+             text-align: center;
+             padding: 10px;
+           margin-left: auto;
+           margin-right: auto;
+             cursor: pointer;
+         }
+          
+          nav{
+              background-color: transparent !important;
+          }
+
+          .infosbltitle{
+              background-color: #535658;
+              width: max-content;
+              height: 35px;
+              border: 0px;
+              border-radius: 5px;
+              padding-left: 10px;
+              padding-right: 10px;
+              margin-left: auto;
+              margin-right: auto;
+              padding: 7px;
+              text-align: center;
+              color: white;
+              margin-top: 20px;
+          }
+
+          .botbtn{
+              background-color: #7289DA;
+              border: 0px;
+              border-radius: 5px;
+              width: max-content;
+              height: 15px;
+              padding: 3px;
+              padding-left: 10px;
+              padding-right: 10px;
+              color: white;
+              
+          }
+
+          input[type=text]{           
+    background-color: #1a1c1d !important;
+    border: solid 2px #1a1c1d !important;
+    color:rgb(233, 233, 233) !important;
+          }
+
+          ::placeholder{
+              color: rgb(238, 238, 238) !important;
+          }
+
+          .btnsupport{
+              background-color:#7289DA;
+              border: 0p;
+              border-radius: 5px;
+              width: max-content;
+              height: 40px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding: 10px;
+              text-align: center;
+              color: white;
+              margin-left: auto;
+              margin-right: auto;
+              margin-top: 20px;
+              cursor: pointer;
+          }
+
+          .taglist{
+              width: 60%;
+              margin-left: auto;
+              margin-right: auto;
+          }
+
+          .tagbot{
+              background-color: #535658;
+              border: 0px;
+              border-radius: 30px;
+              width: 120px;
+              height: 40px;
+             
+             
+              color: white;
+              margin-left: auto;
+              margin-right: auto;
+              cursor: pointer;
+              vertical-align: middle;
+              transition: 0.5s;
+              display: inline-block;
+              margin-left: 10px;
+              margin-right: 10px;
+              padding-top: 9px;
+              margin-top: 10px;
+              margin-bottom: 10px;
+          }
+
+          .tagbot:hover{
+              background-color: #7289DA;
+          }
+
+          .lbt{
+              background-color: transparent !important;
+          }
+
+          .row .col {
+        text-align: center;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 0 .75rem;
+        min-height: 1px;
+        display: inline-table;
+        float: none;
+    }
+    
+    .card .card-content {
+        padding-top: 24px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 0 0 2px 2px;
+    }
+    
+    .container{
+        max-width: 3000px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .mo {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%; 
+      overflow: auto;
+    }
+    
+    .mc {
+      position: relative;
+      margin: auto;
+      padding: 0;
+      border: 1px solid;
+      width: 80%;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,2),0 6px 20px 0 rgba(0,0,0,2);
+      -webkit-animation-name: animatetop;
+      -webkit-animation-duration: 0.4s;
+      animation-name: animatetop;
+      animation-duration: 0.4s
+    }
+    
+    
+    @-webkit-keyframes animatetop {
+      from {top:-300px; opacity:0} 
+      to {top:0; opacity:1}
+    }
+    
+    @keyframes animatetop {
+      from {top:-300px; opacity:0}
+      to {top:0; opacity:1}
+    }
+    
+    .c {
+      color: white;
+      float: right;
+      font-size: 80px;
+      font-weight: bold;
+    }
+    
+    .c:hover,
+    .c:focus {
+      color: #7289DA;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .mh {
+      padding: 2px 16px;
+      background-color: #2C2F33;
+      color: white;
+    }
+    
+    #modal-body1 {padding: 16px;}
+    #modal-body2 {padding: 16px;}
+    #modal-body3 {padding: 16px;}
+    
+    .mod {
+      padding: 50px;
+      background-color: rgba(0,0,0,0.5);
+    }
+    
+    .mf {
+      padding: 2px 16px;
+      background-color: #2C2F33;
+      color: white;
+      padding: 2px 16px;
+    }
+    
+    
+    .btn-view{
+        background-color: #2C2F33;
+        border: solid 2px #2C2F33;
+        border-radius: 5px;
+        width: 95px;
+        color: white;
+        box-shadow: 0px 0px 0px;
+    }
+    
+    .btn-view:hover{
+        background-color: #7289DA;
+        color: white;
+        border: solid 2px #7289DA;
+    }
+    
+    .card{
+        box-shadow: 0px 0px 0px;
+    }
+    .hoverable{
+            box-shadow: 0px 0px 0px;
+        }
+    
+    
+        .hoverable:hover{
+            box-shadow: 0px 0px 0px;
+        }
+        
+
+    .cardbot{
+        background-color: transparent;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    .cardbot:hover{
+        background-color: rgb(42, 45, 49);
+        border: 0px;
+        border-radius: 6px;
+    }
+
+    .cardbotcert{
+        background-color:  rgb(29, 31, 34);
+        cursor: pointer;
+        border: 0px;
+        border-radius: 6px;
+        transition: 0.5s;
+       
+    }
+
+    .cardbot:hover .statusbot{
+        background-color: rgb(42, 45, 49);
+    }
+
+    .cardbotcert:hover{
+        background-color: rgb(42, 45, 49);
+    }
+
+    .cardbotcert:hover .statusbotcert{
+        background-color: rgb(42, 45, 49);
+    }
+
+
+    .votecard{
+        background-color: #47494b;
+        border: 0px;
+        border-radius: 5px;
+        width: max-content;
+        max-width: auto;
+        height: 25px;
+        padding: 1px;
+        padding-right: 10px;
+        padding-left: 10px;
+        text-align: center;
+        margin-left: 20px;
+        color: white;
+        vertical-align: middle;
+    }
+
+    .infocardbot{
+        width: max-content;
+        max-width: 85%;
+    }
+
+
+    @media screen and (max-width: 990px){
+      
+        .infocardbot{
+        width: 330px;
+    }
+    }
+
+
+    @media screen and (max-width: 560px){
+    
+        .infocardbot{
+        width: 270px;
+    }
+    }
+
+    .tagbtn{
+        background-color: #7289DA;
+        border: 0px;
+        border-radius: 30px;
+        width: max-content;
+        height: 25px;
+        padding: 2px;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: inline-block;
+        color: white;
+    }
+
+    .viewsbtn{
+        width: max-content;
+        height: 25px;
+        padding: 2px;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    .btnpremiumcard{
+        background-color: #9b59b6;
+        border: 0px;
+        border-radius: 30px;
+        width: max-content;
+        height: 25px;
+        padding: 2px;
+        margin-left: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: inline-block;
+        color: white;
+    }
+
+    .statusbot{
+        background-color: #373a3f;
+            width: 30px;
+            height: 30px;
+            border: solid 0px;
+            border-radius: 50%;
+            display: inline-block;
+            position: absolute;
+            margin-top: 50px;
+            margin-left: -25px;
+            padding: 5px 5.5px;
+            transition: 0.5s;
+    }
+  
+            .statusbotcert{
+                background-color: rgb(29, 31, 34);
+                    width: 30px;
+                    height: 30px;
+                    border: solid 0px;
+                    border-radius: 50%;
+                    display: inline-block;
+                    position: absolute;
+                    margin-top: 50px;
+                    margin-left: -25px;
+                    padding: 5px 5.5px;
+                    transition: 0.5s;
+            }
+
+            .title-cat{
+            color: white;
+            text-align: left;
+            margin-left: 20px;
+            font-size: 25px;
+        }
+        .title-cat-sub{
+            color: grey;
+            text-align: left;
+            margin-left: 20px;
+            font-size: 15px;
+        }
+
+        .list-bot{
+            margin-top: 150px; 
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .contain-box-bot{
+    width: 330px;
+    height: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.box-bot{
+    background-color: #1a1c1d;
+    width: 330px;
+    height: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    position: relative;
+}
+.background-bot{
+    width: 330px;
+    height: 130px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    opacity: .75;
+    position: relative;
+    transition: 0.5s;
+}
+
+.bot-image{
+    position: absolute;
+    z-index: 1;
+    left: 25px;
+    background-color:#1c1f20;
+    width: max-content;
+    height: max-content;
+    border-radius: 25%;
+    
+    padding-left: 8px;
+    padding-right: 8px;
+    top: 80px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    transition: 0.5s;
+}
+
+.box-bot-info{
+    background-color: #1c1f20;
+    width: 330px;
+    height: max-content;   
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    transition: 0.5s;
+}
+
+
+
+.contain-box-bot:hover .background-bot{
+  opacity: 1;
+}
+.contain-box-bot:hover{
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgb(26, 24, 24);
+}
+
+.contain-box-bot:hover .box-bot-info{
+    background-color: #151718;
+}
+
+.contain-box-bot:hover .bot-image{
+    background-color: #151718;
+}
+
+.bot-name{
+    color: white;
+    margin-left: 15px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.bot-shortdesc{
+    color: rgb(161, 161, 161);
+    font-size: 14px;
+    margin-left: 15px;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.bot-vote{
+    position: absolute;
+    top: 145px;
+    right: 20px;
+    background-color: #35363e;
+    width: max-content;
+    height: max-content;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 3px;
+    color: white;
+}
+
+.bot-tag{
+    color: #7289DA;
+    margin-left: 15px;
+    margin-top: 5px;
+    font-size: 13px;
+    text-align: left;
+}
+
+.bot-view-btn{
+    background-color: #43b581;
+    width: 100%;
+    height: max-content;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 3px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.bot-servers{
+    color:white;
+    text-align: left;
+    margin-left: 15px;
+    margin-top: 3px;
+}
+
+.bot-status{
+  
+    text-transform: uppercase;
+    font-size: 13px;
+    text-align: left;
+    margin-left: 15px;
+    
+}
+
+.bot-offline{
+    color: grey;
+}
+
+.bot-dnd{
+    color: #ff4757;
+}
+.bot-idle{
+    color: #ffa502;
+}
+.bot-online{
+    color: #43b581;
+}
+
+        
+        </style>
+    <body>
+        <div class="header">
+         
+            <%- include("../parts/header") %>
+      
+    </div>
+    <div class="main">
+        
+            <%- include("../parts/headerpre") %>
+
+           <div class="container">
+            
+            <% if (rawBots.length == 0) { %>
+                <p style="color: #bdc3c7;margin-top: 25px;text-align: center;font-size: 29px;">Aucun bot :( </p>
+            <% } else { %>          
+                <div class="list-bot">  
+                    <div style="display: inline-block;vertical-align: middle;margin-left: 20px;">
+                        <svg style="width: 60px;height:60px;vertical-align:middle;color:white;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
+                    </div>
+
+                    <div style="display: inline-block;vertical-align: middle;">
+                    <div class="title-cat">
+                    Populaire
+                    </div>     
+                    <div class="title-cat-sub">
+                        Les bots avec le plus de votes se retrouvent ici
+                    </div>   
+                    </div>      
+       
+                
+       
+                 <%- botChunks.map(chunk => `<div>${chunk.map(bot => include("../parts/botv2card", {bot})).join("")}</div>`).join("") %>
+                 
+                 <div style="" class="center-align">
+                    <ul class="pagination center-align">
+                        <% if (page === 0) { %>
+                        <li class="disabled"><a><i class="material-icons grey-text text-darken-2">chevron_left</i></a></li>
+                        <% } else { %>
+                        <li class="waves-effect"><a href="?page=<%= page %>"><i
+                                    class="material-icons grey-text text-lighten-1">chevron_left</i></a></li>
+                        <% } %>
+    
+                        <% for (let p = 0; p < pages; p++) { %>
+                        <li class="<%= page === p ? 'active grey darken-1' : 'waves-effect' %>"><a <%- page===p ? '' :
+                                `href="?page=${p + 1}" class="grey-text text-lighten-1"
+                                ` %> >
+                                <%= p + 1 %></a></li>
+                        <% } %>
+    
+                        <% if (page === pages - 1) { %>
+                        <li class="disabled"><a><i class="material-icons grey-text text-darken-2">chevron_right</i></a></li>
+                        <% } else { %>
+                        <li class="waves-effect"><a href="?page=<%= page + 2 %>"><i
+                                    class="material-icons grey-text text-lighten-1">chevron_right</i></a></li>
+                        <% } %>
+                    </ul>
+    
+                 </div>
+          </div>
+     
+     </div>
+            <% } %>
+
+           
+        </div>
+    </div>
+    </body>
+    <footer>
+        <%- include("../parts/footer") %>
+        <%- include("../parts/scripts") %>
+    </footer>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <%- include("../parts/head", { title: 'Premium Page' }) %>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+        
+    </head>
+
+    <style>
+  .dropdown-content li>span{
+    color: #2C2F33;
+}
+
+
+body.dark-theme input {
+    color:white;
+}
+
+.input-field{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #dedede;
+    margin-top: 60px;
+}
+
+.btn{
+    background-color: #2ecc71;
+    border: solid 0px;
+    border-radius: 5px;
+    
+}
+
+.btn:hover{
+    border: solid 0px;
+}
+
+.select-wrapper input.select-dropdown{
+    background-color: #2C2F33;
+    border: solid 0px;
+    border-radius: 5px;
+    border-bottom: solid 0px;
+    color: #dedede;
+}
+
+input[type=text]:not(.browser-default){
+    background-color: #2C2F33;
+    border: solid 0px;
+    border-radius: 5px;
+    color: #dedede;
+    padding-left: 10px;
+}
+
+input[type=url]:not(.browser-default){
+    background-color: #2C2F33;
+    border: solid 0px;
+    border-radius: 5px;
+    color: #dedede;
+    padding-left: 10px;
+}
+
+input[type=url]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid #7289DA;
+    -webkit-box-shadow: 0 1px 0 0 #7289DA;
+    box-shadow: 0 1px 0 0 #7289DA;
+}
+textarea.materialize-textarea{
+    background-color: #23272A;
+    border: solid 0px;
+    border-radius: 6px;
+    min-height: 250px;
+    max-height: 1000px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    overflow: auto;
+}
+input[type=text]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid #7289DA;
+    -webkit-box-shadow: 0 1px 0 0 #7289DA;
+    box-shadow: 0 1px 0 0 #7289DA;
+}
+
+.hiddendiv{
+    position:relative;
+    width: 10px;
+    display: none;
+}
+
+::placeholder{
+    color: #7C8083;
+}
+
+.leftmenu{
+  background-color: #1d1f21;
+  width: 100%;
+  height: auto;
+  display:inline-block;
+  border-right: solid 2px #33343b;
+  border-top: solid 2px #33343b;
+  border-bottom: solid 2px #33343b;
+  padding: 15px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.rightmenu{
+  background-color: #222428;
+  font-family: 'Quicksand', sans-serif;
+  width: 100%;
+  height: auto;
+  display:inline-block;
+  padding: 15px;
+}
+
+body{
+  padding: 0px;
+  margin: 0px;
+  left: 0;
+  right: 0;
+  top:0;
+  bottom:0;
+}
+
+.menuver{
+  width: 250px;
+  height: auto;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: 50px;
+}
+
+.btnmenuver{
+  background-color: #1d1f21;
+  border: solid 0px;
+  border-radius: 6px;
+  width: 250px;
+  height: 50px;
+  color: #A5AAAF;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  vertical-align:middle;
+  cursor:pointer
+}
+
+
+
+.btnmenuver:hover{
+  background-color: #2C2F33;
+}
+
+.btnmenuhovered{
+  background-color: #2C2F33;
+  border: solid 0px;
+  border-radius: 6px;
+  width: 250px;
+  height: 50px;
+  color: #A5AAAF;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  vertical-align:middle;
+  cursor:pointer
+}
+
+
+hr{
+    background-color:#33343b;
+    height: 2px;
+    margin: 10px 0;
+    border: none;
+}
+
+.bgcolor{
+
+  
+min-height: auto;
+display: block;
+
+  grid-auto-flow: column;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+ 
+
+}
+
+
+.imgbot{
+    margin-left: auto;margin-right: auto;width: 100%;text-align: center;
+}
+.ttalign{
+    display: block;
+}
+@media (min-width: 900px){
+
+.bgcolor {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 300px auto;
+    grid-template-rows: auto;
+}
+
+.imgbot{
+    margin-left: auto;margin-right: auto;width: 100%;text-align: left;
+}
+
+.ttalign{
+display: inline-block;
+margin-left: 15px;
+}
+
+}
+
+.tl{
+    text-align: center;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    </style>
+    <body style="background-color: #2C2F33;">
+        <div class="header">
+            <%- include("../parts/header") %>
+        </div>
+        <div class="main">
+
+         
+            <div class="bgcolor">
+  
+                <span class="leftmenu">
+                
+                  
+                  <div style="margin-top: 30px;" class="imgbot" >
+                    <div style="vertical-align: middle;" class="ttalign">
+                    <img style="border-radius: 10px;border: solid 0px;" class="responsive-img circle" width="60" height="60" alt="Bot Avatar" src="<%= botimage._discordAvatarURL %>">
+                    </div>
+                   <div style="vertical-align: middle;" class="ttalign" >
+                    <span style="color: #7289DA;"><%= bot.name %></span>  
+                   
+                   </div>
+                  </div>
+
+                  <a href="" style="margin-top: 15px;margin-bottom: 5px;padding: 10px;background-color: #eb4d4b;border: solid 0px;border-radius: 5px;display: block;width: 150px;height:45px;margin-left: auto;margin-right: auto;text-align: center;" class="btn-supprimer modal-trigger" data-target="delete-bot-modal"><i style="color: white;margin-right: 5px;" class="fas fa-trash-alt"></i>Supprimer</a>
+
+                  <div class="menuver">
+                    <span style="color:#f5f6fa;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;font-size: 14px;">Modification</span>
+                    <div style="margin-top:10px;"  class="btnmenuhovered">
+                     <div style="padding:14px;">
+                       <i style="margin-right:5px;" class="fas fa-edit"></i> Général
+                      </div>
+                    </div>
+                    
+                    
+                    <div style="margin-top:5px; cursor: not-allowed;"  class="btnmenuver">
+                     <div style="padding:14px;">
+                       <i style="margin-right:5px;" class="fas fa-cog"></i> Webhook
+                      </div>
+                    </div>
+
+
+                    <a href="/dashboard/bot/<%= bot.id %>/widget">
+                    <div style="margin-top:5px; cursor: pointer;"  class="btnmenuver">
+                        <div style="padding:14px;">
+                          <i style="margin-right:5px;" class="fas fa-image"></i> Widget
+                         </div>
+                       </div>
+                    </a>
+
+                    <a href="/dashboard/bot/<%= bot.id %>/stats">
+                        <div style="margin-top:5px; cursor: pointer;"  class="btnmenuver">
+                            <div style="padding:14px;">
+                              <i style="margin-right:5px;" class="fas fa-signal"></i> Statistiques
+                             </div>
+                           </div>
+                        </a>
+                        <% if(bot.certified) { %>
+                            <a href="/dashboard/bot/<%= bot.id %>/pagepremium">
+                                <div style="margin-top:5px; cursor: pointer;"  class="btnmenuver">
+                                    <div style="padding:14px;">
+                                      <i style="margin-right:5px;" class="fas fa-gem"></i> Premium
+                                     </div>
+                                   </div>
+                                </a>
+                                <% } %>
+                    
+                    <div style="margin-top:25px;">
+                     <span style="color:#f5f6fa;text-transform:uppercase;letter-spacing:1px;font-size: 14px;">Besoin d'aide ?</span>
+                    <a href="https://discord.gg/bf4NEUd">
+                      <div style="margin-top:15px;"  class="btnmenuver">
+                     <div style="padding:14px;">
+                       <i style="margin-right:5px;" class="fas fa-question-circle"></i> Support
+                      </div>
+                    </div>
+                    </a>
+                    </div>
+                    
+                    
+                  </div>
+                  
+                </span>
+                 
+
+
+                <span class="rightmenu">
+
+            <div class="container center-align din" style="padding: 1px;width: 80%;border-radius: 10px;">
+             
+                    
+               
+             
+            
+            
+            </div>
+                <div class="row">
+                    <form class="col s12" id="new-bot-form" data-bot-id="<%= bot.id %>">
+                        <div class="row">
+                            <div class="input-field ">
+                                <div style="text-align: left;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Librairie</label>
+                                </div>
+                                <select id="newbot">
+                                    <% if (bot.library) { %>
+                                    <option value="<%=bot.library%>">
+                                        <%=bot.library%>
+                                    </option>
+                                    <%- libs.filter(lib => lib !== bot.library).map(lib => `<option value="${lib}">${lib}</option>`) %>
+                                    <option value="none">Autres</option>
+                                    <% } else { %>
+                                    <option value="none">Autres</option>
+                                    <%- libs.filter(lib => lib !== bot.library).map(lib => `<option value="${lib}">${lib}</option>`) %>
+                                    <% } %>
+                                </select>
+                                
+                            </div>
+                        </div>
+
+                        <hr>
+
+
+                        <div class="row">
+                            <div class="input-field ">
+                                <div style="text-align: left;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Tag</label>
+                                </div>
+                                <select id="tagsbot" id="newbot">
+                                    <% if (bot.tags) { %>
+                                    <option value="<%=bot.tags%>">
+                                        <%=bot.tags%>
+                                    </option>
+                                    <%- tage.filter(tag => tag !== bot.tags).map(tag => `<option value="${tag}">${tag}</option>`) %>
+                                  
+                                    <% } else { %>
+                                    
+                                    <%- tage.filter(tag => tag !== bot.tags).map(tag => `<option value="${tag}">${tag}</option>`) %>
+                                    <% } %>
+                                </select>
+                             
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="input-field ">
+                                <div style="text-align: left;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Prefix</label>
+                                </div>
+                                <input  id="bot_prefix" type="text" maxlength="25" class="validate" value="<%=bot.prefix%>">
+                               
+                            </div>
+                            <hr>
+                            <div class="input-field ">
+                                <div style="text-align: left;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Site Web (facultatif)</label>
+                                </div>
+                                <input  id="bot_website" type="url" class="validate" value="<%=bot.website%>">
+                                
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div class="input-field ">
+                                <div style="text-align: left;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Petite Description</label>
+                                </div>
+                                <input maxlength="90"  id="bot_description" data-length="200" required minlength="50" type="text" class="validate" value="<%=bot.shortDescription%>">
+                                
+                            </div>
+                            <p class="tl" >Les utilisateurs qui naviguent dans la liste verront votre description courte avant votre description complète
+                                , donc assurez-vous d'inclure des informations sur les raisons pour lesquelles ils doivent cliquer sur votre bot.</p>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="input-field ">
+                                <div style="text-align: left;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Description Complète</label>
+                                </div>
+                                <textarea style="color: white;" maxlength="1200" required minlength="100"  id="bot_description-full" class="materialize-textarea"><%=bot.longDescription%></textarea>
+                                
+                            </div>
+                            <p class="tl"><a style="color: #7289DA;" href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> est soutenu dans
+                                la description complète.
+                                <%= bot.certified && 'Vous pouvez également utiliser du HTML (y compris la balise de style), car votre bot est premium' %>
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="input-field">
+                                <div style="text-align: left;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Bot Invitation URL (facultatif)</label>
+                                </div>
+                                <input  id="bot_invite" type="url" class="validate" value="<%=bot.invite%>">
+                                
+                            </div>
+                            <p class="tl" >Les URL d'invitation personnalisées peuvent être utiles si votre bot est un bot de modération ou un bot
+                                qui a besoin d'autorisations supplémentaires</p>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="input-field ">
+                                <div style="text-align: left;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">GitHub URL (facultatif)</label>
+                                </div>
+                                <input  id="bot_github" type="url" class="validate" placeholder="https://github.com/DoctorPok42" minlength="19" value="<%= bot.github %>">
+                                
+                            </div>
+                         
+                        </div>
+                        
+                    
+                        <div class="row" style="display: <%= bot.certified ? 'block' : 'none' %>">
+                            <div class="input-field">
+                                <div style="text-align: left;">
+                                    <label style="margin-bottom: 5px;color: #b6bef1;">Page URL (facultatif)</label>
+                                </div>
+                                <input  id="vanity_url" type="text" class="validate" minlength="4" maxlength="12" value="<%= bot.vanityURL %>">
+                                
+                            </div>
+                            <p class="tl" style="color: white;">Vous pouvez éventuellement ajouter une URL personnalisé pour la page de votre bot, de sorte que votre bot puisse être consulté à partir de <code>shadow-bot.com/bot/[lenomdetonbot]</code>, ainsi que <code>shadow-bot.com/bot/[id]</code></p>
+                        </div>
+                        <div style="display: none;" class="row">
+                            <div class="input-field col s6">
+                                <input  id="like_webhook" type="url" class="validate" value="<%= bot.likeWebhook %>">
+                                <label for="like_webhook">Webhook (facultatif)</label>
+                            </div>
+                            <p class="col s6" style="color: #2C2F33;">Si vous avez besoin de savoir quand un utilisateur aime votre bot, vous pouvez configurer un webhook
+                                et l'adresse de ce serveur est ici pour qu'il puisse être notifié. Voir l'API
+                                Documentation pour plus de détails</p>
+                        </div>
+                        <div style="display: none;" class="row">
+                            <div class="input-field col s6">
+                                <input  id="webhook_auth" type="text" class="validate" value="<%= bot.webhookAuth %>">
+                                <label for="webhook_auth">Webhook Auth</label>
+                            </div>
+                            <p class="col s6" style="color: #2C2F33;">Mettez un mot de passe pour votre webhook</p>
+                        </div>
+                        <div class="row">
+                            <button style="background-color: #2ecc71;" class="square  btn btn-orange btn-1x" type="submit" name="action" id="nb-submit">Envoyer
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div style="background-color: #222527" id="delete-bot-modal" class="modal" data-bot-id="<%= bot.id %>">
+                    <div style="background-color: #222527" class="modal-content">
+                        <h4 style="color: #eb4d4b;">Êtes-vous sûr de vouloir supprimer ce bot ?</h4>
+                        <p>Vous ne pouvez pas revenir sur cette action ! Faites attention.</p>
+                    </div>
+                    <div style="background-color: #222527;" class="modal-footer">
+                        <a id="delete-bot-action" class="modal-action modal-close waves-effect waves-red btn-flat red-text">Supprimer</a>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+        </div>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <%- include("../parts/footer") %>
+        <%- include("../parts/scripts") %>
+    </footer>
+</html>

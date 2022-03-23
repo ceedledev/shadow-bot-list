@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<%- include("../parts/head", { title: profile.username }) %>
+		<meta property="og:title" content="<%= profile.username %>" />
+		<meta property="og:description" content="View <%= profile.username %>'s shadow-bot.com profile &bullet; see their owned bots, liked bots &amp; more!">
+		<meta property="og:image" content="<%= profile._discordAvatarURL %>" />
+	</head>
+
+<style>
+	.bp-heading {
+    display: block; 
+	width: 650px;
+	height: 160px;
+}
+
+
+
+
+.bgcustom {
+
+	
+	
+	background: url('https://discord.com/assets/3e0acf6d69894a5d20deb7c513cd1412.svg') no-repeat;
+background-size: cover;
+     border: solid 0px;
+	 border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	 margin-left: auto;
+	 margin-right: auto;
+	 height: 164px;
+
+  
+}
+
+.opi{
+	opacity: 0.4;
+	cursor: pointer;
+}
+
+.opi:hover{
+	opacity: 0.9;
+}
+
+
+.oe{
+
+	
+	background-color: rgba(35, 39, 42, 0.35);
+	border: solid 0px;
+	 border-radius: 10px;
+	 padding: 85px;
+	 height: 100px;
+}
+
+.cardp{
+	background-color: #171A1C;
+	width: 650px;
+	height: 620px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+}
+
+
+.pinfo{
+	padding: 25px 10px;
+}
+
+.subinfo{
+	color: #99AAB5;
+}
+
+.pbtn{
+	background-color: #7289DA;
+	border: solid 0px;
+	border-radius: 5px;
+	height: 35px;
+	width: 110px;
+	color: white;
+	font-size:medium;
+	margin-right: 15px;
+	cursor: pointer;
+
+}
+
+.pbtn:hover{
+	background-color: #687FD1;
+	
+}
+
+.plike{
+
+	font-size:medium;
+}
+
+.fa-heart{
+	color: #bdc3c7;
+	cursor: pointer;
+}
+
+.fa-heart:hover{
+	color: #e74c3c;
+}
+
+
+@media only screen and (max-width: 690px){
+
+.oe{
+width: 550px;
+height: 100px;
+}
+
+.cardp{
+
+width: 550px;
+height: 620px;
+
+}
+
+.bp-heading {
+
+width: 550px;
+height: 160px;
+}
+
+
+.bgcustom {
+height: 164px;
+}
+
+
+}
+
+
+@media only screen and (max-width: 580px){
+
+.oe{
+width: 500px;
+height: 100px;
+}
+
+.cardp{
+
+width: 500px;
+height: 620px;
+
+}
+
+.bp-heading {
+
+width: 500px;
+height: 160px;
+}
+
+
+.bgcustom {
+height: 164px;
+}
+
+
+}
+
+@media only screen and (max-width: 520px){
+
+.oe{
+width: 450px;
+height: 100px;
+}
+
+.cardp{
+
+width: 450px;
+height: 620px;
+
+}
+
+.bp-heading {
+
+width: 450px;
+height: 160px;
+}
+
+
+.bgcustom {
+height: 164px;
+}
+
+
+}
+
+</style>
+
+
+	<body>
+		<div class="header">
+			<%- include("../parts/header") %>
+		</div>
+		<div class="main">
+			<div class="container">
+				<div class="profile-page">
+					<div class="bp-top-info">
+						<div class="bp-head-section">
+							<div class="row">
+								
+								<div class="cardp">
+								<h4 class="bp-heading center-align bgcustom">
+									<div class="oe">
+								
+										
+									
+									<img class="responsive-img circle " alt="User Avatar" style=" vertical-align: middle; width: 128px !important; height: 128px !important;box-shadow: 0px 0px 10px #2C2F33;"
+									 src="<%=profile._discordAvatarURL%>">
+
+									
+								
+									 <div style="float: right;position: absolute;padding-left: 100px;display: inline-block;padding-top: 100px;">
+										<div style="color: white;" class="plike" >
+											<i style="margin-right: 5px;" class="fas fa-heart"></i>	0
+										</div>
+									 </div>
+
+									<div style="margin-left: 20px; ">
+										
+										
+										
+										<p style="font-size: 0.9em;line-height: 0px;">
+											<%= profile.username %><span style="font-size: 0.7em;color: #7f8c8d;">#<%= profile.discriminator %>  <i class="fas fa-circle" style="vertical-align:middle;color: <%= profile.online ? '#27ae60' : '#f55a4e' %>; height: 10px;font-size: 10px;margin-right: 8px;"></i></span></p> 
+
+										
+							
+							
+										       
+											
+									
+									</div>
+
+									<div style="margin-top: 15px;">
+										<div style="display: inline-block;">
+											<button class="pbtn">Site</button>
+										</div>
+
+										<div style="display: inline-block;">
+											<button class="pbtn ">Discord</button>
+										</div>
+									</div>
+
+									<div style="margin-top: 0px;" class="pinfo">
+
+										<div class="center-align">
+											<div style="text-align: center;margin-bottom: 30px; ">
+												<p> <i style="color: #9b59b6;margin-right: 5px;" class="fas fa-scroll"></i> Description</p>
+												<p class="subinfo">Je suis un membre de SBL</p>
+											</div>
+
+										<div class="left-align">
+                                      <div style="display: inline-block;text-align: left; ">
+										  <p> <i style="color: #3498db;margin-right: 5px;" class="fas fa-mars"></i> Genre</p>
+										  <p class="subinfo">Pas spécifié</p>
+									  </div>
+
+									  <div style="display: inline-block;text-align: left;margin-left: 60px;">
+										<p> <i style="color: #f39c12;margin-right: 5px;" class="fas fa-briefcase"></i> Occupation</p>
+										<p class="subinfo">Rien pour le moment</p>
+									  </div>
+										</div>
+
+
+										<div class="center-align" style="margin-top: 10px;margin-left: auto;margin-right: auto;">
+                                         
+
+
+										
+
+
+											<% if (profile._verifiedBots.length) { %>
+												<div class="tooltip" style="display: inline-block;border: solid 0px">
+													<img class="opi" style="vertical-align: middle;" src="https://zupimages.net/up/20/22/2f3a.png" height="35px" width="35px">
+													
+													
+													<div class="top">
+													Développeur De Bot
+													</div>
+													</div>	&nbsp;
+										
+											<% } %>
+										<% profile.badges.forEach(b => { %>
+
+											
+
+												
+
+						                   <% if(b == "Développeur Certifié"){ %>
+
+											<div class="tooltip" style="display: inline-block;border:solid 0px">
+
+												<img class="opi" style="vertical-align: middle;margin-left: 5px;" src="https://zupimages.net/up/20/22/f43w.png" height="45px" width="45px">
+												
+											
+												<div class="top">
+													Premium
+												</div>
+											</div>	&nbsp;
+                                                   
+										   <% } %>
+										
+											
+										   <% if(b == "Modérateur"){ %>
+
+											<div class="tooltip" style="display: inline-block;border:solid 0px">
+												<img class="opi" style="vertical-align: middle;" src="https://zupimages.net/up/20/22/4fup.png" height="35px" width="35px">
+												
+												<div class="top">
+													Membre Du Staff
+												</div>
+											</div>	&nbsp;
+												   
+										   <% } %>
+										
+										   <% if(b == "Fondateur"){ %>
+											<div class="tooltip" style="display: inline-block;border: solid 0px">
+												<img class="opi" style="vertical-align: middle;" src="https://zupimages.net/up/20/22/iaae.png" height="35px" width="35px">
+											
+											<div class="top">
+											Fondateur SBL
+											</div>
+											</div>	&nbsp;
+											<% } %>
+                                           
+
+
+										<% }) %>
+
+
+										
+
+
+										</div>
+										
+									</div>
+								
+								
+								</h4>
+								</div>
+							</div>
+							</div>
+						</div>
+				
+
+						<style>
+							.tmenu{
+								background-color: #2C2F33;
+								border: solid 0px;
+								border-radius: 5px;
+								height: 60px;
+								width: 300px;
+								margin-left: auto;
+								margin-right: auto;
+								
+							}
+
+							.tmenubtn{
+								background-color: #7289DA;
+								border: solid 0px;
+								border-radius: 5px;
+								height: 40px;
+								width: 200px;
+								color: white;
+								cursor: pointer;
+								padding: 10px;
+							}
+					
+
+							.tform{
+								background-color: #2C2F33;
+								border: solid 0px;
+								border-radius: 10px;
+								height: 450px;
+								width: 100%;
+								margin-top: 15px;
+								color: #000;
+								padding: 15px;
+							}
+
+							.ttab{
+								background-color: #171A1C;
+								border: solid 0px;
+								border-radius: 10px;
+								height: 600px;
+								width: 80%;
+								margin-left: auto;
+								margin-right: auto;
+							}
+                            
+
+							.lb{
+								display: inline-block;margin-right: 100px;margin-left: 100px;
+							}
+
+							input:not([type]):focus:not([readonly]){
+								border-bottom: 1px solid white; 
+                      -webkit-box-shadow: 0 1px 0 0 white; 
+                                box-shadow: 0 1px 0 0 white; 
+							}
+
+
+							body.dark-theme input{
+								color: white;
+							}
+						</style>
+
+						<div style="padding: 35px" class="center-align ttab">
+
+
+							<div style="padding: 10px" class="tmenu" >
+
+		
+
+
+								
+					
+							   <div class="tmenubtn" style="display: inline-block;margin-right: 10px;">
+								Profil
+							   </div>
+
+							 
+
+
+							</div>
+							
+	
+							<div class="tform">
+
+							   <p>Modification de profil</p>
+							   <p style="color: #99AAB5;">Modifier votre profil pour créer une biographie de vous !</p>
+								
+
+							   <div style="margin-top: 40px;">
+
+								<div style="width: 250px;" class="lb"> 
+								<label style="color: white;font-size: 14px;"> <i style="color: #f39c12;margin-right: 5px;" class="fas fa-briefcase"></i> Occupation</label>
+								<input placeholder="Ex: Manger" required maxlength="28" class="cw">
+								</div>
+
+								<div style="width: 250px;" class="lb">
+									<label style="color: white;font-size: 14px;"> <i style="color: #3498db;margin-right: 5px;" class="fas fa-mars"></i> Genre </label>
+									<select required>
+ 
+										<option>Homme</option>
+										<option>Femme</option>
+										<option>Pas spécifiés</option>
+									</select>
+									
+								</div>
+
+
+								<div style="margin-top: 30px;width: 300px;margin-left: auto;margin-right: auto;">
+									<label style="color: white;font-size: 14px;"> <i style="color: #9b59b6;margin-right: 5px;" class="fas fa-scroll"></i> Description</label>
+									<input required maxlength="60" class="cw">
+								</div>
+
+							   </div>
+								 <br><br><br>
+								 <button style="background-color: #2ecc71;" class="square  btn btn-orange btn-1x" type="submit" name="action" id="nb-submit">Envoyer
+									<i class="material-icons right">send</i>
+							</button>
+							</div>
+
+							</div>
+
+
+						</div>
+
+
+
+						
+					
+						  
+						  
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<footer style="padding-top: 20px;" >
+		<%- include("../parts/footer") %>
+		<%- include("../parts/scripts") %>
+	</footer>
+</html>

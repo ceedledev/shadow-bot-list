@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../parts/head", { title: 'Premium Selection' }) %>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+        
+    </head>
+
+    <style>
+  .dropdown-content li>span{
+    color: #2C2F33;
+}
+
+
+body.dark-theme input {
+    color:white;
+}
+
+.input-field{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #dedede;
+    margin-top: 60px;
+}
+
+
+
+.btn{
+    background-color: #2ecc71;
+    border: solid 0px;
+    border-radius: 5px;
+    
+}
+
+.btn:hover{
+    border: solid 0px;
+}
+
+
+
+
+
+
+.select-wrapper input.select-dropdown{
+    background-color: #2C2F33;
+    border: solid 0px;
+    border-radius: 5px;
+    border-bottom: solid 0px;
+    color: #dedede;
+}
+
+input[type=text]:not(.browser-default){
+    background-color: #2C2F33;
+    border: solid 0px;
+    border-radius: 5px;
+    color: #dedede;
+    padding-left: 10px;
+}
+
+input[type=url]:not(.browser-default){
+    background-color: #2C2F33;
+    border: solid 0px;
+    border-radius: 5px;
+    color: #dedede;
+    padding-left: 10px;
+}
+
+input[type=url]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid #7289DA;
+    -webkit-box-shadow: 0 1px 0 0 #7289DA;
+    box-shadow: 0 1px 0 0 #7289DA;
+}
+textarea.materialize-textarea{
+    background-color: #23272A;
+    border: solid 0px;
+    border-radius: 6px;
+    min-height: 250px;
+    max-height: 1000px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    overflow: auto;
+    
+
+}
+input[type=text]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid #7289DA;
+    -webkit-box-shadow: 0 1px 0 0 #7289DA;
+    box-shadow: 0 1px 0 0 #7289DA;
+}
+
+.hiddendiv{
+    position:relative;
+    width: 10px;
+    display: none;
+}
+
+::placeholder{
+    color: #7C8083;
+}
+
+
+
+
+
+.leftmenu{
+  background-color: #1d1f21;
+  width: 100%;
+  height: auto;
+  display:inline-block;
+  border-right: solid 2px #33343b;
+  border-top: solid 2px #33343b;
+  border-bottom: solid 2px #33343b;
+  padding: 15px;
+  font-family: 'Quicksand', sans-serif;
+  
+  
+}
+
+
+.rightmenu{
+  background-color: #222428;
+  font-family: 'Quicksand', sans-serif;
+  width: 100%;
+  height: auto;
+  display:inline-block;
+
+  padding: 15px;
+
+}
+
+body{
+  padding: 0px;
+  margin: 0px;
+  left: 0;
+  right: 0;
+  top:0;
+  bottom:0;
+  
+}
+
+
+.menuver{
+  width: 250px;
+  height: auto;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: 50px;
+
+}
+
+.btnmenuver{
+  background-color: #1d1f21;
+  border: solid 0px;
+  border-radius: 6px;
+  width: 250px;
+  height: 50px;
+  color: #A5AAAF;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  vertical-align:middle;
+  cursor:pointer
+ 
+ 
+}
+
+
+.btnmenuvert{
+  background-color: #1d1f21;
+  border: solid 0px;
+  border-radius: 6px;
+  width: 250px;
+  height: 50px;
+  color: #A5AAAF;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  vertical-align:middle;
+  
+ 
+ 
+}
+
+
+
+.btnmenuvalide{
+  background-color: #43b581;
+  border: solid 0px;
+  border-radius: 6px;
+  width: 250px;
+  height: 50px;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  vertical-align:middle;
+  
+ 
+ 
+}
+
+
+
+.btnmenuver:hover{
+  background-color: #2C2F33;
+}
+
+.btnmenuhovered{
+  background-color: #2C2F33;
+  border: solid 0px;
+  border-radius: 6px;
+  width: 250px;
+  height: 50px;
+  color: #A5AAAF;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  vertical-align:middle;
+  cursor:pointer
+}
+
+
+hr{
+    background-color:#33343b;
+    height: 2px;
+    margin: 10px 0;
+    border: none;
+}
+
+.bgcolor{
+
+  
+min-height: auto;
+display: block;
+
+  grid-auto-flow: column;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+ 
+
+}
+
+
+.imgbot{
+    margin-left: auto;margin-right: auto;width: 100%;text-align: center;
+}
+.ttalign{
+    display: block;
+}
+@media (min-width: 900px){
+
+.bgcolor {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 300px auto;
+    grid-template-rows: auto;
+}
+
+.imgbot{
+    margin-left: auto;margin-right: auto;width: 100%;text-align: left;
+}
+
+.ttalign{
+display: inline-block;
+margin-left: 15px;
+}
+
+}
+
+.tl{
+    text-align: center;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    </style>
+    <body style="background-color: #2C2F33;">
+        <div class="header">
+            <%- include("../parts/header") %>
+        </div>
+        <div class="main">
+
+         
+            <div class="bgcolor">
+  
+                <span class="leftmenu">
+                
+                  <div style="margin-top: 25px;" class="center-align">
+                    <span style="text-transform: uppercase;color: #b6bef1;font-size: 23px;">Premium</span>
+                  </div>
+                 
+
+                  <div class="menuver">
+
+                  
+
+                    <span style="color:#f5f6fa;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;font-size: 14px;">étapes</span>
+                    <div style="margin-top:10px; cursor:auto;"  class="btnmenuvalide">
+                     <div style="padding:14px;">
+                       <i style="margin-right:5px;" class="fas fa-edit"></i> Selectionner
+                      </div>
+                    </div>
+                    
+                    
+                    <div style="margin-top:5px; "  class="btnmenuhovered">
+                     <div style="padding:14px;">
+                       <i style="margin-right:5px;" class="fas fa-shopping-basket"></i> Paiement
+                      </div>
+                    </div>
+
+
+                   
+                
+                     
+                    
+                    <div style="margin-top:25px;">
+                     <span style="color:#f5f6fa;text-transform:uppercase;letter-spacing:1px;font-size: 14px;">Besoin d'aide ?</span>
+                    <a href="https://discord.gg/bf4NEUd">
+                      <div style="margin-top:15px;"  class="btnmenuver">
+                     <div style="padding:14px;">
+                       <i style="margin-right:5px;" class="fas fa-question-circle"></i> Support
+                      </div>
+                    </div>
+                    </a>
+                    </div>
+                    
+                    
+                  </div>
+                  
+                </span>
+                 
+
+
+                <span class="rightmenu">
+
+ 
+                    <div style="margin-top: 38px;text-align: center;">
+                        <span style="text-transform: uppercase;font-size: 28px;color: #b6bef1;">Premium Paiement</span>
+
+                        <span style="margin-top: 10px;display: block;color: #dedede;">Vous y êtes presque plus qu'une étape et vous aurez les avantages de l'offre premium</span>
+                    </div>
+
+                   <div style="margin-top: 45px;" class="center-align">
+                   <img style="border-radius: 15px;" src="<%= bot._discordAvatarURL %> " width="90px" height="90px"  alt="Bot Image">
+                   <span style="color: #b6bef1;font-size: 20px;display: block;"><%= bot.name%></span>
+                   </div>
+
+                   <a href="/dashboard/premium/paiement/<%=user.id%>/<%=bot.id%>">
+                   <div class="center-align" style="background-color: #2ecc71;border: solid 0px;border-radius: 5px;width: 130px;height: 40px;color: white;padding: 10px;text-align: center;margin-left: auto;margin-right: auto;margin-top: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" class="ionicon" width="1.3em" height="1.3em" fill="white" viewBox="0 0 512 512"><title>Logo Paypal</title><path d="M424.81 148.79c-.43 2.76-.93 5.58-1.49 8.48-19.17 98-84.76 131.8-168.54 131.8h-42.65a20.67 20.67 0 00-20.47 17.46l-21.84 137.84-6.18 39.07a10.86 10.86 0 009.07 12.42 10.72 10.72 0 001.7.13h75.65a18.18 18.18 0 0018-15.27l.74-3.83 14.24-90 .91-4.94a18.16 18.16 0 0118-15.3h11.31c73.3 0 130.67-29.62 147.44-115.32 7-35.8 3.38-65.69-15.16-86.72a72.27 72.27 0 00-20.73-15.82z"/><path d="M385.52 51.09C363.84 26.52 324.71 16 274.63 16H129.25a20.75 20.75 0 00-20.54 17.48l-60.55 382a12.43 12.43 0 0010.39 14.22 12.58 12.58 0 001.94.15h89.76l22.54-142.29-.7 4.46a20.67 20.67 0 0120.47-17.46h42.65c83.77 0 149.36-33.86 168.54-131.8.57-2.9 1.05-5.72 1.49-8.48 5.7-36.22-.05-60.87-19.72-83.19z"/></svg> 5€ / mois
+                   </div>
+                   </a>
+
+                   <div style="color: #eb4d4b;margin-top: 20px;text-align: center;">
+                      Attention si vous faites une demande de litige vous serrez banni de SBL et votre bot sera supprimer du site.
+                   </div>
+
+
+                </span>
+        
+            </div>
+        </div>
+    </body>
+    <footer>
+        <%- include("../parts/footer") %>
+        <%- include("../parts/scripts") %>
+    </footer>
+</html>

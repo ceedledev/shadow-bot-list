@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../parts/head", { title: 'Merci !' }) %>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+        
+    </head>
+
+    <style>
+  .dropdown-content li>span{
+    color: #2C2F33;
+}
+
+
+body.dark-theme input {
+    color:white;
+}
+
+.input-field{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #dedede;
+    margin-top: 60px;
+}
+
+
+
+.btn{
+    background-color: #2ecc71;
+    border: solid 0px;
+    border-radius: 5px;
+    
+}
+
+.btn:hover{
+    border: solid 0px;
+}
+
+
+
+
+
+
+.select-wrapper input.select-dropdown{
+    background-color: #2C2F33;
+    border: solid 0px;
+    border-radius: 5px;
+    border-bottom: solid 0px;
+    color: #dedede;
+}
+
+input[type=text]:not(.browser-default){
+    background-color: #2C2F33;
+    border: solid 0px;
+    border-radius: 5px;
+    color: #dedede;
+    padding-left: 10px;
+}
+
+input[type=url]:not(.browser-default){
+    background-color: #2C2F33;
+    border: solid 0px;
+    border-radius: 5px;
+    color: #dedede;
+    padding-left: 10px;
+}
+
+input[type=url]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid #7289DA;
+    -webkit-box-shadow: 0 1px 0 0 #7289DA;
+    box-shadow: 0 1px 0 0 #7289DA;
+}
+textarea.materialize-textarea{
+    background-color: #23272A;
+    border: solid 0px;
+    border-radius: 6px;
+    min-height: 250px;
+    max-height: 1000px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    overflow: auto;
+    
+
+}
+input[type=text]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid #7289DA;
+    -webkit-box-shadow: 0 1px 0 0 #7289DA;
+    box-shadow: 0 1px 0 0 #7289DA;
+}
+
+.hiddendiv{
+    position:relative;
+    width: 10px;
+    display: none;
+}
+
+::placeholder{
+    color: #7C8083;
+}
+
+
+
+
+
+.leftmenu{
+  background-color: #1d1f21;
+  width: 100%;
+  height: auto;
+  display:inline-block;
+  border-right: solid 2px #33343b;
+  border-top: solid 2px #33343b;
+  border-bottom: solid 2px #33343b;
+  padding: 15px;
+  font-family: 'Quicksand', sans-serif;
+  
+  
+}
+
+
+.rightmenu{
+  background-color: #222428;
+  font-family: 'Quicksand', sans-serif;
+  width: 100%;
+  height: auto;
+  display:inline-block;
+
+  padding: 15px;
+
+}
+
+body{
+  padding: 0px;
+  margin: 0px;
+  left: 0;
+  right: 0;
+  top:0;
+  bottom:0;
+  
+}
+
+
+.menuver{
+  width: 250px;
+  height: auto;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: 50px;
+
+}
+
+.btnmenuver{
+  background-color: #1d1f21;
+  border: solid 0px;
+  border-radius: 6px;
+  width: 250px;
+  height: 50px;
+  color:#b6bef1;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  vertical-align:middle;
+  cursor:pointer;
+ text-align: center;
+ 
+}
+
+
+.btnmenuvert{
+  background-color: #1d1f21;
+  border: solid 0px;
+  border-radius: 6px;
+  width: 250px;
+  height: 50px;
+  color: #A5AAAF;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  vertical-align:middle;
+  
+ 
+ 
+}
+
+
+.btnmenuvalide{
+  background-color: #43b581;
+  border: solid 0px;
+  border-radius: 6px;
+  width: 250px;
+  height: 50px;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  vertical-align:middle;
+  
+ 
+ 
+}
+
+
+
+.btnmenuver:hover{
+  background-color: #2C2F33;
+}
+
+.btnmenuhovered{
+  background-color: #2C2F33;
+  border: solid 0px;
+  border-radius: 6px;
+  width: 250px;
+  height: 50px;
+  color: #A5AAAF;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  vertical-align:middle;
+  cursor:pointer
+}
+
+
+hr{
+    background-color:#33343b;
+    height: 2px;
+    margin: 10px 0;
+    border: none;
+}
+
+.bgcolor{
+
+  
+min-height: auto;
+display: block;
+
+  grid-auto-flow: column;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+ 
+
+}
+
+
+.imgbot{
+    margin-left: auto;margin-right: auto;width: 100%;text-align: center;
+}
+.ttalign{
+    display: block;
+}
+@media (min-width: 900px){
+
+.bgcolor {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 300px auto;
+    grid-template-rows: auto;
+}
+
+.imgbot{
+    margin-left: auto;margin-right: auto;width: 100%;text-align: left;
+}
+
+.ttalign{
+display: inline-block;
+margin-left: 15px;
+}
+
+}
+
+.tl{
+    text-align: center;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.btnhome{
+    background-color: #43b581;
+    border: solid 0px;
+    border-radius: 5px;
+    width: 140px;
+    height: 40px;
+    color: white;
+    text-align: center;
+    padding: 9px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.btnhome:hover{
+    background-color: #3CA978;
+}
+
+    </style>
+    <body style="background-color: #2C2F33;">
+        <div class="header">
+            <%- include("../parts/header") %>
+        </div>
+        <div class="main">
+
+         
+            <div class="bgcolor">
+  
+                <span class="leftmenu">
+                
+                  <div style="margin-top: 25px;" class="center-align">
+                    <span style="text-transform: uppercase;color: #b6bef1;font-size: 23px;">Premium</span>
+                  </div>
+                 
+
+                  <div class="menuver">
+
+                  
+
+                    <span style="color:#f5f6fa;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;font-size: 14px;">étapes</span>
+                    <div style="margin-top:10px; cursor:auto;"  class="btnmenuvalide">
+                     <div style="padding:14px;">
+                       <i style="margin-right:5px;" class="fas fa-edit"></i> Selectionner
+                      </div>
+                    </div>
+                    
+                    
+                    <div style="margin-top:5px; "  class="btnmenuvalide">
+                     <div style="padding:14px;">
+                       <i style="margin-right:5px;" class="fas fa-shopping-basket"></i> Paiement
+                      </div>
+                    </div>
+
+
+                   
+                
+                     
+                    
+                    <div style="margin-top:25px;">
+                     <span style="color:#f5f6fa;text-transform:uppercase;letter-spacing:1px;font-size: 14px;">Besoin d'aide ?</span>
+                    <a href="https://discord.gg/bf4NEUd">
+                      <div style="margin-top:15px;"  class="btnmenuver">
+                     <div style="padding:14px;">
+                       <i style="margin-right:5px;" class="fas fa-question-circle"></i> Support
+                      </div>
+                    </div>
+                    </a>
+                    </div>
+                    
+                    
+                  </div>
+                  
+                </span>
+                 
+
+
+                <span class="rightmenu">
+
+ 
+
+
+                    <div style="vertical-align: middle;margin-top: auto;margin-bottom: auto;">
+                  <div style="margin-top:40px;text-align:center;color:#b6bef1;font-size: 25px;">
+                  Merci , le paiement a bien été effectuer !
+                  </div>
+
+                  <div style="margin-top: 20px;text-align: center;color: #dedede;">
+                   Vous pouvez commencer à découvrire les avantages du premium
+                  </div>
+
+                    </div>
+
+                    <a style="width: 140px;height: 40px;margin-left: auto;margin-right: auto;" href="/">
+                    <div class="btnhome" style="margin-top: 20px;">
+Accueil
+                    </div>
+                    </a>
+
+                </span>
+        
+            </div>
+        </div>
+    </body>
+    <footer>
+        <%- include("../parts/footer") %>
+        <%- include("../parts/scripts") %>
+    </footer>
+</html>

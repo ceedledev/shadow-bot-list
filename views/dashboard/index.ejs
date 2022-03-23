@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../parts/head", { title: 'Dashboard' }) %>
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Ubuntu&display=swap" rel="stylesheet">
+    </head>
+
+<style>
+
+.btn-ajouter{
+            display: block;
+            text-align: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #7289DA;
+            border: solid 2px #7289DA;
+            border-radius: 4px;
+            height: 40px;
+            width: 130px;
+            color: white;
+            text-decoration: none;
+           
+           
+        }
+        .btn-ajouter:hover{
+            transform: translateY(-2px);
+        }
+
+</style>
+
+
+    <body>
+        <div class="header">
+            <%- include("../parts/header") %>
+        </div>
+        <div class="main">
+            <div class="container">
+                <div class="row">
+                    <div class="center-align" style="font-family: 'Roboto', sans-serif;margin-bottom: 15px;">
+                    <h4 style="color: white;">  <% if (rawBots.length > 1) { %>
+                       Mes Bots
+                        <% } %>
+
+                        <% if (rawBots.length < 2) { %>
+                            Mon Bot
+                             <% } %>
+                        </h4>
+                        
+                    <p style="font-size: 19px;color: #A5AAAF;">Voici la liste des différents bots que vous avez ajouter sur notre site.</p>
+              efgrhtyrjuktiyloumiuyyhtr
+                    <a href="/dashboard/new" style="padding: 6px 8px;" class="btn-ajouter">Ajouter un bot</a>
+                    </div>
+                
+                <% if (rawBots.length == 0) { %>
+                <p>Vous n'avez pas de bot ! <a href="/dashboard/new">En ajouter un ?</a></p>
+                <% } else { %>
+                <div class="bot-cards">
+                    <%- myBots.map(chunk => `<div class="row bot-card">${chunk.map(bot => include("../parts/botCard", {bot}))}</div>`) %>
+                </div>
+        
+                <% } %>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <%- include("../parts/footer") %>
+        <%- include("../parts/scripts") %>
+    </footer>
+</html>
